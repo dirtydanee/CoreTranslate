@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185B56D21FDEF6D3008E0D56 /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185B56D11FDEF6D3008E0D56 /* TakePhotoViewController.xib */; };
+		185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */; };
+		1887A5D61FED796400BA19A0 /* AVCaptureSession+SetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */; };
+		1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */; };
+		1887A5DF1FFAA4B300BA19A0 /* ImageRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DC1FFAA4B300BA19A0 /* ImageRecognitionService.swift */; };
+		1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */; };
+		1887A5E21FFAA4E800BA19A0 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */; };
 		18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */; };
-		18B696F41FDD8F9C00D7C401 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B696F31FDD8F9C00D7C401 /* PhotoViewController.swift */; };
-		18B696F71FDD8F9C00D7C401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B696F51FDD8F9C00D7C401 /* Main.storyboard */; };
 		18B696F91FDD8F9C00D7C401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B696F81FDD8F9C00D7C401 /* Assets.xcassets */; };
 		18B696FC1FDD8F9C00D7C401 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B696FA1FDD8F9C00D7C401 /* LaunchScreen.storyboard */; };
 		18B697071FDD8F9D00D7C401 /* CoreTranslateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B697061FDD8F9D00D7C401 /* CoreTranslateTests.swift */; };
+		18B6971A1FDDA68C00D7C401 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B697171FDDA68C00D7C401 /* Coordinator.swift */; };
+		18B6971B1FDDA68C00D7C401 /* TakePhotoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B697191FDDA68C00D7C401 /* TakePhotoCoordinator.swift */; };
+		18B6971D1FDDA6B700D7C401 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6971C1FDDA6B700D7C401 /* TakePhotoViewController.swift */; };
+		18B697221FDDA6F800D7C401 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B697211FDDA6F800D7C401 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +35,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185B56D11FDEF6D3008E0D56 /* TakePhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakePhotoViewController.xib; sourceTree = "<group>"; };
+		185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+SetupService.swift"; sourceTree = "<group>"; };
+		1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameExtractService.swift; sourceTree = "<group>"; };
+		1887A5DC1FFAA4B300BA19A0 /* ImageRecognitionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionService.swift; sourceTree = "<group>"; };
+		1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDevicePermissionService.swift; sourceTree = "<group>"; };
+		1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		18B696EE1FDD8F9C00D7C401 /* CoreTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18B696F31FDD8F9C00D7C401 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		18B696F61FDD8F9C00D7C401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18B696F81FDD8F9C00D7C401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B696FB1FDD8F9C00D7C401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B696FD1FDD8F9C00D7C401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B697021FDD8F9C00D7C401 /* CoreTranslateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTranslateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B697061FDD8F9D00D7C401 /* CoreTranslateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTranslateTests.swift; sourceTree = "<group>"; };
 		18B697081FDD8F9D00D7C401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18B697171FDDA68C00D7C401 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		18B697191FDDA68C00D7C401 /* TakePhotoCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoCoordinator.swift; sourceTree = "<group>"; };
+		18B6971C1FDDA6B700D7C401 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		18B697211FDDA6F800D7C401 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		185B56D51FDEFE58008E0D56 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		185B56DF1FE27818008E0D56 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */,
+				1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1887A5DA1FFAA4B300BA19A0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */,
+				1887A5DC1FFAA4B300BA19A0 /* ImageRecognitionService.swift */,
+				1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		18B696E51FDD8F9C00D7C401 = {
 			isa = PBXGroup;
 			children = (
@@ -78,8 +123,10 @@
 			isa = PBXGroup;
 			children = (
 				18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */,
-				18B696F31FDD8F9C00D7C401 /* PhotoViewController.swift */,
-				18B696F51FDD8F9C00D7C401 /* Main.storyboard */,
+				1887A5DA1FFAA4B300BA19A0 /* Services */,
+				185B56D51FDEFE58008E0D56 /* Model */,
+				185B56DF1FE27818008E0D56 /* Extensions */,
+				18B697161FDDA68C00D7C401 /* Coordinators */,
 				18B696F81FDD8F9C00D7C401 /* Assets.xcassets */,
 				18B696FA1FDD8F9C00D7C401 /* LaunchScreen.storyboard */,
 				18B696FD1FDD8F9C00D7C401 /* Info.plist */,
@@ -94,6 +141,34 @@
 				18B697081FDD8F9D00D7C401 /* Info.plist */,
 			);
 			path = CoreTranslateTests;
+			sourceTree = "<group>";
+		};
+		18B697161FDDA68C00D7C401 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				18B697171FDDA68C00D7C401 /* Coordinator.swift */,
+				18B697201FDDA6F800D7C401 /* App */,
+				18B697181FDDA68C00D7C401 /* TakePhoto */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		18B697181FDDA68C00D7C401 /* TakePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				18B697191FDDA68C00D7C401 /* TakePhotoCoordinator.swift */,
+				18B6971C1FDDA6B700D7C401 /* TakePhotoViewController.swift */,
+				185B56D11FDEF6D3008E0D56 /* TakePhotoViewController.xib */,
+			);
+			path = TakePhoto;
+			sourceTree = "<group>";
+		};
+		18B697201FDDA6F800D7C401 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				18B697211FDDA6F800D7C401 /* AppCoordinator.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +256,7 @@
 			files = (
 				18B696FC1FDD8F9C00D7C401 /* LaunchScreen.storyboard in Resources */,
 				18B696F91FDD8F9C00D7C401 /* Assets.xcassets in Resources */,
-				18B696F71FDD8F9C00D7C401 /* Main.storyboard in Resources */,
+				185B56D21FDEF6D3008E0D56 /* TakePhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B696F41FDD8F9C00D7C401 /* PhotoViewController.swift in Sources */,
+				1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */,
+				18B6971B1FDDA68C00D7C401 /* TakePhotoCoordinator.swift in Sources */,
 				18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */,
+				185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */,
+				1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */,
+				1887A5D61FED796400BA19A0 /* AVCaptureSession+SetupService.swift in Sources */,
+				18B697221FDDA6F800D7C401 /* AppCoordinator.swift in Sources */,
+				1887A5E21FFAA4E800BA19A0 /* MobileNet.mlmodel in Sources */,
+				18B6971D1FDDA6B700D7C401 /* TakePhotoViewController.swift in Sources */,
+				1887A5DF1FFAA4B300BA19A0 /* ImageRecognitionService.swift in Sources */,
+				18B6971A1FDDA68C00D7C401 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,14 +307,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		18B696F51FDD8F9C00D7C401 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18B696F61FDD8F9C00D7C401 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18B696FA1FDD8F9C00D7C401 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -290,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -353,12 +429,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2G45Q9338W;
+				DEVELOPMENT_TEAM = V6UNSDB9C4;
 				INFOPLIST_FILE = CoreTranslate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dirtylabs.CoreTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dirtylabs.prototype.CoreTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -368,12 +447,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2G45Q9338W;
+				DEVELOPMENT_TEAM = V6UNSDB9C4;
 				INFOPLIST_FILE = CoreTranslate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dirtylabs.CoreTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dirtylabs.prototype.CoreTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
