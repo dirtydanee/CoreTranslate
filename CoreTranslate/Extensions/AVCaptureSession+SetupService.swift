@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-extension AVCaptureSession {
+final class CaptureSessionService {
 
     enum Error {
         enum Setup: Swift.Error {
@@ -26,6 +26,15 @@ extension AVCaptureSession {
         }
     }
 
+    let captureSession: AVCaptureSession
+    private(set) var isCaptureSessionSetup: Bool
+    private var lastUsedCaptureDevice: AVCaptureDevice?
+
+    init(captureSession: AVCaptureSession) {
+        self.captureSession = captureSession
+        self.isCaptureSessionSetup = false
+    }
+
     func setupCamera(for mediaType: AVMediaType,
                      position: AVCaptureDevice.Position,
                      devicetypes: [AVCaptureDevice.DeviceType],
@@ -34,46 +43,67 @@ extension AVCaptureSession {
         let device = try self.device(for: devicetypes, mediaType: mediaType, position: position)
         let input = try AVCaptureDeviceInput(device: device)
 
-        guard self.canAddInput(input) else {
+        guard self.captureSession.canAddInput(input) else {
             throw Error.Setup.invalidDeviceInput
         }
 
-        self.addInput(input)
+        self.captureSession.addInput(input)
 
         let photoOutput = AVCapturePhotoOutput()
 
-        guard self.canAddOutput(photoOutput) else {
+        guard self.captureSession.canAddOutput(photoOutput) else {
             throw Error.Setup.invalidPhotoOutput
         }
 
-        self.addOutput(photoOutput)
+        self.captureSession.addOutput(photoOutput)
 
         let videoDataOutput = AVCaptureVideoDataOutput()
-        let vidooDataOutputQueue = DispatchQueue(label: "com.dirtylabs.coretranslate.vidooDataOutputQueue")
+        let vidooDataOutputQueue = DispatchQueue.makeQueue(for: AVCaptureVideoDataOutput.self)
         videoDataOutput.setSampleBufferDelegate(sampleBufferDelegate, queue: vidooDataOutputQueue)
 
-        guard self.canAddOutput(videoDataOutput) else {
+        guard self.captureSession.canAddOutput(videoDataOutput) else {
             throw Error.Setup.invalidDataOutput
         }
 
-        self.addOutput(videoDataOutput)
+        self.captureSession.addOutput(videoDataOutput)
+
+        self.lastUsedCaptureDevice = device
+        self.isCaptureSessionSetup = true
     }
 
     func updatePosition(for devicetypes: [AVCaptureDevice.DeviceType], mediaType: AVMediaType, position: AVCaptureDevice.Position) throws {
 
-        guard let currentInput = self.inputs.first else {
+        guard let currentInput = self.captureSession.inputs.first else {
             throw Error.CameraFlip.noInputsDetected
         }
 
-        self.beginConfiguration()
+        self.captureSession.beginConfiguration()
         defer {
-            self.commitConfiguration()
+            self.captureSession.commitConfiguration()
         }
 
         let device = try self.device(for: devicetypes, mediaType: mediaType, position: position)
         let newInput = try AVCaptureDeviceInput(device: device)
-        self.removeInput(currentInput)
-        self.addInput(newInput)
+        self.captureSession.removeInput(currentInput)
+        self.captureSession.addInput(newInput)
+        self.lastUsedCaptureDevice = device
+    }
+
+    func updateTorch() {
+        // Can turn on torch only when back camera is active
+        guard let device = self.lastUsedCaptureDevice, device.position == .back else { return }
+        let active = device.isTorchActive
+        do {
+            try device.lockForConfiguration()
+            if active {
+                device.torchMode = .off
+            } else {
+                try device.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
+            }
+            device.unlockForConfiguration()
+        } catch {
+            print("Failed to set camera torchMode to '\(active)'. Error: \(error as NSError)")
+        }
     }
 
     private func device(for devicetypes: [AVCaptureDevice.DeviceType], mediaType: AVMediaType, position: AVCaptureDevice.Position) throws -> AVCaptureDevice {

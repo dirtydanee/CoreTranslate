@@ -4,3 +4,8 @@
 # Xcode
 *xcuserdata
 *.xcworkspace/xcshareddata
+
+# Pods
+Pods/
+*.xcworkspace/
+Podfile.lock

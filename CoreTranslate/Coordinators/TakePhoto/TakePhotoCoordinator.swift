@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol TakePhotoView: class {
-    func startRunningCamera()
+    func addCameraView()
 }
 
 final class TakePhotoCoordinator: Coordinator {
@@ -30,8 +30,11 @@ final class TakePhotoCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator]
 
     private let captureSession: AVCaptureSession
+    private let captureSessionService: CaptureSessionService
+    private let captureSessionQueue: DispatchQueue
     private let cameraFrameExtractService: CameraFrameExtractService & AVCaptureVideoDataOutputSampleBufferDelegate
-    private let imageRecognitionService: ImageRecognitionService
+    private let observationService: ObservationService
+    private let observationStore: ObservationStore
     private var takePhotoView: TakePhotoView?
     private var currentCameraPosition = Constants.Device.position
 
@@ -41,20 +44,53 @@ final class TakePhotoCoordinator: Coordinator {
 
         let captureSession = AVCaptureSession()
         self.cameraFrameExtractService = CameraFrameExtractService(captureSession: captureSession, delegate: nil)
+        self.captureSessionService = CaptureSessionService(captureSession: captureSession)
         self.captureSession = captureSession
+        self.observationStore = ObservationStore()
 
         let mobileNet = MobileNet()
-        let imageRecognitionServiceQueue = DispatchQueue(label: "com.dirtylabs.coretranslate.imageRecognitionServiceQueue")
-        self.imageRecognitionService = ImageRecognitionService(model: mobileNet.model, eventQueue: imageRecognitionServiceQueue)
+        let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
+        self.observationService = ObservationService(model: mobileNet.model,
+                                                     eventQueue: observationServiceQueue)
+        self.captureSessionQueue = DispatchQueue.makeQueue(for: TakePhotoCoordinator.self)
+        self.observationService.delegate = self
     }
 
     func start(animated: Bool) {
-        let captureSessionQueue = DispatchQueue(label: "com.dirtylabs.coretranslate.captureSessionQueue")
         let viewController = TakePhotoViewController(captureSession: captureSession,
-                                                     captureSessionQueue: captureSessionQueue,
                                                      delegate: self)
         self.navigationController.pushViewController(viewController, animated: animated)
         self.takePhotoView = viewController
+    }
+
+    private func askCaptureDevicePermission() {
+        CaptureDevicePermissionService.requestIfNeeded(for: .video) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(_):
+                strongSelf.setupCaptureDevice()
+            case .failure(let error):
+                // TODO: Daniel - check again error handling video
+                // strongSelf.handleRequestFailure(using: error)
+                // https://github.com/Workable/swift-error-handler
+                print(error)
+            }
+        }
+    }
+
+    private func setupCaptureDevice() {
+        do {
+            try self.captureSessionService.setupCamera(for: Constants.Video.type,
+                                                             position: Constants.Device.position,
+                                                             devicetypes: Constants.Device.types,
+                                                             sampleBufferDelegate: self.cameraFrameExtractService)
+            self.takePhotoView?.addCameraView()
+            self.captureSessionQueue.async { self.captureSession.startRunning() }
+            self.cameraFrameExtractService.delegate = self
+        } catch let error {
+            // TODO: Daniel - check again error handling video
+            print(error)
+        }
     }
 }
 
@@ -62,35 +98,20 @@ final class TakePhotoCoordinator: Coordinator {
 
 extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
 
-    func takePhotoViewControllerDidRequestPermission(_ viewController: TakePhotoViewController) {
-        CaptureDevicePermissionService.requestIfNeeded(for: .video) { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(_):
-                do {
-                    try strongSelf.captureSession.setupCamera(for: Constants.Video.type,
-                                                          position: Constants.Device.position,
-                                                          devicetypes: Constants.Device.types,
-                                                          sampleBufferDelegate: strongSelf.cameraFrameExtractService)
-                    strongSelf.takePhotoView?.startRunningCamera()
-                    strongSelf.cameraFrameExtractService.delegate = strongSelf
-                } catch let error {
-                    // TODO: Daniel - check again error handling video
-                    print(error)
-                }
-            case .failure(let error):
-                // TODO: Daniel - check again error handling video
-                // strongSelf.handleRequestFailure(using: error)
-                // https://github.com/Workable/swift-error-handler
-                break
-            }
+    func takePhotoViewControllerWillAppear(_ viewController: TakePhotoViewController) {
+        switch self.captureSessionService.isCaptureSessionSetup {
+        case true:
+            self.captureSessionQueue.async { self.captureSession.startRunning() }
+        case false:
+            self.askCaptureDevicePermission()
         }
     }
 
-    func takePhotoViewControllerDidRequestFlippingCameraPosition(_ viewController: TakePhotoViewController) {
+
+    func takePhotoViewControllerDidRequestTooglingCameraPosition(_ viewController: TakePhotoViewController) {
         do {
             self.currentCameraPosition = self.currentCameraPosition == .back ? .front : .back
-            try self.captureSession.updatePosition(for: Constants.Device.types, mediaType: Constants.Video.type, position: currentCameraPosition)
+            try self.captureSessionService.updatePosition(for: Constants.Device.types, mediaType: Constants.Video.type, position: currentCameraPosition)
         } catch let error {
             print(error)
             // TODO: Daniel - check again error handling video
@@ -98,12 +119,38 @@ extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
             // https://github.com/Workable/swift-error-handler
         }
     }
+
+    func takePhotoViewControllerDidRequestTooglingTorchPosition(_ viewController: TakePhotoViewController) {
+        self.captureSessionService.updateTorch()
+    }
+
+    func takePhotoViewControllerDidRequestPermission(_ viewController: TakePhotoViewController) {
+
+    }
+
+    func takePhotoViewControllerDidRequesShowingObservations(_ viewController: TakePhotoViewController) {
+        self.captureSession.stopRunning()
+        let observationsCoordinator = ObservationResultsCoordinator(navigationController: self.navigationController, observationStore: self.observationStore)
+        observationsCoordinator.start(animated: true)
+        self.childCoordinators.append(observationsCoordinator)
+    }
 }
 
 // MARK: - CameraFrameExtractServiceDelegate
 
 extension TakePhotoCoordinator: CameraFrameExtractServiceDelegate {
     func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService, didExtractImage image: UIImage) {
-        self.imageRecognitionService.recognizeContent(of: image)
+        do {
+            try self.observationService.observeContent(of: image)
+        } catch let error {
+            // TODO: Daniel - check again error handling video
+            print(error)
+        }
+    }
+}
+
+extension TakePhotoCoordinator: ObservationServiceDelegate {
+    func observationService(_ observationService: ObservationService, foundObservation observation: Observation) {
+        self.observationStore.add(observation)
     }
 }

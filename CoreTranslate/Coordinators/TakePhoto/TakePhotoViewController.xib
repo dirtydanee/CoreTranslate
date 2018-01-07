@@ -24,16 +24,34 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eza-Hg-nCt">
-                            <rect key="frame" x="147" y="629" width="80" height="30"/>
+                            <rect key="frame" x="8" y="629" width="80" height="30"/>
                             <state key="normal" title="Flip camera"/>
                             <connections>
-                                <action selector="flipCamera:" destination="-1" eventType="touchUpInside" id="0U6-q2-YEu"/>
+                                <action selector="toogleCamera:" destination="-1" eventType="touchUpInside" id="Rww-0h-zv3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-UK-tmA">
+                            <rect key="frame" x="279" y="629" width="88" height="30"/>
+                            <state key="normal" title="Show results"/>
+                            <connections>
+                                <action selector="showObservations:" destination="-1" eventType="touchUpInside" id="pf9-6x-vss"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOb-W4-PV7">
+                            <rect key="frame" x="167.5" y="629" width="39" height="30"/>
+                            <state key="normal" title="Torch"/>
+                            <connections>
+                                <action selector="toogleTourch:" destination="-1" eventType="touchUpInside" id="saE-yC-p8p"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Eza-Hg-nCt" firstAttribute="centerX" secondItem="xSP-YY-3Hy" secondAttribute="centerX" id="0gx-9K-fbb"/>
+                        <constraint firstAttribute="bottom" secondItem="Afs-UK-tmA" secondAttribute="bottom" constant="8" id="3gA-Se-Pzc"/>
+                        <constraint firstItem="Eza-Hg-nCt" firstAttribute="leading" secondItem="xSP-YY-3Hy" secondAttribute="leading" constant="8" id="QOX-w1-px8"/>
+                        <constraint firstAttribute="bottom" secondItem="tOb-W4-PV7" secondAttribute="bottom" constant="8" id="YE5-nY-AR7"/>
+                        <constraint firstAttribute="trailing" secondItem="Afs-UK-tmA" secondAttribute="trailing" constant="8" id="jyV-Ry-kvv"/>
+                        <constraint firstItem="tOb-W4-PV7" firstAttribute="centerX" secondItem="xSP-YY-3Hy" secondAttribute="centerX" id="pMn-l9-ium"/>
                     </constraints>
                 </view>
             </subviews>
