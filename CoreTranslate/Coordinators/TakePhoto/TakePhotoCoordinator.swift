@@ -81,9 +81,9 @@ final class TakePhotoCoordinator: Coordinator {
     private func setupCaptureDevice() {
         do {
             try self.captureSessionService.setupCamera(for: Constants.Video.type,
-                                                             position: Constants.Device.position,
-                                                             devicetypes: Constants.Device.types,
-                                                             sampleBufferDelegate: self.cameraFrameExtractService)
+                                                       position: Constants.Device.position,
+                                                       devicetypes: Constants.Device.types,
+                                                       sampleBufferDelegate: self.cameraFrameExtractService)
             self.takePhotoView?.addCameraView()
             self.captureSessionQueue.async { self.captureSession.startRunning() }
             self.cameraFrameExtractService.delegate = self

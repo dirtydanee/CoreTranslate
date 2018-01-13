@@ -7,10 +7,11 @@ use_frameworks!
 
 target 'CoreTranslate' do
 # Pods for CoreTranslate
-  pod 'Alamofire', '~> 4.5'
+  pod 'Alamofire'
   pod 'SwiftLint'
   pod 'ErrorHandler'
   pod 'ErrorHandler/Alamofire'
+  pod 'StyledText'
 
 # Pods for CoreTranslateTests  
 

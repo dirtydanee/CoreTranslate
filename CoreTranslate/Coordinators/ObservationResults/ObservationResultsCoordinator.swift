@@ -22,14 +22,28 @@ final class ObservationResultsCoordinator: Coordinator {
     }
 
     func start(animated: Bool) {
-        let viewPresentations = self.createViewPresentations(from: self.observationStore.observations)
-        print(viewPresentations)
+        let viewPresentations = self.observationStore.observations.map { ObservationViewPresentation(observation: $0) }
         let viewController = ObservationResultsViewController(viewPresentations: viewPresentations)
+        viewController.delegate = self
         self.navigationController.pushViewController(viewController, animated: animated)
         self.observationResultsViewController = viewController
     }
 
-    private func createViewPresentations(from observations: Set<Observation>) -> [ObservationViewPresentation] {
-        return observations.map { return ObservationViewPresentation(observation: $0) }
+    private func presentTranslations(for observation: Observation) {
+        let translationConfiguration: TranslationConfiguration = TranslationConfiguration(baseTranslationURL: ApplicationConfiguration.baseTranslationURL,
+                                                                                          fromLanguage: ApplicationConfiguration.baseLanguage,
+                                                                                          toLanguage: .hungarian)
+        let translationCoordinator = TranslationCoordinator(navigationController: self.navigationController,
+                                                            observationToTranslate: observation,
+                                                            withConfiguration: translationConfiguration)
+        translationCoordinator.start(animated: true)
+        self.childCoordinators.append(translationCoordinator)
     }
 }
+
+extension ObservationResultsCoordinator: ObservationResultsViewControllerDelegate {
+    func observationResultsViewController(_ viewController: ObservationResultsViewController, didSelectObservation observation: Observation) {
+        self.presentTranslations(for: observation)
+    }
+}
+

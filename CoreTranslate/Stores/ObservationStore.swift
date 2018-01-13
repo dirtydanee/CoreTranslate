@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias ObservationIdentifier = String
-
 struct Observation: Equatable, Hashable {
 
     var hashValue: Int {
@@ -17,8 +15,9 @@ struct Observation: Equatable, Hashable {
     }
 
     let uuid: UUID
-    let identifier: ObservationIdentifier
+    let identifier: String
     let confidence: Float
+    let capturedImageData: Data
 
     static func ==(lhs: Observation, rhs: Observation) -> Bool {
         return lhs.identifier == rhs.identifier
@@ -29,7 +28,7 @@ final class ObservationStore {
 
     private(set) var observations: Set<Observation> = []
 
-    func add(_ observation: Observation, asUnique unique: Bool = true) {
+    func add(_ observation: Observation) {
         self.observations.insert(observation)
     }
 }

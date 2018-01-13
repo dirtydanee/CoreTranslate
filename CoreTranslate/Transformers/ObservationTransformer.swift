@@ -6,15 +6,25 @@
 //  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Vision
 
 final class ObservationTransformer {
 
-    func transform(_ classificationObservation: VNClassificationObservation) -> Observation {
+    enum Error: Swift.Error {
+        case imageToDataConversionFailed
+    }
+
+    func transform(_ classificationObservation: VNClassificationObservation, from image: UIImage) throws -> Observation {
+
+        guard let imageData = UIImagePNGRepresentation(image) else {
+            throw Error.imageToDataConversionFailed
+        }
+
         let observation = Observation(uuid: classificationObservation.uuid,
                                       identifier: classificationObservation.identifier,
-                                      confidence: classificationObservation.confidence)
+                                      confidence: classificationObservation.confidence,
+                                      capturedImageData: imageData)
         return observation
     }
 }

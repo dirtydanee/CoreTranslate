@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183EC648200942BD0043C82B /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC647200942BD0043C82B /* RESTService.swift */; };
+		183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC649200943DC0043C82B /* ApplicationConfiguration.swift */; };
+		183EC64C20094BE00043C82B /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC64B20094BE00043C82B /* TranslationResponse.swift */; };
+		183EC64E20094C360043C82B /* RESTRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC64D20094C360043C82B /* RESTRequestFactory.swift */; };
+		183EC653200A65060043C82B /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC651200A65060043C82B /* TranslationViewController.swift */; };
+		183EC656200A6C950043C82B /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC655200A6C950043C82B /* TranslationView.swift */; };
+		183EC658200A6CAD0043C82B /* TranslationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183EC657200A6CAD0043C82B /* TranslationView.xib */; };
+		183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC659200A6F520043C82B /* TranslationViewPresentation.swift */; };
+		183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC65B200A6FA50043C82B /* CaptureSessionService.swift */; };
 		1841B4FE20000F2A0055BD73 /* ObservationResultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B4FD20000F2A0055BD73 /* ObservationResultsCoordinator.swift */; };
 		1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */; };
 		1841B50220000FD40055BD73 /* ObservationResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841B50020000FD40055BD73 /* ObservationResultsViewController.xib */; };
@@ -17,7 +26,8 @@
 		1841B50F200119BE0055BD73 /* ObservationResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841B50E200119BE0055BD73 /* ObservationResultCell.xib */; };
 		185B56D21FDEF6D3008E0D56 /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185B56D11FDEF6D3008E0D56 /* TakePhotoViewController.xib */; };
 		185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */; };
-		1887A5D61FED796400BA19A0 /* AVCaptureSession+SetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */; };
+		1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A879200405C7008042EE /* TranslationCoordinator.swift */; };
+		1860A87C200406F0008042EE /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A87B200406F0008042EE /* TranslationService.swift */; };
 		1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */; };
 		1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */; };
 		1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */; };
@@ -48,6 +58,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183EC647200942BD0043C82B /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
+		183EC649200943DC0043C82B /* ApplicationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfiguration.swift; sourceTree = "<group>"; };
+		183EC64B20094BE00043C82B /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
+		183EC64D20094C360043C82B /* RESTRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTRequestFactory.swift; sourceTree = "<group>"; };
+		183EC651200A65060043C82B /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		183EC655200A6C950043C82B /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		183EC657200A6CAD0043C82B /* TranslationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslationView.xib; sourceTree = "<group>"; };
+		183EC659200A6F520043C82B /* TranslationViewPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewPresentation.swift; sourceTree = "<group>"; };
+		183EC65B200A6FA50043C82B /* CaptureSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionService.swift; sourceTree = "<group>"; };
 		1841B4FD20000F2A0055BD73 /* ObservationResultsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationResultsCoordinator.swift; sourceTree = "<group>"; };
 		1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationResultsViewController.swift; sourceTree = "<group>"; };
 		1841B50020000FD40055BD73 /* ObservationResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObservationResultsViewController.xib; sourceTree = "<group>"; };
@@ -58,7 +77,8 @@
 		1841B50E200119BE0055BD73 /* ObservationResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObservationResultCell.xib; sourceTree = "<group>"; };
 		185B56D11FDEF6D3008E0D56 /* TakePhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakePhotoViewController.xib; sourceTree = "<group>"; };
 		185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
-		1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+SetupService.swift"; sourceTree = "<group>"; };
+		1860A879200405C7008042EE /* TranslationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
+		1860A87B200406F0008042EE /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameExtractService.swift; sourceTree = "<group>"; };
 		1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationService.swift; sourceTree = "<group>"; };
 		1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDevicePermissionService.swift; sourceTree = "<group>"; };
@@ -106,6 +126,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183EC646200942BD0043C82B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				183EC647200942BD0043C82B /* RESTService.swift */,
+				183EC64D20094C360043C82B /* RESTRequestFactory.swift */,
+				183EC650200A287B0043C82B /* Responses */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		183EC650200A287B0043C82B /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				183EC64B20094BE00043C82B /* TranslationResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		1841B4FC20000F2A0055BD73 /* ObservationResults */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				1841B50A200109CA0055BD73 /* ObservationViewPresentation.swift */,
+				183EC659200A6F520043C82B /* TranslationViewPresentation.swift */,
 			);
 			path = ViewPresentations;
 			sourceTree = "<group>";
@@ -139,19 +178,31 @@
 			isa = PBXGroup;
 			children = (
 				185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */,
-				1887A5D51FED796400BA19A0 /* AVCaptureSession+SetupService.swift */,
 				1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */,
 				1841B505200105090055BD73 /* UITableView+CellUsage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1860A878200405C7008042EE /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				1860A879200405C7008042EE /* TranslationCoordinator.swift */,
+				183EC651200A65060043C82B /* TranslationViewController.swift */,
+				183EC655200A6C950043C82B /* TranslationView.swift */,
+				183EC657200A6CAD0043C82B /* TranslationView.xib */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
 		1887A5DA1FFAA4B300BA19A0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */,
+				1860A87B200406F0008042EE /* TranslationService.swift */,
 				1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */,
+				183EC65B200A6FA50043C82B /* CaptureSessionService.swift */,
 				1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */,
+				1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -196,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */,
+				183EC649200943DC0043C82B /* ApplicationConfiguration.swift */,
+				183EC646200942BD0043C82B /* Networking */,
 				1841B509200109CA0055BD73 /* ViewPresentations */,
 				1887A5EE1FFC20E200BA19A0 /* Transformers */,
 				1887A5E51FFC0FBF00BA19A0 /* Stores */,
@@ -226,6 +279,7 @@
 				18B697201FDDA6F800D7C401 /* App */,
 				18B697181FDDA68C00D7C401 /* TakePhoto */,
 				1841B4FC20000F2A0055BD73 /* ObservationResults */,
+				1860A878200405C7008042EE /* Translation */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -361,6 +415,7 @@
 				18B696FC1FDD8F9C00D7C401 /* LaunchScreen.storyboard in Resources */,
 				18B696F91FDD8F9C00D7C401 /* Assets.xcassets in Resources */,
 				1841B50F200119BE0055BD73 /* ObservationResultCell.xib in Resources */,
+				183EC658200A6CAD0043C82B /* TranslationView.xib in Resources */,
 				1841B50220000FD40055BD73 /* ObservationResultsViewController.xib in Resources */,
 				185B56D21FDEF6D3008E0D56 /* TakePhotoViewController.xib in Resources */,
 			);
@@ -403,11 +458,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CoreTranslate/Pods-CoreTranslate-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ErrorHandler/ErrorHandler.framework",
+				"${BUILT_PRODUCTS_DIR}/StyledText/StyledText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ErrorHandler.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StyledText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -489,21 +546,30 @@
 				18B6971B1FDDA68C00D7C401 /* TakePhotoCoordinator.swift in Sources */,
 				18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */,
 				1841B506200105090055BD73 /* UITableView+CellUsage.swift in Sources */,
+				1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */,
 				1887A5E71FFC0FBF00BA19A0 /* ObservationStore.swift in Sources */,
 				1841B5042000FEDD0055BD73 /* ObservationResultCell.swift in Sources */,
 				185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */,
+				183EC648200942BD0043C82B /* RESTService.swift in Sources */,
+				183EC656200A6C950043C82B /* TranslationView.swift in Sources */,
 				1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */,
-				1887A5D61FED796400BA19A0 /* AVCaptureSession+SetupService.swift in Sources */,
+				183EC64C20094BE00043C82B /* TranslationResponse.swift in Sources */,
+				1860A87C200406F0008042EE /* TranslationService.swift in Sources */,
 				1841B4FE20000F2A0055BD73 /* ObservationResultsCoordinator.swift in Sources */,
 				1887A5E91FFC120400BA19A0 /* DispatchQueue+Naming.swift in Sources */,
+				183EC64E20094C360043C82B /* RESTRequestFactory.swift in Sources */,
 				18B697221FDDA6F800D7C401 /* AppCoordinator.swift in Sources */,
 				1887A5E21FFAA4E800BA19A0 /* MobileNet.mlmodel in Sources */,
 				1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */,
 				18B6971D1FDDA6B700D7C401 /* TakePhotoViewController.swift in Sources */,
 				1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */,
+				183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */,
+				183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */,
 				1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */,
+				183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */,
 				1841B50D200116220055BD73 /* ObservationResultsDataSource.swift in Sources */,
 				18B6971A1FDDA68C00D7C401 /* Coordinator.swift in Sources */,
+				183EC653200A65060043C82B /* TranslationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

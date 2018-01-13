@@ -8,12 +8,30 @@
 
 import UIKit
 
-extension UIViewController {
-
+protocol AlertingView where Self: UIViewController {}
+extension AlertingView {
     func presentAlert(with title: String?, message: String?, completionHandler: (() -> Void)?) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: .alert)
         self.present(alertController, animated: true, completion: completionHandler)
     }
+}
+
+extension UIView {
+    enum State<T> {
+        case loading
+        case failed(Error)
+        case loaded(T)
+    }
+}
+
+protocol DataLoading {
+    associatedtype DataLoading
+
+    var state: UIView.State<DataLoading> { get }
+    var loadingView: UIView { get }
+    var errorView: UIView { get }
+
+    func udpate()
 }

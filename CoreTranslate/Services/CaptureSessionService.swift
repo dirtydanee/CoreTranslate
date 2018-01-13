@@ -1,9 +1,9 @@
 //
-//  CaptureSessionSetupInteractor.swift
+//  CaptureSessionService.swift
 //  CoreTranslate
 //
-//  Created by Daniel.Metzing on 22.12.17.
-//  Copyright © 2017 Dirtylabs. All rights reserved.
+//  Created by Daniel.Metzing on 13.01.18.
+//  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
 import AVFoundation
