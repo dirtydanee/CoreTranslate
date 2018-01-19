@@ -10,7 +10,8 @@ import AVFoundation
 import UIKit
 
 protocol CameraFrameExtractServiceDelegate: class {
-    func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService, didExtractImage image: UIImage)
+    func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService,
+                                   didExtractImage image: UIImage)
 }
 
 final class CameraFrameExtractService: NSObject {
@@ -50,7 +51,9 @@ final class CameraFrameExtractService: NSObject {
 
 extension CameraFrameExtractService: AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    func captureOutput(_ output: AVCaptureOutput,
+                       didOutput sampleBuffer: CMSampleBuffer,
+                       from connection: AVCaptureConnection) {
         do {
             let image = try self.image(from: sampleBuffer)
             DispatchQueue.main.async {

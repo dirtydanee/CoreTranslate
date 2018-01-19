@@ -1,0 +1,15 @@
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - comma
+  - control_statement
+  - trailing_whitespace
+  - nesting
+  - todo
+  - identifier_name # reconsider
+opt_in_rules: # some rules are only opt-in
+ - empty_count
+ - attributes
+included: # paths to include during linting. `--path` is ignored if present.
+  - ./CoreTranslate
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods

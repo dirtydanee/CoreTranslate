@@ -8,6 +8,24 @@
 
 import Foundation
 
+//{
+//    response =     {
+//        from =         {
+//            language =             {
+//                didYouMean = 0;
+//                iso = en;
+//            };
+//            text =             {
+//                autoCorrected = 0;
+//                didYouMean = 0;
+//                value = "";
+//            };
+//        };
+//        raw = "";
+//        text = "rol\U00f3";
+//    };
+//}
+
 struct TranslationResponse: Codable {
     let text: String
 }

@@ -107,11 +107,12 @@ extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
         }
     }
 
-
     func takePhotoViewControllerDidRequestTooglingCameraPosition(_ viewController: TakePhotoViewController) {
         do {
             self.currentCameraPosition = self.currentCameraPosition == .back ? .front : .back
-            try self.captureSessionService.updatePosition(for: Constants.Device.types, mediaType: Constants.Video.type, position: currentCameraPosition)
+            try self.captureSessionService.updatePosition(for: Constants.Device.types,
+                                                          mediaType: Constants.Video.type,
+                                                          position: currentCameraPosition)
         } catch let error {
             print(error)
             // TODO: Daniel - check again error handling video
@@ -130,7 +131,8 @@ extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
 
     func takePhotoViewControllerDidRequesShowingObservations(_ viewController: TakePhotoViewController) {
         self.captureSession.stopRunning()
-        let observationsCoordinator = ObservationResultsCoordinator(navigationController: self.navigationController, observationStore: self.observationStore)
+        let observationsCoordinator = ObservationResultsCoordinator(navigationController: self.navigationController,
+                                                                    observationStore: self.observationStore)
         observationsCoordinator.start(animated: true)
         self.childCoordinators.append(observationsCoordinator)
     }
@@ -139,7 +141,8 @@ extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
 // MARK: - CameraFrameExtractServiceDelegate
 
 extension TakePhotoCoordinator: CameraFrameExtractServiceDelegate {
-    func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService, didExtractImage image: UIImage) {
+    func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService,
+                                   didExtractImage image: UIImage) {
         do {
             try self.observationService.observeContent(of: image)
         } catch let error {

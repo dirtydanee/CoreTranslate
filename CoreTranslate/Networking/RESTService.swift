@@ -55,6 +55,7 @@ final class RESTService {
                             case .success(let data):
                                 completion(.success(data))
                             case .failure(let error):
+                                print(error.localizedDescription)
                                 completion(.failure(error))
                             }
         }

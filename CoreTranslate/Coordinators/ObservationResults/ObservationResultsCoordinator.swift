@@ -30,9 +30,10 @@ final class ObservationResultsCoordinator: Coordinator {
     }
 
     private func presentTranslations(for observation: Observation) {
-        let translationConfiguration: TranslationConfiguration = TranslationConfiguration(baseTranslationURL: ApplicationConfiguration.baseTranslationURL,
-                                                                                          fromLanguage: ApplicationConfiguration.baseLanguage,
-                                                                                          toLanguage: .hungarian)
+        let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
+                                                                fromLanguage: ApplicationConfiguration.baseLanguage,
+                                                                toLanguage: .hungarian)
+
         let translationCoordinator = TranslationCoordinator(navigationController: self.navigationController,
                                                             observationToTranslate: observation,
                                                             withConfiguration: translationConfiguration)
@@ -42,8 +43,8 @@ final class ObservationResultsCoordinator: Coordinator {
 }
 
 extension ObservationResultsCoordinator: ObservationResultsViewControllerDelegate {
-    func observationResultsViewController(_ viewController: ObservationResultsViewController, didSelectObservation observation: Observation) {
+    func observationResultsViewController(_ viewController: ObservationResultsViewController,
+                                          didSelectObservation observation: Observation) {
         self.presentTranslations(for: observation)
     }
 }
-

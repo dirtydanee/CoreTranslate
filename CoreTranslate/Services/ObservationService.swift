@@ -46,6 +46,11 @@ final class ObservationService {
         // Create request with the model and the specified completion handler
         // TODO: Daniel - try to zoom in on the recognized object on the picture
         let request = VNCoreMLRequest(model: visionCoreMLModel) { (request, error) in
+
+            guard error == nil else {
+                return
+            }
+
             guard let topObservation = request.results?.first as? VNClassificationObservation,
                   let observation = try? self.observationTransformer.transform(topObservation, from: image),
                   observation.confidence >= Constants.minimumConfidance

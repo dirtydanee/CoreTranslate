@@ -16,6 +16,9 @@
 		183EC658200A6CAD0043C82B /* TranslationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183EC657200A6CAD0043C82B /* TranslationView.xib */; };
 		183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC659200A6F520043C82B /* TranslationViewPresentation.swift */; };
 		183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC65B200A6FA50043C82B /* CaptureSessionService.swift */; };
+		183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC65D200B80CF0043C82B /* String+Formatting.swift */; };
+		183EC663200BFC880043C82B /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC662200BFC880043C82B /* AsyncOperation.swift */; };
+		183EC665200BFC9D0043C82B /* TranslationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC664200BFC9D0043C82B /* TranslationOperation.swift */; };
 		1841B4FE20000F2A0055BD73 /* ObservationResultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B4FD20000F2A0055BD73 /* ObservationResultsCoordinator.swift */; };
 		1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */; };
 		1841B50220000FD40055BD73 /* ObservationResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841B50020000FD40055BD73 /* ObservationResultsViewController.xib */; };
@@ -31,11 +34,17 @@
 		1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */; };
 		1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */; };
 		1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */; };
-		1887A5E21FFAA4E800BA19A0 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */; };
 		1887A5E71FFC0FBF00BA19A0 /* ObservationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5E61FFC0FBF00BA19A0 /* ObservationStore.swift */; };
 		1887A5E91FFC120400BA19A0 /* DispatchQueue+Naming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */; };
 		1887A5EB1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */; };
 		1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */; };
+		189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */; };
+		189303CC2012702200E9B494 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* LanguageHelper.swift */; };
+		189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 189303CF2012724600E9B494 /* MobileNet.mlmodel */; };
+		189303D22012724600E9B494 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 189303D02012724600E9B494 /* .gitattributes */; };
+		189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D32012725D00E9B494 /* TranslatedObservation.swift */; };
+		189303D62012726C00E9B494 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D52012726C00E9B494 /* Translation.swift */; };
+		189303D920127A9700E9B494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189303D820127A9600E9B494 /* Default-568h@2x.png */; };
 		18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */; };
 		18B696F91FDD8F9C00D7C401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B696F81FDD8F9C00D7C401 /* Assets.xcassets */; };
 		18B696FC1FDD8F9C00D7C401 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B696FA1FDD8F9C00D7C401 /* LaunchScreen.storyboard */; };
@@ -67,6 +76,9 @@
 		183EC657200A6CAD0043C82B /* TranslationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslationView.xib; sourceTree = "<group>"; };
 		183EC659200A6F520043C82B /* TranslationViewPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewPresentation.swift; sourceTree = "<group>"; };
 		183EC65B200A6FA50043C82B /* CaptureSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionService.swift; sourceTree = "<group>"; };
+		183EC65D200B80CF0043C82B /* String+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Formatting.swift"; sourceTree = "<group>"; };
+		183EC662200BFC880043C82B /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		183EC664200BFC9D0043C82B /* TranslationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationOperation.swift; sourceTree = "<group>"; };
 		1841B4FD20000F2A0055BD73 /* ObservationResultsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationResultsCoordinator.swift; sourceTree = "<group>"; };
 		1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationResultsViewController.swift; sourceTree = "<group>"; };
 		1841B50020000FD40055BD73 /* ObservationResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObservationResultsViewController.xib; sourceTree = "<group>"; };
@@ -82,11 +94,17 @@
 		1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameExtractService.swift; sourceTree = "<group>"; };
 		1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationService.swift; sourceTree = "<group>"; };
 		1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDevicePermissionService.swift; sourceTree = "<group>"; };
-		1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		1887A5E61FFC0FBF00BA19A0 /* ObservationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationStore.swift; sourceTree = "<group>"; };
 		1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Naming.swift"; sourceTree = "<group>"; };
 		1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+NamingTests.swift"; sourceTree = "<group>"; };
 		1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationTransformer.swift; sourceTree = "<group>"; };
+		189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservationTransformer.swift; sourceTree = "<group>"; };
+		189303CB2012702200E9B494 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		189303CF2012724600E9B494 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		189303D02012724600E9B494 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		189303D32012725D00E9B494 /* TranslatedObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservation.swift; sourceTree = "<group>"; };
+		189303D52012726C00E9B494 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		189303D820127A9600E9B494 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		18B696EE1FDD8F9C00D7C401 /* CoreTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B696F81FDD8F9C00D7C401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +162,15 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		183EC661200BFC880043C82B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				183EC662200BFC880043C82B /* AsyncOperation.swift */,
+				183EC664200BFC9D0043C82B /* TranslationOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		1841B4FC20000F2A0055BD73 /* ObservationResults */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,20 +193,13 @@
 			path = ViewPresentations;
 			sourceTree = "<group>";
 		};
-		185B56D51FDEFE58008E0D56 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1887A5E11FFAA4E800BA19A0 /* MobileNet.mlmodel */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		185B56DF1FE27818008E0D56 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */,
 				1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */,
 				1841B505200105090055BD73 /* UITableView+CellUsage.swift */,
+				183EC65D200B80CF0043C82B /* String+Formatting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,13 +239,33 @@
 			isa = PBXGroup;
 			children = (
 				1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */,
+				189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */,
 			);
 			path = Transformers;
+			sourceTree = "<group>";
+		};
+		189303CD2012723F00E9B494 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				189303D32012725D00E9B494 /* TranslatedObservation.swift */,
+				189303D52012726C00E9B494 /* Translation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		189303CE2012724600E9B494 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				189303CF2012724600E9B494 /* MobileNet.mlmodel */,
+				189303D02012724600E9B494 /* .gitattributes */,
+			);
+			path = MLModels;
 			sourceTree = "<group>";
 		};
 		18B696E51FDD8F9C00D7C401 = {
 			isa = PBXGroup;
 			children = (
+				189303D820127A9600E9B494 /* Default-568h@2x.png */,
 				18B696F01FDD8F9C00D7C401 /* CoreTranslate */,
 				18B697051FDD8F9C00D7C401 /* CoreTranslateTests */,
 				18B696EF1FDD8F9C00D7C401 /* Products */,
@@ -248,6 +288,10 @@
 			children = (
 				18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */,
 				183EC649200943DC0043C82B /* ApplicationConfiguration.swift */,
+				189303CB2012702200E9B494 /* LanguageHelper.swift */,
+				189303CD2012723F00E9B494 /* Models */,
+				189303CE2012724600E9B494 /* MLModels */,
+				183EC661200BFC880043C82B /* Operations */,
 				183EC646200942BD0043C82B /* Networking */,
 				1841B509200109CA0055BD73 /* ViewPresentations */,
 				1887A5EE1FFC20E200BA19A0 /* Transformers */,
@@ -255,7 +299,6 @@
 				1887A5DA1FFAA4B300BA19A0 /* Services */,
 				18B697161FDDA68C00D7C401 /* Coordinators */,
 				185B56DF1FE27818008E0D56 /* Extensions */,
-				185B56D51FDEFE58008E0D56 /* Model */,
 				18B696F81FDD8F9C00D7C401 /* Assets.xcassets */,
 				18B696FA1FDD8F9C00D7C401 /* LaunchScreen.storyboard */,
 				18B696FD1FDD8F9C00D7C401 /* Info.plist */,
@@ -330,6 +373,7 @@
 			buildConfigurationList = 18B6970B1FDD8F9D00D7C401 /* Build configuration list for PBXNativeTarget "CoreTranslate" */;
 			buildPhases = (
 				DEEEAD09B6C2C82E013BA9A4 /* [CP] Check Pods Manifest.lock */,
+				189303D72012785200E9B494 /* Swiftlint */,
 				18B696EA1FDD8F9C00D7C401 /* Sources */,
 				18B696EB1FDD8F9C00D7C401 /* Frameworks */,
 				18B696EC1FDD8F9C00D7C401 /* Resources */,
@@ -416,6 +460,8 @@
 				18B696F91FDD8F9C00D7C401 /* Assets.xcassets in Resources */,
 				1841B50F200119BE0055BD73 /* ObservationResultCell.xib in Resources */,
 				183EC658200A6CAD0043C82B /* TranslationView.xib in Resources */,
+				189303D22012724600E9B494 /* .gitattributes in Resources */,
+				189303D920127A9700E9B494 /* Default-568h@2x.png in Resources */,
 				1841B50220000FD40055BD73 /* ObservationResultsViewController.xib in Resources */,
 				185B56D21FDEF6D3008E0D56 /* TakePhotoViewController.xib in Resources */,
 			);
@@ -431,6 +477,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		189303D72012785200E9B494 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		8D728C3A11E483D45B480C26 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,12 +604,15 @@
 				1841B50B200109CB0055BD73 /* ObservationViewPresentation.swift in Sources */,
 				1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */,
 				18B6971B1FDDA68C00D7C401 /* TakePhotoCoordinator.swift in Sources */,
+				183EC663200BFC880043C82B /* AsyncOperation.swift in Sources */,
 				18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */,
 				1841B506200105090055BD73 /* UITableView+CellUsage.swift in Sources */,
 				1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */,
 				1887A5E71FFC0FBF00BA19A0 /* ObservationStore.swift in Sources */,
+				189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */,
 				1841B5042000FEDD0055BD73 /* ObservationResultCell.swift in Sources */,
 				185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */,
+				189303D62012726C00E9B494 /* Translation.swift in Sources */,
 				183EC648200942BD0043C82B /* RESTService.swift in Sources */,
 				183EC656200A6C950043C82B /* TranslationView.swift in Sources */,
 				1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */,
@@ -559,7 +622,11 @@
 				1887A5E91FFC120400BA19A0 /* DispatchQueue+Naming.swift in Sources */,
 				183EC64E20094C360043C82B /* RESTRequestFactory.swift in Sources */,
 				18B697221FDDA6F800D7C401 /* AppCoordinator.swift in Sources */,
-				1887A5E21FFAA4E800BA19A0 /* MobileNet.mlmodel in Sources */,
+				183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */,
+				189303CC2012702200E9B494 /* LanguageHelper.swift in Sources */,
+				183EC665200BFC9D0043C82B /* TranslationOperation.swift in Sources */,
+				189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */,
+				189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */,
 				1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */,
 				18B6971D1FDDA6B700D7C401 /* TakePhotoViewController.swift in Sources */,
 				1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */,

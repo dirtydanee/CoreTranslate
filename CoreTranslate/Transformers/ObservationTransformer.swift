@@ -15,7 +15,8 @@ final class ObservationTransformer {
         case imageToDataConversionFailed
     }
 
-    func transform(_ classificationObservation: VNClassificationObservation, from image: UIImage) throws -> Observation {
+    func transform(_ classificationObservation: VNClassificationObservation,
+                   from image: UIImage) throws -> Observation {
 
         guard let imageData = UIImagePNGRepresentation(image) else {
             throw Error.imageToDataConversionFailed

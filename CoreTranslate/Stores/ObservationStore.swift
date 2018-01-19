@@ -19,7 +19,7 @@ struct Observation: Equatable, Hashable {
     let confidence: Float
     let capturedImageData: Data
 
-    static func ==(lhs: Observation, rhs: Observation) -> Bool {
+    static func == (lhs: Observation, rhs: Observation) -> Bool {
         return lhs.identifier == rhs.identifier
     }
 }

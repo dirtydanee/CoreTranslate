@@ -9,7 +9,7 @@
 import UIKit
 
 struct TranslationConfiguration {
-    let baseTranslationURL: URL
+    let baseURL: URL
     let fromLanguage: LanguageID
     let toLanguage: LanguageID
 }
@@ -31,18 +31,34 @@ final class TranslationCoordinator: Coordinator {
         self.observation = observation
         self.configuration = configuration
         self.translationService = TranslationService(baseURL: ApplicationConfiguration.baseTranslationURL)
+        self.translationService.delegate = self
     }
 
     func start(animated: Bool) {
-        // TODO: Daniel Push in viewcontroller
-        self.startTranslation()
         let translationViewController = TranslationViewController(state: .loading)
-
+        self.navigationController.pushViewController(translationViewController, animated: animated)
+        translationViewController.udpate()
+        self.translationViewController = translationViewController
+        self.startTranslation()
     }
 
     private func startTranslation() {
-        self.translationService.translate(observation: self.observation,
-                                          from: self.configuration.fromLanguage,
-                                          to: self.configuration.toLanguage)
+        self.translationService.translate(observation:  self.observation,
+                                          fromLanguage: self.configuration.fromLanguage,
+                                          toLanguage:   self.configuration.toLanguage)
+    }
+}
+
+extension TranslationCoordinator: TranslationServiceDelegate {
+    func translationService(_ translationService: TranslationService,
+                            didTranslateObservation translation: TranslatedObservation) {
+        let viewPresentation = TranslationViewPresentation(translatedObservation: translation, toLanguage: .hungarian)
+        self.translationViewController?.state = .loaded(viewPresentation)
+    }
+
+    func translationService(_ translationService: TranslationService,
+                            didFailCreatingTranslationFor observation: Observation,
+                            with error: Error) {
+        self.translationViewController?.state = .failed(error)
     }
 }

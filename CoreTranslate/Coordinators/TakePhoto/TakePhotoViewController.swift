@@ -20,7 +20,7 @@ final class TakePhotoViewController: UIViewController {
 
     let captureSession: AVCaptureSession
     let previewLayer: AVCaptureVideoPreviewLayer
-    let delegate: TakePhotoViewControllerDelegate?
+    weak var delegate: TakePhotoViewControllerDelegate?
 
     @IBOutlet private weak var cameraView: UIView!
 

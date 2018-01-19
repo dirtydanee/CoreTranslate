@@ -8,25 +8,58 @@
 
 import Foundation
 
+protocol TranslationServiceDelegate: class {
+    func translationService(_ translationService: TranslationService,
+                            didTranslateObservation translatedObservation: TranslatedObservation)
+
+    func translationService(_ translationService: TranslationService,
+                            didFailCreatingTranslationFor observation: Observation,
+                            with error: Error)
+}
+
 final class TranslationService {
 
+    let baseURL: URL
+    weak var delegate: TranslationServiceDelegate?
     private let restService: RESTService
-    private let baseURL: URL
+    private let translationsOpertionQueue: OperationQueue
+    private let translatedObservationTransformer: TranslatedObservationTransformer
 
     init(baseURL: URL) {
         self.baseURL = baseURL
         self.restService = RESTService(baseURL: baseURL)
+        self.translationsOpertionQueue = OperationQueue()
+        self.translatedObservationTransformer = TranslatedObservationTransformer()
     }
 
-    func translate(observation: Observation, from language: LanguageID, to targetLangugage: LanguageID) {
-        let translationRequest = RESTRequestFactory.makeTranslationRequest(for: observation,
-                                                                           fromLanguage: language,
-                                                                           toLanguage: targetLangugage)
-        self.restService.executeWithDecodableResponse(request: translationRequest,
-                                                      completion: self.processTranslationResponse)
+    func translate(observation: Observation,
+                   fromLanguage: LanguageID,
+                   toLanguage: LanguageID) {
+        let languageSpecifier = TranslationLanguageSpecifier(from: fromLanguage, to: toLanguage)
+        let operation = TranslationOperation(observation: observation,
+                                             languageSpecifier: languageSpecifier,
+                                             restService: self.restService)
+        operation.delegate = self
+        self.translationsOpertionQueue.addOperation(operation)
     }
+}
 
-    func processTranslationResponse(result: Result<TranslationResponse>) {
-
+extension TranslationService: TranslationOperationDelegate {
+    func translationOperation(_ translationOperation: TranslationOperation,
+                              didFinishExecutingWithResult result: Result<TranslationResponse>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .failure(let error):
+                self.delegate?.translationService(self,
+                                                  didFailCreatingTranslationFor: translationOperation.observation,
+                                                  with: error)
+            case .success(let response):
+                let translatedObservation = self.translatedObservationTransformer
+                                            .transform(translationOperation.observation,
+                                                       languages: translationOperation.languageSpecifier,
+                                                       translatedValue: response.text)
+                self.delegate?.translationService(self, didTranslateObservation: translatedObservation)
+            }
+        }
     }
 }

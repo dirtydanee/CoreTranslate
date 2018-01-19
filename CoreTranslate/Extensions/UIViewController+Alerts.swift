@@ -18,7 +18,7 @@ extension AlertingView {
     }
 }
 
-extension UIView {
+extension UIViewController {
     enum State<T> {
         case loading
         case failed(Error)
@@ -29,8 +29,8 @@ extension UIView {
 protocol DataLoading {
     associatedtype DataLoading
 
-    var state: UIView.State<DataLoading> { get }
-    var loadingView: UIView { get }
+    var state: UIViewController.State<DataLoading> { get }
+    var loadingView: UIView { get set }
     var errorView: UIView { get }
 
     func udpate()

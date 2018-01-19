@@ -71,7 +71,9 @@ final class CaptureSessionService {
         self.isCaptureSessionSetup = true
     }
 
-    func updatePosition(for devicetypes: [AVCaptureDevice.DeviceType], mediaType: AVMediaType, position: AVCaptureDevice.Position) throws {
+    func updatePosition(for devicetypes: [AVCaptureDevice.DeviceType],
+                        mediaType: AVMediaType,
+                        position: AVCaptureDevice.Position) throws {
 
         guard let currentInput = self.captureSession.inputs.first else {
             throw Error.CameraFlip.noInputsDetected
@@ -106,7 +108,9 @@ final class CaptureSessionService {
         }
     }
 
-    private func device(for devicetypes: [AVCaptureDevice.DeviceType], mediaType: AVMediaType, position: AVCaptureDevice.Position) throws -> AVCaptureDevice {
+    private func device(for devicetypes: [AVCaptureDevice.DeviceType],
+                        mediaType: AVMediaType,
+                        position: AVCaptureDevice.Position) throws -> AVCaptureDevice {
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: devicetypes,
                                                                 mediaType: mediaType,
                                                                 position: position)

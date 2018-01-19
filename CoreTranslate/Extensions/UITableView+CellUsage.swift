@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol ReusableView: class {}
 
 extension ReusableView where Self: UIView {
@@ -28,6 +27,19 @@ extension NibLoadableView where Self: UIView {
 
     static var nib: UINib {
         return UINib(nibName: self.nibName, bundle: nil)
+    }
+
+    static func loadFromNib(_ owner: Any? = nil) -> Self {
+        guard let objects = Bundle(for: Self.self).loadNibNamed(Self.nibName, owner: owner, options: nil) else {
+            fatalError("Unable to get objects for nib name \(Self.nibName)")
+        }
+
+        for object in objects {
+            if let typedSelf = object as? Self {
+                return typedSelf
+            }
+        }
+        fatalError("Unable to get objects for nib name \(Self.nibName)")
     }
 }
 

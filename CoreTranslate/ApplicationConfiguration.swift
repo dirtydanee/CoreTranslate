@@ -9,11 +9,6 @@
 import Foundation
 
 final class ApplicationConfiguration {
-    static let baseTranslationURL: URL = URL(string: "https://server-translationapi.wedeploy.io")!
+    static let baseTranslationURL: URL = URL(string: "https://server-translationapitextonly.wedeploy.io")!
     static let baseLanguage: LanguageID = .english
-}
-
-enum LanguageID: String {
-    case english = "en"
-    case hungarian = "hu"
 }

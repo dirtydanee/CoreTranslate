@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ObservationResultsViewControllerDelegate: class {
-    func observationResultsViewController(_ viewController: ObservationResultsViewController, didSelectObservation observation: Observation)
+    func observationResultsViewController(_ viewController: ObservationResultsViewController,
+                                          didSelectObservation observation: Observation)
 }
 
 class ObservationResultsViewController: UIViewController {
