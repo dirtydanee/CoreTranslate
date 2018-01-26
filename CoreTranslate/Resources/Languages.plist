@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>sq</string>
+		<key>name</key>
+		<string>Albanian</string>
+		<key>flag</key>
+		<string>\\u1F1E6\\uF1F1</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>am</string>
+		<key>name</key>
+		<string>Amharic</string>
+		<key>flag</key>
+		<string>U+1F1EA U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ar</string>
+		<key>name</key>
+		<string>Arabic</string>
+		<key>flag</key>
+		<string>U+1F1EA U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>hy</string>
+		<key>name</key>
+		<string>Armenian</string>
+		<key>flag</key>
+		<string>U+1F1E6 U+1F1F2</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>az</string>
+		<key>name</key>
+		<string>Azerbaijani</string>
+		<key>flag</key>
+		<string>U+1F1E6 U+1F1FF</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>eu</string>
+		<key>name</key>
+		<string>Basque</string>
+		<key>flag</key>
+		<string>U+1F3F4 U+E0065 U+E0073 U+E0070 U+E0076 U+E007F</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>be</string>
+		<key>name</key>
+		<string>Belarusian</string>
+		<key>flag</key>
+		<string>U+1F1E7 U+1F1FE</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>bn</string>
+		<key>name</key>
+		<string>Bengali</string>
+		<key>flag</key>
+		<string>U+1F1E7 U+1F1E9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>bs</string>
+		<key>name</key>
+		<string>Bosnian</string>
+		<key>flag</key>
+		<string>U+1F1E7 U+1F1E6</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>bg</string>
+		<key>name</key>
+		<string>Bulgarian</string>
+		<key>flag</key>
+		<string>U+1F1E7 U+1F1EC</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ca</string>
+		<key>name</key>
+		<string>Catalan</string>
+		<key>flag</key>
+		<string>U+1F3F4+E0065+E0073+E0063+E0074+E007F</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ceb</string>
+		<key>name</key>
+		<string>Cebuano</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1ED</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ny</string>
+		<key>name</key>
+		<string>Chichewa</string>
+		<key>flag</key>
+		<string>U+1F1FF U+1F1FC</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>zh-cn</string>
+		<key>name</key>
+		<string>Chinese Simplified</string>
+		<key>flag</key>
+		<string>U+1F1E8 U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>zh-tw</string>
+		<key>name</key>
+		<string>Chinese Traditional</string>
+		<key>flag</key>
+		<string>U+1F1E8 U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>co</string>
+		<key>name</key>
+		<string>Corsican</string>
+		<key>flag</key>
+		<string>U+1F1EB U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>hr</string>
+		<key>name</key>
+		<string>Croatian</string>
+		<key>flag</key>
+		<string>U+1F1ED U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>cs</string>
+		<key>name</key>
+		<string>Czech</string>
+		<key>flag</key>
+		<string>U+1F1E8 U+1F1FF</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>da</string>
+		<key>name</key>
+		<string>Danish</string>
+		<key>flag</key>
+		<string>U+1F1E9 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>nl</string>
+		<key>name</key>
+		<string>Dutch</string>
+		<key>flag</key>
+		<string>U+1F1F3 U+1F1F1</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>en</string>
+		<key>name</key>
+		<string>English</string>
+		<key>flag</key>
+		<string>U+1F1EC U+1F1E7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>et</string>
+		<key>name</key>
+		<string>Estonian</string>
+		<key>flag</key>
+		<string>U+1F1EA U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>tl</string>
+		<key>name</key>
+		<string>Filipino</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1ED</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>fi</string>
+		<key>name</key>
+		<string>Finnish</string>
+		<key>flag</key>
+		<string>U+1F1EB U+1F1EE</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>fr</string>
+		<key>name</key>
+		<string>French</string>
+		<key>flag</key>
+		<string>U+1F1EB U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>gl</string>
+		<key>name</key>
+		<string>Galician</string>
+		<key>flag</key>
+		<string>U+1F3F4+E0065+E0073+E0067+E0061+E007F</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ka</string>
+		<key>name</key>
+		<string>Georgian</string>
+		<key>flag</key>
+		<string>U+1F1EC U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>de</string>
+		<key>name</key>
+		<string>German</string>
+		<key>flag</key>
+		<string>U+1F1E9 U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>el</string>
+		<key>name</key>
+		<string>Greek</string>
+		<key>flag</key>
+		<string>U+1F1EC U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ht</string>
+		<key>name</key>
+		<string>Haitian</string>
+		<key>flag</key>
+		<string>U+1F1ED U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>haw</string>
+		<key>name</key>
+		<string>Hawaiian</string>
+		<key>flag</key>
+		<string>u{1F334}</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>hu</string>
+		<key>name</key>
+		<string>Hungarian</string>
+		<key>flag</key>
+		<string>\ud83c\udded\ud83c\uddfa</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>is</string>
+		<key>name</key>
+		<string>Icelandic</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1F8</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id</string>
+		<key>name</key>
+		<string>Indonesian</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1E9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ga</string>
+		<key>name</key>
+		<string>Irish</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>it</string>
+		<key>name</key>
+		<string>Italian</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ja</string>
+		<key>name</key>
+		<string>Japanese</string>
+		<key>flag</key>
+		<string>U+1F1EF U+1F1F5</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>jw</string>
+		<key>name</key>
+		<string>Javanese</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1E9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>kk</string>
+		<key>name</key>
+		<string>Kazakh</string>
+		<key>flag</key>
+		<string>U+1F1F0 U+1F1FF</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>km</string>
+		<key>name</key>
+		<string>Khmer</string>
+		<key>flag</key>
+		<string>U+1F1FB U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ko</string>
+		<key>name</key>
+		<string>Korean</string>
+		<key>flag</key>
+		<string>U+1F1F0 U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ku</string>
+		<key>name</key>
+		<string>Kurdish</string>
+		<key>flag</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ky</string>
+		<key>name</key>
+		<string>Kyrgyz</string>
+		<key>flag</key>
+		<string>U+1F1F0 U+1F1EC</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>lo</string>
+		<key>name</key>
+		<string>Lao</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1E6</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>la</string>
+		<key>name</key>
+		<string>Latin</string>
+		<key>flag</key>
+		<string>U+1F520</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>lv</string>
+		<key>name</key>
+		<string>Latvian</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1FB</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>lt</string>
+		<key>name</key>
+		<string>Lithuanian</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>lb</string>
+		<key>name</key>
+		<string>Luxembourgish</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1FA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>mk</string>
+		<key>name</key>
+		<string>Macedonian</string>
+		<key>flag</key>
+		<string>U+1F1F2 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ms</string>
+		<key>name</key>
+		<string>Malay</string>
+		<key>flag</key>
+		<string>U+1F1F2 U+1F1FE</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ml</string>
+		<key>name</key>
+		<string>Malayalam</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>mt</string>
+		<key>name</key>
+		<string>Maltese</string>
+		<key>flag</key>
+		<string>U+1F1F2 U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>lb</string>
+		<key>name</key>
+		<string>Luxembourgish</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1FA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>mn</string>
+		<key>name</key>
+		<string>Mongolian</string>
+		<key>flag</key>
+		<string>U+1F1F2 U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>my</string>
+		<key>name</key>
+		<string>Myanmar</string>
+		<key>flag</key>
+		<string>U+1F1F2 U+1F1F2</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ne</string>
+		<key>name</key>
+		<string>Nepali</string>
+		<key>flag</key>
+		<string>U+1F1F3 U+1F1F5</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>no</string>
+		<key>name</key>
+		<string>Norwegian</string>
+		<key>flag</key>
+		<string>U+1F1F3 U+1F1F4</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>pl</string>
+		<key>name</key>
+		<string>Polish</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1F1</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>pt</string>
+		<key>name</key>
+		<string>Portuguese</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1F9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ma</string>
+		<key>name</key>
+		<string>Punjabi</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ro</string>
+		<key>name</key>
+		<string>Romanian</string>
+		<key>flag</key>
+		<string>U+1F1F7 U+1F1F4</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ru</string>
+		<key>name</key>
+		<string>Russian</string>
+		<key>flag</key>
+		<string>U+1F1F7 U+1F1FA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sm</string>
+		<key>name</key>
+		<string>Samoan</string>
+		<key>flag</key>
+		<string>U+1F1E6 U+1F1F8</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sr</string>
+		<key>name</key>
+		<string>Serbian</string>
+		<key>flag</key>
+		<string>U+1F1F7 U+1F1F8</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>st</string>
+		<key>name</key>
+		<string>sesotho</string>
+		<key>flag</key>
+		<string>U+1F1FF U+1F1E6</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sn</string>
+		<key>name</key>
+		<string>Shona</string>
+		<key>flag</key>
+		<string>U+1F1FF U+1F1FC</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sd</string>
+		<key>name</key>
+		<string>Sindhi</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>si</string>
+		<key>name</key>
+		<string>Sinhala</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sk</string>
+		<key>name</key>
+		<string>Slovak</string>
+		<key>flag</key>
+		<string>U+1F1F8 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sl</string>
+		<key>name</key>
+		<string>slovenian</string>
+		<key>flag</key>
+		<string>U+1F1F8 U+1F1EE</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>so</string>
+		<key>name</key>
+		<string>Somali</string>
+		<key>flag</key>
+		<string>U+1F1F8 U+1F1F4</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>es</string>
+		<key>name</key>
+		<string>Spanish</string>
+		<key>flag</key>
+		<string>U+1F1EA U+1F1F8</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>su</string>
+		<key>name</key>
+		<string>Sundanese</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1E9</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sw</string>
+		<key>name</key>
+		<string>Swahili</string>
+		<key>flag</key>
+		<string>U+1F1F0 U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>sv</string>
+		<key>name</key>
+		<string>Swedish</string>
+		<key>flag</key>
+		<string>U+1F1F8 U+1F1EA</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>tg</string>
+		<key>name</key>
+		<string>Tajik</string>
+		<key>flag</key>
+		<string>U+1F1F9 U+1F1EF</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ta</string>
+		<key>name</key>
+		<string>Tamil</string>
+		<key>flag</key>
+		<string>U+1F1F1 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>th</string>
+		<key>name</key>
+		<string>Thai</string>
+		<key>flag</key>
+		<string>U+1F1F9 U+1F1ED</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>tr</string>
+		<key>name</key>
+		<string>Turkish</string>
+		<key>flag</key>
+		<string>U+1F1F9 U+1F1F7</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>uk</string>
+		<key>name</key>
+		<string>Ukrainian</string>
+		<key>flag</key>
+		<string>U+1F1FA U+1F1E6</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>ur</string>
+		<key>name</key>
+		<string>Urdu</string>
+		<key>flag</key>
+		<string>U+1F1F5 U+1F1F0</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>uz</string>
+		<key>name</key>
+		<string>Uzbek</string>
+		<key>flag</key>
+		<string>U+1F1FA U+1F1FF</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>vi</string>
+		<key>name</key>
+		<string>Vietnamese</string>
+		<key>flag</key>
+		<string>U+1F1FB U+1F1F3</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>xh</string>
+		<key>name</key>
+		<string>Xhosa</string>
+		<key>flag</key>
+		<string>U+1F1FF U+1F1E6</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>yi</string>
+		<key>name</key>
+		<string>Yiddish</string>
+		<key>flag</key>
+		<string>U+1F1EE U+1F1F1</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>yo</string>
+		<key>name</key>
+		<string>Yoruba</string>
+		<key>flag</key>
+		<string>U+1F1F3 U+1F1EC</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>zu</string>
+		<key>name</key>
+		<string>Zulu</string>
+		<key>flag</key>
+		<string>U+1F1FF U+1F1E6</string>
+	</dict>
+</array>
+</plist>

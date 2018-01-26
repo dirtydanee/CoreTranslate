@@ -8,26 +8,19 @@
 
 import UIKit
 
-struct TranslationViewPresentation {
-    let originalText: String
-    let translatedText: String
-    let fromLanguage: String
-    let toLanguage: String
+struct TranslatedObservationViewPresentation {
     let image: UIImage?
+    let confidance: String
+    let targetLanguage: String
+    let translationViewPresentations: [TranslationViewPresentation]
     let translatedObservation: TranslatedObservation
 
-    init(translatedObservation: TranslatedObservation, toLanguage: LanguageID) {
+    init(translatedObservation: TranslatedObservation, toTargetLanguage: LanguageID) {
         self.translatedObservation = translatedObservation
-        self.originalText = translatedObservation.observation.identifier
-        self.translatedText = translatedObservation.translations.first(where: {
-            $0.to.language == toLanguage })?
-            .to.value ?? ""
-
-        self.fromLanguage = translatedObservation.translations.first(where: {
-            $0.to.language == toLanguage })?
-            .from.value ?? ""
-        
-        self.toLanguage = toLanguage.humanReadable
-        self.image = UIImage(data: translatedObservation.observation.capturedImageData)
+        self.image = UIImage(data: translatedObservation.observation.capturedImageData)?.rotate(byDegree: 90)
+        self.confidance = ConfidanceFormatter.format(translatedObservation.observation.confidence)
+        self.targetLanguage = toTargetLanguage.humanReadable
+        self.translationViewPresentations = translatedObservation.translations
+                                                                 .map { TranslationViewPresentation(translation: $0) }
     }
 }

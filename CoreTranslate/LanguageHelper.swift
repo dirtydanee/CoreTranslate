@@ -10,7 +10,6 @@ import Foundation
 
 enum LanguageID: String {
     case automatic = "auto"
-    case afrikaans = "af"
     case albanian = "sq"
     case amharic = "am"
     case arabic = "ar"
@@ -32,36 +31,30 @@ enum LanguageID: String {
     case danish = "da"
     case dutch = "nl"
     case english = "en"
-    case esperanto = "eo"
     case estonian = "et"
     case filipino = "tl"
     case finnish = "fi"
     case french = "fr"
-    case frisian = "fy"
     case galician = "gl"
     case georgian = "ka"
     case german = "de"
     case greek = "el"
-    case gujarati = "gu"
     case haitian = "ht"
-    case hausa = "ha"
     case hawaiian = "haw"
     case hebrew = "iw"
     case hindi = "hi"
     case hmong = "hmn"
     case hungarian = "hu"
     case icelandic = "is"
-    case igbo = "ig"
     case indonesian = "id"
     case irish = "ga"
     case italian = "it"
     case japanese = "ja"
     case javanese = "jw"
-    case kannada = "kn"
     case kazakh = "kk"
     case khmer = "km"
     case korean = "ko"
-    case kurdish = "ku"
+    case kurdish = "ku" // TODO: Add flag later
     case kyrgyz = "ky"
     case lao = "lo"
     case latin = "la"
@@ -69,25 +62,19 @@ enum LanguageID: String {
     case lithuanian = "lt"
     case luxembourgish = "lb"
     case macedonian = "mk"
-    case malagasy = "mg"
     case malay = "ms"
     case malayalam = "ml"
     case maltese = "mt"
-    case maori = "mi"
-    case marathi = "mr"
     case mongolian = "mn"
     case myanmar = "my"
     case nepali = "ne"
     case norwegian = "no"
-    case pashto = "ps"
-    case persian = "fa"
     case polish = "pl"
     case portuguese = "pt"
     case punjabi = "ma"
     case romanian = "ro"
     case russian = "ru"
     case samoan = "sm"
-    case scots = "gd"
     case serbian = "sr"
     case sesotho = "st"
     case shona = "sn"
@@ -102,28 +89,47 @@ enum LanguageID: String {
     case swedish = "sv"
     case tajik = "tg"
     case tamil = "ta"
-    case telugu = "te"
     case thai = "th"
     case turkish = "tr"
     case ukrainian = "uk"
     case urdu = "ur"
     case uzbek = "uz"
     case vietnamese = "vi"
-    case welsh = "cy"
     case xhosa = "xh"
     case yiddish = "yi"
     case yoruba = "yo"
     case zulu = "zu"
 
     var humanReadable: String {
-        switch self {
-        case .chineseSimplified:
-            return "Chinese Simplified"
-        case .chineseTraditional:
-            return "Chinese Traditional"
-        default:
-            return self.rawValue.capitalizingFirstLetter()
+        return ""
+    }
+}
+
+struct Language: Decodable {
+    typealias Flag = String
+    let id: LanguageID
+    let flag: Flag
+    let humanReadable: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case flag = "flag"
+        case humanReadable = "name"
+    }
+
+    enum Error: Swift.Error {
+        case invalidLanguageID(id: String)
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let rawId = try container.decode(String.self, forKey: .id)
+        guard let id = LanguageID(rawValue: rawId) else {
+            throw Error.invalidLanguageID(id: rawId)
         }
+        self.id = id
+        self.flag = try container.decode(String.self, forKey: .flag)
+        self.humanReadable = try container.decode(String.self, forKey: .humanReadable)
     }
 }
 

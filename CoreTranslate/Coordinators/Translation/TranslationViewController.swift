@@ -10,30 +10,21 @@ import UIKit
 
 final class TranslationViewController: UIViewController, DataLoading {
 
-    typealias DataLoading = TranslationViewPresentation
-    var state: UIViewController.State<TranslationViewPresentation> {
+    typealias DataLoading = TranslatedObservationViewPresentation
+    var state: UIViewController.State<TranslatedObservationViewPresentation> {
         didSet {
             self.udpate()
         }
     }
 
-    var loadingView: UIView = {
-        let blurEffect = UIBlurEffect(style: .dark)
-        let visualView = UIVisualEffectView(effect: blurEffect)
-        visualView.frame = UIScreen.main.bounds
-        visualView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        activityIndicator.center = visualView.center
-        visualView.contentView.addSubview(activityIndicator)
-        return visualView
-    }()
-
+    let loadingView: LoadingView
     let errorView: UIView = UIView()
-    private var typedView: TranslationView!
-    private var effectView: UIVisualEffectView?
 
-    init(state: UIViewController.State<TranslationViewPresentation>) {
+    private var typedView: TranslationView!
+
+    init(state: UIViewController.State<TranslatedObservationViewPresentation>) {
         self.state = state
+        self.loadingView = LoadingView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,7 +43,8 @@ final class TranslationViewController: UIViewController, DataLoading {
             self.loadingView.removeFromSuperview()
         case .loaded(let viewPresentation):
             self.typedView.present(viewPresentation)
-            self.loadingView.removeFromSuperview()
+            self.typedView.translationCardsCollectionView.reloadData()
+            self.removeLoadingView(animated: true)
         }
     }
 
@@ -60,6 +52,15 @@ final class TranslationViewController: UIViewController, DataLoading {
         self.typedView = TranslationView.loadFromNib()
         self.typedView.frame = UIScreen.main.bounds
         self.view = self.typedView
+    }
+
+    private func removeLoadingView(animated: Bool) {
+        let duration: TimeInterval = animated ? 0.33 : 0
+        UIView.animate(withDuration: duration, animations: {
+            self.loadingView.alpha = 0
+        }) { _ in
+            self.loadingView.removeFromSuperview()
+        }
     }
 
     override func viewDidLoad() {

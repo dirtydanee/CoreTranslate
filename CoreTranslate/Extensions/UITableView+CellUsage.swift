@@ -46,13 +46,13 @@ extension NibLoadableView where Self: UIView {
 typealias RegisterableView = ReusableView & NibLoadableView
 
 extension UITableView {
-    func register<T: UITableViewCell>(_ cell: T.Type) where T: RegisterableView {
+    func register<T>(_ cell: T.Type) where T: UITableViewCell & RegisterableView {
         self.register(cell.nib, forCellReuseIdentifier: cell.reuseIdentifier)
     }
 
-    func dequeueReusableCell<T>(for indexPath: IndexPath) -> T where T: UITableViewCell, T: ReusableView {
+    func dequeueReusableCell<T>(for indexPath: IndexPath) -> T where T: UITableViewCell & ReusableView {
         guard let cell = self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("unable to queue the cell with identifier: \(T.reuseIdentifier)")
+            fatalError("Unable to queue the cell with identifier: \(T.reuseIdentifier)")
         }
 
         return cell

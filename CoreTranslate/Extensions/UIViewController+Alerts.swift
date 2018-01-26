@@ -30,7 +30,7 @@ protocol DataLoading {
     associatedtype DataLoading
 
     var state: UIViewController.State<DataLoading> { get }
-    var loadingView: UIView { get set }
+    var loadingView: LoadingView { get }
     var errorView: UIView { get }
 
     func udpate()

@@ -19,20 +19,20 @@ struct ObservationViewPresentation {
     
     init(observation: Observation) {
         self.observation = observation
-        self.resultTitle = "Result:" // TODO: Localize
+        self.resultTitle = LocalizedString("General_Result")
         self.resultValue = observation.identifier
-        self.confidenceTitle = "Confidence:"
+        self.confidenceTitle = LocalizedString("General_Confidance")
         self.confidenceValue = ConfidanceFormatter.format(observation.confidence)
-        self.image = UIImage(data: observation.capturedImageData)
+        self.image = UIImage(data: observation.capturedImageData)?.rotate(byDegree: 90)
     }
 }
 
 struct ConfidanceFormatter {
-
     static func format(_ value: Float) -> String {
         let formatter = NumberFormatter()
-        formatter.alwaysShowsDecimalSeparator = true
-        formatter.maximumFractionDigits = 2
+        formatter.locale = NSLocale.current
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 1
         return formatter.string(for: value) ?? ""
     }
 

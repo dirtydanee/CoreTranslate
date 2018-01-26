@@ -9,6 +9,7 @@ target 'CoreTranslate' do
 # Pods for CoreTranslate
   pod 'Alamofire'
   pod 'SwiftLint'
+  pod 'CardsLayout'
   pod 'ErrorHandler'
   pod 'ErrorHandler/Alamofire'
   pod 'StyledText'

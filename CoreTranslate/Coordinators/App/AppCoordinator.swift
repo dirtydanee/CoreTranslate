@@ -10,33 +10,45 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
 
-    private(set) var childCoordinators: [Coordinator]
-    let navigationController: UINavigationController
     let window: UIWindow
+    let languageStore: LanguageStore
+    let parent: Coordinator?
+    var tabBarCoordinator: TabBarCoordinator?
+    private(set) var childCoordinators: [Coordinator]
+
+    var viewController: UIViewController? {
+        return nil
+    }
     
     init(window: UIWindow) {
-        self.navigationController = UINavigationController()
         self.window = window
+        self.parent = nil
         self.childCoordinators = []
+        let languageStore = LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguage)
+        self.languageStore = languageStore
     }
 
     func start(animated: Bool) {
-
-        self.window.rootViewController = self.navigationController
+        self.setupAppearance()
+        let tabBarCoordinator = TabBarCoordinator(languageStore: languageStore,
+                                                   parent: self)
+        self.window.rootViewController = tabBarCoordinator.tabBarController
         self.window.makeKeyAndVisible()
+        tabBarCoordinator.start(animated: false)
+        self.childCoordinators.append(tabBarCoordinator)
+        self.tabBarCoordinator = tabBarCoordinator
+    }
 
-//        let takePhotoCoordinator = TakePhotoCoordinator(navigationController: self.navigationController)
-//        takePhotoCoordinator.start(animated: false)
-//        self.childCoordinators.append(takePhotoCoordinator)
+    func handle(event: Event) {
+        // TODO: Handle events
+    }
 
-        let observation = Observation(uuid: UUID(), identifier: "potato", confidence: 0.2, capturedImageData: Data())
-        let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
-                                                                fromLanguage: ApplicationConfiguration.baseLanguage,
-                                                                toLanguage: .hungarian)
-        let translationCoordinator = TranslationCoordinator(navigationController: self.navigationController,
-                                                            observationToTranslate: observation,
-                                                            withConfiguration: translationConfiguration)
-        translationCoordinator.start(animated: true)
-        self.childCoordinators.append(translationCoordinator)
+    // TODO: Move this to some appearance class
+    func setupAppearance() {
+        UITabBar.appearance().tintColor = .clear
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.ct_black],
+                                                         for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.ct_lightGrey],
+                                                         for: .normal)
     }
 }

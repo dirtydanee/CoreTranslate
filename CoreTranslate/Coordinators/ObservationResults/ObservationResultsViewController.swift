@@ -11,19 +11,22 @@ import UIKit
 protocol ObservationResultsViewControllerDelegate: class {
     func observationResultsViewController(_ viewController: ObservationResultsViewController,
                                           didSelectObservation observation: Observation)
+    func observationResultsViewController(_ viewController: ObservationResultsViewController,
+                                          didRequestChangingLanguageAtPosition: LanguageSelectorHeaderView.Position)
 }
 
 class ObservationResultsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private var tableView: UITableView!
+    private var languageSelectorView: LanguageSelectorHeaderView!
     let viewPresentations: [ObservationViewPresentation]
     let dataSource: ObservationResultsDataSource
     weak var delegate: ObservationResultsViewControllerDelegate?
 
-    required init(viewPresentations: [ObservationViewPresentation]) {
+    init(viewPresentations: [ObservationViewPresentation]) {
         self.viewPresentations = viewPresentations
         self.dataSource = ObservationResultsDataSource(observationPresentations: viewPresentations)
-        super.init(nibName: "ObservationResultsViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,15 +36,46 @@ class ObservationResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        self.setupHeaderView()
         self.navigationController?.isNavigationBarHidden = false
     }
 
+    // MARK: Private API
+
     private func setupTableView() {
-        self.tableView.dataSource = self.dataSource
-        self.tableView.delegate = self
-        self.tableView.register(ObservationResultCell.self)
-        self.tableView.tableFooterView = UIView()
-        self.tableView.reloadData()
+        let tableView = UITableView(frame: UIScreen.main.bounds)
+        tableView.dataSource = self.dataSource
+        tableView.delegate = self
+        tableView.register(ObservationResultCell.self)
+        tableView.tableFooterView = UIView()
+        tableView.reloadData()
+        self.view.addSubview(tableView)
+        self.tableView = tableView
+    }
+
+    private func setupHeaderView() {
+        let headerView = UITableViewHeaderFooterView(frame: CGRect(origin: .zero,
+                                                                   size: CGSize(width: self.tableView.frame.width,
+                                                                                height: 50)))
+        let languageSelectorView = LanguageSelectorHeaderView.loadFromNib()
+        languageSelectorView.delegate = self
+        headerView.addSubview(languageSelectorView)
+        self.tableView.tableHeaderView = headerView
+        self.languageSelectorView = languageSelectorView
+    }
+
+    // MARK: Public API
+
+    func updateLanguage(to language: Language, atPosition position: LanguageSelectorHeaderView.Position) {
+        self.languageSelectorView.setTitle(language.humanReadable, atPosition: position)
+    }
+}
+
+extension ObservationResultsViewController: LanguageSelectorHeaderViewDelegate {
+    func languageSelectorView(_ languageSelectorView: LanguageSelectorHeaderView,
+                              didSelectLanguageAtPosition position: LanguageSelectorHeaderView.Position) {
+        self.delegate?.observationResultsViewController(self,
+                                                        didRequestChangingLanguageAtPosition: position)
     }
 }
 

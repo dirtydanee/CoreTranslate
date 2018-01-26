@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  CoreTranslate
+
+  Created by Daniel.Metzing on 22.01.18.
+  Copyright © 2018 Dirtylabs. All rights reserved.
+*/
+
+"Tabbar_Settings" = "Settings";
+"Tabbar_Scan" = "Scan";
+"Tabbar_Saved" = "Saved";
+
+"General_Result" = "Result";
+"General_Confidance" = "Confidance";

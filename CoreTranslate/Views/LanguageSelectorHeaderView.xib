@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LanguageSelectorHeaderView" customModule="CoreTranslate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egc-sU-4Zb">
+                    <rect key="frame" x="0.0" y="0.0" width="173" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXm-Ga-f0u" customClass="StyledButton" customModule="StyledText">
+                            <rect key="frame" x="61.5" y="10" width="50" height="30"/>
+                            <state key="normal" title="English"/>
+                            <connections>
+                                <action selector="didTapFromLanguageButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="6mL-Uu-9Pa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="GXm-Ga-f0u" firstAttribute="centerY" secondItem="Egc-sU-4Zb" secondAttribute="centerY" id="dTl-a6-Tx6"/>
+                        <constraint firstItem="GXm-Ga-f0u" firstAttribute="centerX" secondItem="Egc-sU-4Zb" secondAttribute="centerX" id="gLo-cq-SrL"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkL-lv-3o1">
+                    <rect key="frame" x="201" y="0.0" width="174" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGd-FA-ljG" customClass="StyledButton" customModule="StyledText">
+                            <rect key="frame" x="60" y="10" width="55" height="30"/>
+                            <state key="normal" title="German"/>
+                            <connections>
+                                <action selector="didTapToLanguageButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="XTE-td-zni"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dGd-FA-ljG" firstAttribute="centerY" secondItem="AkL-lv-3o1" secondAttribute="centerY" id="1cv-wb-hI2"/>
+                        <constraint firstItem="dGd-FA-ljG" firstAttribute="centerX" secondItem="AkL-lv-3o1" secondAttribute="centerX" id="LLZ-8s-xfT"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_switch_vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LEF-Mi-qOI">
+                    <rect key="frame" x="173" y="11" width="28" height="28"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AkL-lv-3o1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="1xR-s1-7Eg"/>
+                <constraint firstItem="AkL-lv-3o1" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6zs-OT-aRG"/>
+                <constraint firstItem="Egc-sU-4Zb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BgL-hI-j7s"/>
+                <constraint firstItem="LEF-Mi-qOI" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="UwV-GO-WIh"/>
+                <constraint firstItem="LEF-Mi-qOI" firstAttribute="leading" secondItem="Egc-sU-4Zb" secondAttribute="trailing" id="b3A-YK-GTS"/>
+                <constraint firstItem="AkL-lv-3o1" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="biQ-9i-I1p"/>
+                <constraint firstItem="Egc-sU-4Zb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cfw-5I-UOX"/>
+                <constraint firstItem="Egc-sU-4Zb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="da2-1j-XBB"/>
+                <constraint firstItem="LEF-Mi-qOI" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="myM-k2-gfe"/>
+                <constraint firstItem="AkL-lv-3o1" firstAttribute="leading" secondItem="LEF-Mi-qOI" secondAttribute="trailing" id="vn5-9U-h6u"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dividerImageView" destination="LEF-Mi-qOI" id="mv9-iJ-Fo1"/>
+                <outlet property="fromLanguageButton" destination="GXm-Ga-f0u" id="X2m-Zs-G9x"/>
+                <outlet property="toLanguageButton" destination="dGd-FA-ljG" id="Yzs-LD-GHZ"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="90"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_switch_vertical" width="28" height="28"/>
+    </resources>
+</document>

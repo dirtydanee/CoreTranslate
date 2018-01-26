@@ -10,14 +10,20 @@ import UIKit
 
 struct TranslationConfiguration {
     let baseURL: URL
-    let fromLanguage: LanguageID
-    let toLanguage: LanguageID
+    let fromLanguage: Language
+    let toLanguage: Language
 }
 
 final class TranslationCoordinator: Coordinator {
 
     let navigationController: UINavigationController
     var childCoordinators: [Coordinator]
+    var parent: Coordinator?
+    
+    var viewController: UIViewController? {
+        return self.translationViewController
+    }
+
     let observation: Observation
     let configuration: TranslationConfiguration
     private let translationService: TranslationService
@@ -42,17 +48,22 @@ final class TranslationCoordinator: Coordinator {
         self.startTranslation()
     }
 
+    func handle(event: Event) {
+        // TODO: Handle event
+    }
+
     private func startTranslation() {
         self.translationService.translate(observation:  self.observation,
-                                          fromLanguage: self.configuration.fromLanguage,
-                                          toLanguage:   self.configuration.toLanguage)
+                                          fromLanguage: self.configuration.fromLanguage.id,
+                                          toLanguage:   self.configuration.toLanguage.id)
     }
 }
 
 extension TranslationCoordinator: TranslationServiceDelegate {
     func translationService(_ translationService: TranslationService,
                             didTranslateObservation translation: TranslatedObservation) {
-        let viewPresentation = TranslationViewPresentation(translatedObservation: translation, toLanguage: .hungarian)
+        let viewPresentation = TranslatedObservationViewPresentation(translatedObservation: translation,
+                                                           toTargetLanguage: self.configuration.toLanguage.id)
         self.translationViewController?.state = .loaded(viewPresentation)
     }
 

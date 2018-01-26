@@ -9,8 +9,12 @@
 import UIKit
 
 protocol Coordinator: class {
-    var navigationController: UINavigationController { get }
+    var viewController: UIViewController? { get }
     var childCoordinators: [Coordinator] { get }
+    var parent: Coordinator? { get }
 
     func start(animated: Bool)
+    func handle(event: Event)
 }
+
+class Event {}

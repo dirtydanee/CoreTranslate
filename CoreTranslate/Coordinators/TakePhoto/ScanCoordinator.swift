@@ -9,11 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol TakePhotoView: class {
-    func addCameraView()
-}
-
-final class TakePhotoCoordinator: Coordinator {
+final class ScanCoordinator: Coordinator {
 
     struct Constants {
         struct Video {
@@ -26,8 +22,15 @@ final class TakePhotoCoordinator: Coordinator {
         }
     }
 
-    let navigationController: UINavigationController
+    var viewController: UIViewController? {
+        return self.navigationController
+    }
+
+    let parent: Coordinator?
     private(set) var childCoordinators: [Coordinator]
+
+    let languageStore: LanguageStore
+    let navigationController: UINavigationController
 
     private let captureSession: AVCaptureSession
     private let captureSessionService: CaptureSessionService
@@ -35,11 +38,15 @@ final class TakePhotoCoordinator: Coordinator {
     private let cameraFrameExtractService: CameraFrameExtractService & AVCaptureVideoDataOutputSampleBufferDelegate
     private let observationService: ObservationService
     private let observationStore: ObservationStore
-    private var takePhotoView: TakePhotoView?
+    private var takePhotoViewController: ScanViewController?
     private var currentCameraPosition = Constants.Device.position
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController,
+         languageStore: LanguageStore,
+         parent: Coordinator?) {
         self.navigationController = navigationController
+        self.languageStore = languageStore
+        self.parent = parent
         self.childCoordinators = []
 
         let captureSession = AVCaptureSession()
@@ -52,15 +59,19 @@ final class TakePhotoCoordinator: Coordinator {
         let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
         self.observationService = ObservationService(model: mobileNet.model,
                                                      eventQueue: observationServiceQueue)
-        self.captureSessionQueue = DispatchQueue.makeQueue(for: TakePhotoCoordinator.self)
+        self.captureSessionQueue = DispatchQueue.makeQueue(for: ScanCoordinator.self)
         self.observationService.delegate = self
     }
 
     func start(animated: Bool) {
-        let viewController = TakePhotoViewController(captureSession: captureSession,
+        let viewController = ScanViewController(captureSession: captureSession,
                                                      delegate: self)
         self.navigationController.pushViewController(viewController, animated: animated)
-        self.takePhotoView = viewController
+        self.takePhotoViewController = viewController
+    }
+
+    func handle(event: Event) {
+        //TODO: Handle event
     }
 
     private func askCaptureDevicePermission() {
@@ -84,7 +95,7 @@ final class TakePhotoCoordinator: Coordinator {
                                                        position: Constants.Device.position,
                                                        devicetypes: Constants.Device.types,
                                                        sampleBufferDelegate: self.cameraFrameExtractService)
-            self.takePhotoView?.addCameraView()
+            self.takePhotoViewController?.addCameraView()
             self.captureSessionQueue.async { self.captureSession.startRunning() }
             self.cameraFrameExtractService.delegate = self
         } catch let error {
@@ -96,18 +107,21 @@ final class TakePhotoCoordinator: Coordinator {
 
 // MARK: TakePhotoViewControllerDelegate
 
-extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
+extension ScanCoordinator: ScanViewControllerDelegate {
 
-    func takePhotoViewControllerWillAppear(_ viewController: TakePhotoViewController) {
+    func scanViewControllerWillAppear(_ viewController: ScanViewController) {
         switch self.captureSessionService.isCaptureSessionSetup {
         case true:
-            self.captureSessionQueue.async { self.captureSession.startRunning() }
+            self.captureSessionQueue.async {
+                self.captureSession.startRunning()
+                viewController.removeBlurOverlay(animated: true)
+            }
         case false:
             self.askCaptureDevicePermission()
         }
     }
 
-    func takePhotoViewControllerDidRequestTooglingCameraPosition(_ viewController: TakePhotoViewController) {
+    func scanViewControllerDidRequestTooglingCameraPosition(_ viewController: ScanViewController) {
         do {
             self.currentCameraPosition = self.currentCameraPosition == .back ? .front : .back
             try self.captureSessionService.updatePosition(for: Constants.Device.types,
@@ -121,30 +135,35 @@ extension TakePhotoCoordinator: TakePhotoViewControllerDelegate {
         }
     }
 
-    func takePhotoViewControllerDidRequestTooglingTorchPosition(_ viewController: TakePhotoViewController) {
+    func scanViewControllerDidRequestTooglingTorchPosition(_ viewController: ScanViewController) {
         self.captureSessionService.updateTorch()
     }
 
-    func takePhotoViewControllerDidRequestPermission(_ viewController: TakePhotoViewController) {
-
-    }
-
-    func takePhotoViewControllerDidRequesShowingObservations(_ viewController: TakePhotoViewController) {
+    func scanViewControllerDidRequesShowingObservations(_ viewController: ScanViewController) {
         self.captureSession.stopRunning()
+        viewController.addBlurOverlay(withStyle: .regular)
         let observationsCoordinator = ObservationResultsCoordinator(navigationController: self.navigationController,
-                                                                    observationStore: self.observationStore)
+                                                                    observationStore: self.observationStore,
+                                                                    languageStore: self.languageStore,
+                                                                    parent: self)
         observationsCoordinator.start(animated: true)
         self.childCoordinators.append(observationsCoordinator)
+    }
+
+    func scanViewControllerDidPressTakePhoto(_ viewController: ScanViewController) {
+        // TODO: Daniel - handle case when taking photo
     }
 }
 
 // MARK: - CameraFrameExtractServiceDelegate
 
-extension TakePhotoCoordinator: CameraFrameExtractServiceDelegate {
+extension ScanCoordinator: CameraFrameExtractServiceDelegate {
     func cameraFrameExtractService(_ cameraFrameExtractService: CameraFrameExtractService,
                                    didExtractImage image: UIImage) {
         do {
-            try self.observationService.observeContent(of: image)
+            // TODO: Reenable me to add observation
+            // TODO: Hardcore memory pressure observed
+            // try self.observationService.observeContent(of: image)
         } catch let error {
             // TODO: Daniel - check again error handling video
             print(error)
@@ -152,7 +171,7 @@ extension TakePhotoCoordinator: CameraFrameExtractServiceDelegate {
     }
 }
 
-extension TakePhotoCoordinator: ObservationServiceDelegate {
+extension ScanCoordinator: ObservationServiceDelegate {
     func observationService(_ observationService: ObservationService, foundObservation observation: Observation) {
         self.observationStore.add(observation)
     }
