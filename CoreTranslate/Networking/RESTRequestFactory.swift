@@ -11,11 +11,11 @@ import Foundation
 final class RESTRequestFactory {
 
     static func makeTranslationRequest(for observation: Observation,
-                                       fromLanguage: LanguageID,
-                                       toLanguage: LanguageID) -> RESTService.Request {
+                                       fromLanguageId: LanguageId,
+                                       toLanguageId: LanguageId) -> RESTService.Request {
 
-        let parameters = ["from": fromLanguage.rawValue,
-                          "to":   toLanguage.rawValue,
+        let parameters = ["from": fromLanguageId.rawValue,
+                          "to":   toLanguageId.rawValue,
                           "text": observation.identifier]
         let headers = ["Content-Type": "application/json"]
         return RESTService.Request(method: .post,

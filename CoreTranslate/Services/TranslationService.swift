@@ -33,8 +33,8 @@ final class TranslationService {
     }
 
     func translate(observation: Observation,
-                   fromLanguage: LanguageID,
-                   toLanguage: LanguageID) {
+                   fromLanguage: Language,
+                   toLanguage: Language) {
         let languageSpecifier = TranslationLanguageSpecifier(from: fromLanguage, to: toLanguage)
         let operation = TranslationOperation(observation: observation,
                                              languageSpecifier: languageSpecifier,

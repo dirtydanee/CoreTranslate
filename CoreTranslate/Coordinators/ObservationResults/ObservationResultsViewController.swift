@@ -17,6 +17,10 @@ protocol ObservationResultsViewControllerDelegate: class {
 
 class ObservationResultsViewController: UIViewController {
 
+    private struct Layout {
+        static let headerHeight: CGFloat = 50
+    }
+
     private var tableView: UITableView!
     private var languageSelectorView: LanguageSelectorHeaderView!
     let viewPresentations: [ObservationViewPresentation]
@@ -40,10 +44,16 @@ class ObservationResultsViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView.frame = self.view.bounds
+        self.languageSelectorView.frame.size = CGSize(width: self.view.bounds.width, height: Layout.headerHeight)
+    }
+
     // MARK: Private API
 
     private func setupTableView() {
-        let tableView = UITableView(frame: UIScreen.main.bounds)
+        let tableView = UITableView(frame:.zero)
         tableView.dataSource = self.dataSource
         tableView.delegate = self
         tableView.register(ObservationResultCell.self)
@@ -55,8 +65,7 @@ class ObservationResultsViewController: UIViewController {
 
     private func setupHeaderView() {
         let headerView = UITableViewHeaderFooterView(frame: CGRect(origin: .zero,
-                                                                   size: CGSize(width: self.tableView.frame.width,
-                                                                                height: 50)))
+                                                                   size: CGSize(width: 0, height: Layout.headerHeight)))
         let languageSelectorView = LanguageSelectorHeaderView.loadFromNib()
         languageSelectorView.delegate = self
         headerView.addSubview(languageSelectorView)

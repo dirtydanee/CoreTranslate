@@ -19,9 +19,9 @@ final class LanguageStore {
     }
 
     private let languages: [Language]
-    let baseLanguageId: LanguageID
+    let baseLanguageId: LanguageId
 
-    init(baseLanguageId: LanguageID) {
+    init(baseLanguageId: LanguageId) {
         do {
             self.baseLanguageId = baseLanguageId
             self.languages = try type(of: self).readLanguages(fromResource: "Languages")
@@ -58,7 +58,7 @@ final class LanguageStore {
         return self.languages.filter { $0.humanReadable.lowercased().contains(text) }
     }
 
-    func language(with identifier: LanguageID) -> Language? {
+    func language(with identifier: LanguageId) -> Language? {
         return self.languages.first { $0.id == identifier }
     }
 }

@@ -13,6 +13,16 @@ final class ScanOverlayViewController: UIViewController {
 
     private var typedView: BlurOverlayView!
     private var startButton: StyledButton!
+    private var handler: StartButtonHandler?
+    typealias StartButtonHandler = () -> Void
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         let typedView = BlurOverlayView(frame: UIScreen.main.bounds)
@@ -21,15 +31,22 @@ final class ScanOverlayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .clear
         self.setupStartButton()
     }
 
-    func setupStartButton() {
-        let button = StyledButton(frame: CGRect(origin: .zero,
-                                                size: CGSize(width: 54, height: 54)))
-        button.center = self.view.center
+    func onRequestingStart(_ handler: @escaping StartButtonHandler) {
+        self.handler = handler
+    }
+
+    private func setupStartButton() {
+        let button = StyledButton(frame: .zero)
+        button.normalTextStyle = ButtonStyle.largeBlackStyle
         button.setTitle("Start scanning!", for: .normal)
-        button.setBackgroundImage(#imageLiteral(resourceName: "ic_start"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ic_start"), for: .normal)
+        button.sizeToFit()
+        button.center = self.view.center
+        button.alignVertically()
         button.addTarget(self, action: #selector(didPressStartButton(_:)), for: .touchUpInside)
         self.view.addSubview(button)
         self.startButton = button
@@ -37,6 +54,6 @@ final class ScanOverlayViewController: UIViewController {
 
     @objc
     private func didPressStartButton(_ sender: UIButton) {
-
+        self.handler?()
     }
 }

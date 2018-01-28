@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LanguageID: String {
+enum LanguageId: String {
     case automatic = "auto"
     case albanian = "sq"
     case amharic = "am"
@@ -99,15 +99,11 @@ enum LanguageID: String {
     case yiddish = "yi"
     case yoruba = "yo"
     case zulu = "zu"
-
-    var humanReadable: String {
-        return ""
-    }
 }
 
 struct Language: Decodable {
     typealias Flag = String
-    let id: LanguageID
+    let id: LanguageId
     let flag: Flag
     let humanReadable: String
 
@@ -124,7 +120,7 @@ struct Language: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let rawId = try container.decode(String.self, forKey: .id)
-        guard let id = LanguageID(rawValue: rawId) else {
+        guard let id = LanguageId(rawValue: rawId) else {
             throw Error.invalidLanguageID(id: rawId)
         }
         self.id = id
@@ -134,6 +130,6 @@ struct Language: Decodable {
 }
 
 struct TranslationLanguageSpecifier {
-    let from: LanguageID
-    let to: LanguageID
+    let from: Language
+    let to: Language
 }

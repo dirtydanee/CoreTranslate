@@ -34,13 +34,17 @@ final class LanguageSelectorViewController: UIViewController {
         self.setupSearchContoller()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView.frame = self.view.bounds
+    }
+
     private func setupTableView() {
-        self.tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped)
+        self.tableView = UITableView(frame: .zero, style: .grouped)
         self.tableView.dataSource = self.dataSource
         self.tableView.delegate = self.dataSource
         self.tableView.tableFooterView = UIView()
         self.tableView.register(LanguageCell.self)
-        self.loadViewIfNeeded()
         self.view.addSubview(self.tableView)
         self.tableView.reloadData()
     }
@@ -63,7 +67,7 @@ final class LanguageSelectorViewController: UIViewController {
     }
 
     @objc
-    func didPressCancelButton(_ sender: UIBarButtonItem) {
+    private func didPressCancelButton(_ sender: UIBarButtonItem) {
         self.delegate?.languageSelectorViewControllerDidCancel(self)
     }
 

@@ -43,7 +43,7 @@ final class TranslationCard: UICollectionViewCell, RegisterableView, TextStyleab
         self.imageView.image = viewPresentation.image
         self.confidanceValueLabel.text = viewPresentation.confidance
         let actualTranslationCardViewPresentation = viewPresentation.translationViewPresentations
-                                                    .filter { $0.to.language == viewPresentation.targetLanguage }[0]
+            .filter { $0.to.languageId == viewPresentation.targetLanguageId }[0]
         self.translationTextCard?.present(translationViewPresentation: actualTranslationCardViewPresentation)
     }
 }

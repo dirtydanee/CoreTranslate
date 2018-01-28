@@ -27,7 +27,10 @@ enum LoggingPriority: Int, CustomStringConvertible {
     static let current: LoggingPriority = .debug
 }
 
-func clog(_ message: String, priority: LoggingPriority = LoggingPriority.current, file: StaticString = #file, line: Int = #line) {
+func clog(_ message: String,
+          priority: LoggingPriority = LoggingPriority.current,
+          file: StaticString = #file,
+          line: Int = #line) {
     if priority.rawValue >= LoggingPriority.current.rawValue {
         NSLog("[\(priority.description)][\(stripFilePath(from: file.description)):\(line)]: \(message)")
     }

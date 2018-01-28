@@ -35,6 +35,7 @@
 		1876BA7A2014FB60009EDF7C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */; };
 		1876BA7C2014FC26009EDF7C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA7B2014FC26009EDF7C /* TabBarController.swift */; };
 		1876BA812015069E009EDF7C /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA802015069E009EDF7C /* SettingsCoordinator.swift */; };
+		1885CEB0201E3AD4007B2943 /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885CEAF201E3AD4007B2943 /* PhotoDisplayViewController.swift */; };
 		1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */; };
 		1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */; };
 		1887A5E01FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */; };
@@ -43,7 +44,7 @@
 		1887A5EB1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */; };
 		1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */; };
 		189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */; };
-		189303CC2012702200E9B494 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* LanguageHelper.swift */; };
+		189303CC2012702200E9B494 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* Language.swift */; };
 		189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 189303CF2012724600E9B494 /* MobileNet.mlmodel */; };
 		189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D32012725D00E9B494 /* TranslatedObservation.swift */; };
 		189303D62012726C00E9B494 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D52012726C00E9B494 /* Translation.swift */; };
@@ -84,6 +85,7 @@
 		18F855E02019E5B500C12C37 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855DF2019E5B500C12C37 /* Logger.swift */; };
 		18F855E5201A1E7000C12C37 /* LanguageSelectionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855E4201A1E7000C12C37 /* LanguageSelectionEvent.swift */; };
 		18F855E7201B25B400C12C37 /* ScanOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855E6201B25B300C12C37 /* ScanOverlayViewController.swift */; };
+		18F855E9201B41B700C12C37 /* UIButton+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855E8201B41B700C12C37 /* UIButton+Layout.swift */; };
 		50A48D2AC8665BA024E1BA41 /* Pods_CoreTranslateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97234EB1F5A5A3D7E9A2D31 /* Pods_CoreTranslateTests.framework */; };
 		D151F59D3A6B06CB0213EF2B /* Pods_CoreTranslate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF638CC703ACCCEF1D4021F /* Pods_CoreTranslate.framework */; };
 /* End PBXBuildFile section */
@@ -127,6 +129,7 @@
 		1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		1876BA7B2014FC26009EDF7C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1876BA802015069E009EDF7C /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		1885CEAF201E3AD4007B2943 /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		1887A5DB1FFAA4B300BA19A0 /* CameraFrameExtractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameExtractService.swift; sourceTree = "<group>"; };
 		1887A5DC1FFAA4B300BA19A0 /* ObservationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationService.swift; sourceTree = "<group>"; };
 		1887A5DD1FFAA4B300BA19A0 /* CaptureDevicePermissionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDevicePermissionService.swift; sourceTree = "<group>"; };
@@ -135,7 +138,7 @@
 		1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+NamingTests.swift"; sourceTree = "<group>"; };
 		1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationTransformer.swift; sourceTree = "<group>"; };
 		189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservationTransformer.swift; sourceTree = "<group>"; };
-		189303CB2012702200E9B494 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		189303CB2012702200E9B494 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		189303CF2012724600E9B494 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		189303D32012725D00E9B494 /* TranslatedObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservation.swift; sourceTree = "<group>"; };
 		189303D52012726C00E9B494 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		18F855DF2019E5B500C12C37 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		18F855E4201A1E7000C12C37 /* LanguageSelectionEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionEvent.swift; sourceTree = "<group>"; };
 		18F855E6201B25B300C12C37 /* ScanOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayViewController.swift; sourceTree = "<group>"; };
+		18F855E8201B41B700C12C37 /* UIButton+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Layout.swift"; sourceTree = "<group>"; };
 		4431AC74F1ACDE42761FF27D /* Pods-CoreTranslate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTranslate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreTranslate/Pods-CoreTranslate.debug.xcconfig"; sourceTree = "<group>"; };
 		6FF638CC703ACCCEF1D4021F /* Pods_CoreTranslate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTranslate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B8F4CB54DFC65BB9345426 /* Pods-CoreTranslate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTranslate.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreTranslate/Pods-CoreTranslate.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				1876BA742013AD09009EDF7C /* UICollectionView+CellUsage.swift */,
 				183EC65D200B80CF0043C82B /* String+Formatting.swift */,
 				1876BA7220139BA0009EDF7C /* UIImage+Rotation.swift */,
+				18F855E8201B41B700C12C37 /* UIButton+Layout.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 			children = (
 				189303D32012725D00E9B494 /* TranslatedObservation.swift */,
 				189303D52012726C00E9B494 /* Translation.swift */,
+				189303CB2012702200E9B494 /* Language.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,7 +419,6 @@
 			children = (
 				18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */,
 				183EC649200943DC0043C82B /* ApplicationConfiguration.swift */,
-				189303CB2012702200E9B494 /* LanguageHelper.swift */,
 				18F855DF2019E5B500C12C37 /* Logger.swift */,
 				18F855E3201A1E7000C12C37 /* Events */,
 				18BF495F201674E50027CB7F /* Views */,
@@ -464,6 +469,7 @@
 				18B6971C1FDDA6B700D7C401 /* ScanViewController.swift */,
 				185B56D11FDEF6D3008E0D56 /* ScanViewController.xib */,
 				18F855E6201B25B300C12C37 /* ScanOverlayViewController.swift */,
+				1885CEAF201E3AD4007B2943 /* PhotoDisplayViewController.swift */,
 			);
 			path = TakePhoto;
 			sourceTree = "<group>";
@@ -813,7 +819,7 @@
 				1894F0272017C36C0091A64B /* LanguageSelectorDataSource.swift in Sources */,
 				183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */,
 				1894F0252017C32E0091A64B /* LanguageSelectorViewController.swift in Sources */,
-				189303CC2012702200E9B494 /* LanguageHelper.swift in Sources */,
+				189303CC2012702200E9B494 /* Language.swift in Sources */,
 				18F855DE2019195A00C12C37 /* LanguageViewPresentation.swift in Sources */,
 				183EC665200BFC9D0043C82B /* TranslationOperation.swift in Sources */,
 				189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */,
@@ -824,11 +830,13 @@
 				18F855E5201A1E7000C12C37 /* LanguageSelectionEvent.swift in Sources */,
 				1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */,
 				183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */,
+				1885CEB0201E3AD4007B2943 /* PhotoDisplayViewController.swift in Sources */,
 				183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */,
 				1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */,
 				183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */,
 				1841B50D200116220055BD73 /* ObservationResultsDataSource.swift in Sources */,
 				18B6971A1FDDA68C00D7C401 /* Coordinator.swift in Sources */,
+				18F855E9201B41B700C12C37 /* UIButton+Layout.swift in Sources */,
 				18F855DA201910D300C12C37 /* LanguageSelectorHeaderView.swift in Sources */,
 				183EC653200A65060043C82B /* TranslationViewController.swift in Sources */,
 				1894F0292017C5D10091A64B /* LanguageStore.swift in Sources */,

@@ -74,6 +74,8 @@ final class ScanViewController: UIViewController {
     }
 }
 
+// MARK: Public API
+
 extension ScanViewController {
 
     func addCameraView() {
@@ -94,9 +96,9 @@ extension ScanViewController {
             let duration: TimeInterval = animated ? 0.33 : 0
             UIView.animate(withDuration: duration, animations: {
                 self.blurOverlayView?.alpha = 0
-            }) { _ in
+            }, completion: { _ in
                 self.blurOverlayView?.removeFromSuperview()
-            }
+            })
         }
     }
 }

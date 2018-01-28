@@ -31,4 +31,8 @@ final class ObservationStore {
     func add(_ observation: Observation) {
         self.observations.insert(observation)
     }
+
+    func removeAll() {
+        self.observations.removeAll()
+    }
 }

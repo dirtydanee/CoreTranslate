@@ -12,6 +12,7 @@ struct TranslationViewPresentation {
     struct WordViewPresentation {
         let value: String
         let language: String
+        let languageId: LanguageId
     }
 
     let from: WordViewPresentation
@@ -19,16 +20,18 @@ struct TranslationViewPresentation {
 
     init(translation: Translation) {
         self.from = WordViewPresentation(value: translation.from.value,
-                                         language: translation.from.language.humanReadable)
+                                         language: translation.from.language.humanReadable,
+                                         languageId: translation.from.language.id)
         self.to = WordViewPresentation(value: translation.to.value,
-                                       language: translation.to.language.humanReadable)
+                                       language: translation.to.language.humanReadable,
+                                       languageId: translation.to.language.id)
     }
 }
 
 struct Translation {
     struct Word {
         let value: String
-        let language: LanguageID
+        let language: Language
     }
 
     let from: Word

@@ -54,8 +54,8 @@ final class TranslationCoordinator: Coordinator {
 
     private func startTranslation() {
         self.translationService.translate(observation:  self.observation,
-                                          fromLanguage: self.configuration.fromLanguage.id,
-                                          toLanguage:   self.configuration.toLanguage.id)
+                                          fromLanguage: self.configuration.fromLanguage,
+                                          toLanguage:   self.configuration.toLanguage)
     }
 }
 
@@ -63,7 +63,7 @@ extension TranslationCoordinator: TranslationServiceDelegate {
     func translationService(_ translationService: TranslationService,
                             didTranslateObservation translation: TranslatedObservation) {
         let viewPresentation = TranslatedObservationViewPresentation(translatedObservation: translation,
-                                                           toTargetLanguage: self.configuration.toLanguage.id)
+                                                           toTargetLanguage: self.configuration.toLanguage)
         self.translationViewController?.state = .loaded(viewPresentation)
     }
 

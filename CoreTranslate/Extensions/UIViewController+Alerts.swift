@@ -19,6 +19,19 @@ extension AlertingView {
 }
 
 extension UIViewController {
+    func addChildViewController(_ viewController: UIViewController, frame: CGRect) {
+         viewController.view.frame = frame
+         self.view.addSubview(viewController.view)
+         viewController.didMove(toParentViewController: self)
+    }
+
+    func removeAsChildViewController() {
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+    }
+}
+
+extension UIViewController {
     enum State<T> {
         case loading
         case failed(Error)

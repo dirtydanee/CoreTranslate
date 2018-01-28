@@ -33,8 +33,8 @@ final class TranslationOperation: AsyncOperation {
 
     override func execute() {
         let request = RESTRequestFactory.makeTranslationRequest(for: self.observation,
-                                                                fromLanguage: self.languageSpecifier.from,
-                                                                toLanguage: self.languageSpecifier.to)
+                                                                fromLanguageId: self.languageSpecifier.from.id,
+                                                                toLanguageId: self.languageSpecifier.to.id)
         self.restService.executeWithDecodableResponse(request: request,
                                                       completion: self.processTranslationResponse)
     }

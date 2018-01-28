@@ -27,6 +27,10 @@ final class BlurOverlayView: UIView {
     }
 
     private func setupBlurView(style: UIBlurEffectStyle) {
+        // Remove all current subviews, if any
+        self.subviews.forEach { $0.removeFromSuperview() }
+
+        // Add blur effect with correct style
         let blurEffect = UIBlurEffect(style: style)
         let visualView = UIVisualEffectView(effect: blurEffect)
         visualView.frame = self.bounds

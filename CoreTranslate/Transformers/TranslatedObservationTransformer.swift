@@ -13,8 +13,10 @@ final class TranslatedObservationTransformer {
     func transform(_ observation: Observation,
                    languages: TranslationLanguageSpecifier,
                    translatedValue: String) -> TranslatedObservation {
-        let fromWord = Translation.Word(value: observation.identifier, language: languages.from)
-        let toWord = Translation.Word(value: translatedValue, language: languages.to)
+        let fromWord = Translation.Word(value: observation.identifier,
+                                        language: languages.from)
+        let toWord = Translation.Word(value: translatedValue,
+                                      language: languages.to)
         let translation = Translation.init(from: fromWord, to: toWord)
         let translatedObservation = TranslatedObservation(observation: observation, translations: [translation])
 

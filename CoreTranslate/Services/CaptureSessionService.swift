@@ -7,8 +7,9 @@
 //
 
 import AVFoundation
+import UIKit
 
-final class CaptureSessionService {
+final class CaptureSessionService: NSObject {
 
     enum Error {
         enum Setup: Swift.Error {
@@ -24,11 +25,21 @@ final class CaptureSessionService {
         enum DeviceDiscovery: Swift.Error {
             case unfoundDevice
         }
+
+        enum CapturePhoto: Swift.Error {
+            case missingDevice
+            case missingPhotoOutput
+            case unableToGetFileData
+        }
     }
 
     let captureSession: AVCaptureSession
     private(set) var isCaptureSessionSetup: Bool
     private var lastUsedCaptureDevice: AVCaptureDevice?
+    private var photoOutput: AVCapturePhotoOutput?
+    private var videoDataOutput: AVCaptureVideoDataOutput?
+    private var capturePhotoHandler: CapturePhotoHandler?
+    typealias CapturePhotoHandler = (Result<UIImage>) -> Swift.Void
 
     init(captureSession: AVCaptureSession) {
         self.captureSession = captureSession
@@ -50,12 +61,13 @@ final class CaptureSessionService {
         self.captureSession.addInput(input)
 
         let photoOutput = AVCapturePhotoOutput()
-
         guard self.captureSession.canAddOutput(photoOutput) else {
             throw Error.Setup.invalidPhotoOutput
         }
 
+        photoOutput.isHighResolutionCaptureEnabled = true
         self.captureSession.addOutput(photoOutput)
+        self.photoOutput = photoOutput
 
         let videoDataOutput = AVCaptureVideoDataOutput()
         let vidooDataOutputQueue = DispatchQueue.makeQueue(for: AVCaptureVideoDataOutput.self)
@@ -66,6 +78,7 @@ final class CaptureSessionService {
         }
 
         self.captureSession.addOutput(videoDataOutput)
+        self.videoDataOutput = videoDataOutput
 
         self.lastUsedCaptureDevice = device
         self.isCaptureSessionSetup = true
@@ -108,6 +121,32 @@ final class CaptureSessionService {
         }
     }
 
+    func capturePhoto(handler: @escaping CapturePhotoHandler) throws {
+
+        guard let device = lastUsedCaptureDevice else {
+            throw Error.CapturePhoto.missingDevice
+        }
+
+        guard let photoOutput = self.photoOutput else {
+            throw Error.CapturePhoto.missingPhotoOutput
+        }
+
+        self.capturePhotoHandler = handler
+
+        let photoSettings = AVCapturePhotoSettings()
+        photoSettings.isHighResolutionPhotoEnabled = true
+        if device.isFlashAvailable {
+            photoSettings.flashMode = .auto
+        }
+        // TODO:
+        print(photoSettings.availablePreviewPhotoPixelFormatTypes)
+        if let highestPixelFormat = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
+            photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: highestPixelFormat]
+        }
+
+        photoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+
     private func device(for devicetypes: [AVCaptureDevice.DeviceType],
                         mediaType: AVMediaType,
                         position: AVCaptureDevice.Position) throws -> AVCaptureDevice {
@@ -120,5 +159,33 @@ final class CaptureSessionService {
         }
 
         return device
+    }
+}
+
+// MARK: - AVCapturePhotoCaptureDelegate Methods
+
+extension CaptureSessionService: AVCapturePhotoCaptureDelegate {
+
+    func photoOutput(_ output: AVCapturePhotoOutput,
+                     didFinishProcessingPhoto photo: AVCapturePhoto,
+                     error: Swift.Error?) {
+
+        guard let capturePhotoHandler = self.capturePhotoHandler else {
+            return
+        }
+
+        if let error = error {
+            capturePhotoHandler(.failure(error))
+            return
+        }
+
+        guard let data = photo.fileDataRepresentation(),
+              let image =  UIImage(data: data)  else {
+                capturePhotoHandler(.failure(Error.CapturePhoto.unableToGetFileData))
+                return
+        }
+
+        capturePhotoHandler(.success(image))
+        self.capturePhotoHandler = nil
     }
 }

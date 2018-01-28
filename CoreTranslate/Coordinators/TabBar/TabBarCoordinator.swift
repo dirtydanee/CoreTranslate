@@ -67,6 +67,7 @@ final class TabBarCoordinator: Coordinator {
                                                         languageStore: self.languageStore,
                                                         parent: self)
         takePhotoCoordinator.start(animated: false)
+        takePhotoCoordinator.viewController?.view.frame = self.tabBarController.view.frame
         takePhotoCoordinator.viewController?.tabBarItem = Constants.TabBarItems.scanItem
         self.takePhotoCoordinator = takePhotoCoordinator
         self.childCoordinators.append(takePhotoCoordinator)

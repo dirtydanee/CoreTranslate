@@ -44,6 +44,8 @@ struct ViewStyle {
 struct ButtonStyle {
     static let normalStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .ct_black)
     static let selectedStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .ct_lightGrey)
+    static let largeBlackStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .black)
+    static let largeWhiteStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .white)
 }
 
 protocol TextStyleable {
