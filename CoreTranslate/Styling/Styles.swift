@@ -16,6 +16,7 @@ extension UIColor {
     static let ct_darkGrey = UIColor(red:0.54, green:0.51, blue:0.55, alpha:1.0)
     static let ct_black = UIColor(red:0.36, green:0.35, blue:0.38, alpha:1.0)
     static let ct_brown = UIColor(red:0.84, green:0.79, blue:0.74, alpha:1.0)
+    static let ct_systemButton = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
 }
 
 struct TextStyles {
@@ -42,7 +43,7 @@ struct ViewStyle {
 }
 
 struct ButtonStyle {
-    static let normalStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .ct_black)
+    static let normalStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .ct_systemButton)
     static let selectedStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .ct_lightGrey)
     static let largeBlackStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .black)
     static let largeWhiteStyle: TextStyle = TextStyle(font: UIFont.systemFont(ofSize: 16), color: .white)

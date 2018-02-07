@@ -83,8 +83,12 @@ class ObservationResultsViewController: UIViewController {
 extension ObservationResultsViewController: LanguageSelectorHeaderViewDelegate {
     func languageSelectorView(_ languageSelectorView: LanguageSelectorHeaderView,
                               didSelectLanguageAtPosition position: LanguageSelectorHeaderView.Position) {
-        self.delegate?.observationResultsViewController(self,
-                                                        didRequestChangingLanguageAtPosition: position)
+        if position == .to {
+            // TODO: Lets see what could we do here, .from is not processed ATM
+            self.delegate?.observationResultsViewController(self,
+                                                            didRequestChangingLanguageAtPosition: position)
+        }
+
     }
 }
 

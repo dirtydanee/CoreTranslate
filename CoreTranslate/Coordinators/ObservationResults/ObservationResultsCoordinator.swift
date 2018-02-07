@@ -21,7 +21,8 @@ final class ObservationResultsCoordinator: Coordinator {
     let languageStore: LanguageStore
 
     private var observationResultsViewController: ObservationResultsViewController?
-    private var toLanguage: Language?
+    private var toLanguage: Language
+    private var fromLanguage: Language
 
     init(navigationController: UINavigationController,
          observationStore: ObservationStore,
@@ -32,12 +33,16 @@ final class ObservationResultsCoordinator: Coordinator {
         self.languageStore = languageStore
         self.parent = parent
         self.toLanguage = languageStore.language(with: ApplicationConfiguration.preferredTargetLanguage)
+        self.fromLanguage = languageStore.language(with: ApplicationConfiguration.baseLanguage)
         self.childCoordinators = []
     }
 
     func start(animated: Bool) {
         let viewPresentations = self.observationStore.observations.map { ObservationViewPresentation(observation: $0) }
         let viewController = ObservationResultsViewController(viewPresentations: viewPresentations)
+        viewController.loadViewIfNeeded()
+        viewController.updateLanguage(to: self.fromLanguage, atPosition: .from)
+        viewController.updateLanguage(to: self.toLanguage, atPosition: .to)
         viewController.delegate = self
         self.navigationController.pushViewController(viewController, animated: animated)
         self.observationResultsViewController = viewController
@@ -54,12 +59,6 @@ final class ObservationResultsCoordinator: Coordinator {
     }
 
     private func presentTranslations(for observation: Observation) {
-        guard let toLanguage = self.toLanguage,
-              let fromLanguage = languageStore.language(with: ApplicationConfiguration.baseLanguage) else {
-            clog("Languages unselected", priority: .error)
-            return
-        }
-
         let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
                                                                 fromLanguage: fromLanguage,
                                                                 toLanguage: toLanguage)

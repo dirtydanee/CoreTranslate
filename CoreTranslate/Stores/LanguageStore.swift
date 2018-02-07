@@ -40,7 +40,7 @@ final class LanguageStore {
                                                                         options: .mutableContainers,
                                                                         format: nil)
 
-        guard let languages = languagesPlist as? [[String: String]] else {
+        guard let languages = languagesPlist as? [[String: Any]] else {
             throw Error.Resource.invalidFormat
         }
 
@@ -58,7 +58,10 @@ final class LanguageStore {
         return self.languages.filter { $0.humanReadable.lowercased().contains(text) }
     }
 
-    func language(with identifier: LanguageId) -> Language? {
-        return self.languages.first { $0.id == identifier }
+    func language(with identifier: LanguageId) -> Language {
+        guard let language = self.languages.first(where: { language in language.id == identifier }) else {
+            fatalError("Language not supported!")
+        }
+        return language
     }
 }

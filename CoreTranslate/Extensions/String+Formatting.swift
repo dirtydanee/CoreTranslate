@@ -16,12 +16,4 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-
-    var decodeEmoji: String {
-        guard let data = self.data(using:.utf8, allowLossyConversion: true) else {
-            return self
-        }
-
-        return String(data: data, encoding: .nonLossyASCII) ?? self
-    }
 }

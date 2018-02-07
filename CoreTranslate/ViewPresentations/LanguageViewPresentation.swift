@@ -16,6 +16,6 @@ struct LanguageViewPresentation {
     init(language: Language) {
         self.language = language
         self.languageId = language.humanReadable
-        self.flag = language.flag.decodeEmoji
+        self.flag = language.flag
     }
 }

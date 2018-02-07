@@ -17,11 +17,6 @@ final class LanguageCell: UITableViewCell, RegisterableView, TextStyleable {
     @IBOutlet private weak var languageLabel: StyledLabel!
     @IBOutlet private weak var flagLabel: StyledLabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     func configure(viewPresentation: LanguageViewPresentation) {
         self.languageLabel.text = viewPresentation.languageId
         self.flagLabel.text = viewPresentation.flag

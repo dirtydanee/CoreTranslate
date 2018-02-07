@@ -101,32 +101,11 @@ enum LanguageId: String {
     case zulu = "zu"
 }
 
-struct Language: Decodable {
+struct Language {
     typealias Flag = String
     let id: LanguageId
     let flag: Flag
     let humanReadable: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case flag = "flag"
-        case humanReadable = "name"
-    }
-
-    enum Error: Swift.Error {
-        case invalidLanguageID(id: String)
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let rawId = try container.decode(String.self, forKey: .id)
-        guard let id = LanguageId(rawValue: rawId) else {
-            throw Error.invalidLanguageID(id: rawId)
-        }
-        self.id = id
-        self.flag = try container.decode(String.self, forKey: .flag)
-        self.humanReadable = try container.decode(String.self, forKey: .humanReadable)
-    }
 }
 
 struct TranslationLanguageSpecifier {
