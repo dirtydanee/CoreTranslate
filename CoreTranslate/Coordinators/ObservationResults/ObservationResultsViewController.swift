@@ -23,11 +23,11 @@ class ObservationResultsViewController: UIViewController {
 
     private var tableView: UITableView!
     private var languageSelectorView: LanguageSelectorHeaderView!
-    let viewPresentations: [ObservationViewPresentation]
+    let viewPresentations: [ObservationViewModel]
     let dataSource: ObservationResultsDataSource
     weak var delegate: ObservationResultsViewControllerDelegate?
 
-    init(viewPresentations: [ObservationViewPresentation]) {
+    init(viewPresentations: [ObservationViewModel]) {
         self.viewPresentations = viewPresentations
         self.dataSource = ObservationResultsDataSource(observationPresentations: viewPresentations)
         super.init(nibName: nil, bundle: nil)
@@ -76,7 +76,7 @@ class ObservationResultsViewController: UIViewController {
     // MARK: Public API
 
     func updateLanguage(to language: Language, atPosition position: LanguageSelectorHeaderView.Position) {
-        self.languageSelectorView.setTitle(language.humanReadable, atPosition: position)
+        self.languageSelectorView.setTitle(language.name, atPosition: position)
     }
 }
 

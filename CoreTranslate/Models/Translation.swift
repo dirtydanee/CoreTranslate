@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-struct TranslationViewPresentation {
+struct TranslationViewModel {
     struct WordViewPresentation {
         let value: String
         let language: String
@@ -20,10 +21,10 @@ struct TranslationViewPresentation {
 
     init(translation: Translation) {
         self.from = WordViewPresentation(value: translation.from.value,
-                                         language: translation.from.language.humanReadable,
+                                         language: translation.from.language.name,
                                          languageId: translation.from.language.id)
         self.to = WordViewPresentation(value: translation.to.value,
-                                       language: translation.to.language.humanReadable,
+                                       language: translation.to.language.name,
                                        languageId: translation.to.language.id)
     }
 }

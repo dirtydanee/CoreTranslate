@@ -7,25 +7,23 @@
 //
 
 import Foundation
+import CoreData
 
 final class LanguagesTransformer {
 
-    enum Error: Swift.Error {
-        case invalidLanguageID(id: String)
+    let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext) {
+        self.context = context
     }
 
     func transform(_ dictionaries:  [[String: Any]]) throws -> [Language] {
 
         return dictionaries.flatMap { dictionary in
-            do {
                 guard let id = dictionary["id"] as? String,
                     let flagHexValues = dictionary["flagHexValues"] as? [Int],
-                    let humanReadable = dictionary["name"] as? String else {
+                    let name = dictionary["name"] as? String else {
                         return nil
-                }
-
-                guard let languageId = LanguageId(rawValue: id) else {
-                    throw LanguagesTransformer.Error.invalidLanguageID(id: id)
                 }
 
                 var flag: String = ""
@@ -35,12 +33,13 @@ final class LanguagesTransformer {
                     }
                 }
 
-                return Language(id: languageId, flag: flag, humanReadable: humanReadable)
-            } catch let error {
-                // TODO: Handle error
-                print(error)
-                return nil
-            }
+                let entityDescription = NSEntityDescription.entity(forEntityName: "Language", in: self.context)
+                let language = Language(entity: entityDescription!, insertInto: self.context) // TODO: Fix me
+                language.rawId = id
+                language.flag = flag
+                language.name = name
+
+                return language
         }
     }
 }

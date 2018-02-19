@@ -74,20 +74,24 @@ final class TabBarCoordinator: Coordinator {
     }
 
     private func setupSavedTranslatedObservationCoordinator() {
-        // TODO: 
-//        let savedNavigationController = UINavigationController()
-//        let observation = Observation(uuid: UUID(), identifier: "potato", confidence: 0.2, capturedImageData: Data())
-//        let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
-//                                                                fromLanguage: ApplicationConfiguration.baseLanguage.id,
-//                                                                toLanguage: .hungarian)
-//        let translationCoordinator = TranslationCoordinator(navigationController: savedNavigationController,
-//                                                            observationToTranslate: observation,
-//                                                            withConfiguration: translationConfiguration)
-//        translationCoordinator.start(animated: true)
-//        translationCoordinator.viewController?.tabBarItem = Constants.TabBarItems.savedItem
-//        translationCoordinator.parent = self
-//        self.savedTranslatedObservationCoordinator = translationCoordinator
-//        self.childCoordinators.append(translationCoordinator)
+        // TODO:
+
+        let fromL = self.languageStore.language(with: ApplicationConfiguration.baseLanguage)
+        let toL = self.languageStore.language(with: .hungarian)
+
+        let savedNavigationController = UINavigationController()
+        let observation = Observation(uuid: UUID(), identifier: "potato", confidence: 0.2, capturedImageData: Data())
+        let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
+                                                                fromLanguage: fromL,
+                                                                toLanguage: toL)
+        let translationCoordinator = TranslationCoordinator(navigationController: savedNavigationController,
+                                                            observationToTranslate: observation,
+                                                            withConfiguration: translationConfiguration)
+        translationCoordinator.start(animated: true)
+        translationCoordinator.viewController?.tabBarItem = Constants.TabBarItems.savedItem
+        translationCoordinator.parent = self
+        self.savedTranslatedObservationCoordinator = translationCoordinator
+        self.childCoordinators.append(translationCoordinator)
     }
 
     private func setupSettingsCoordinator() {

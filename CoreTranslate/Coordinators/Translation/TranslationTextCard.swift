@@ -29,7 +29,7 @@ final class TranslationTextCard: UIView, NibLoadableView, TextStyleable {
         self.backgroundColor = .ct_white
     }
 
-    func present(translationViewPresentation: TranslationViewPresentation) {
+    func present(translationViewPresentation: TranslationViewModel) {
         self.fromLanguageLabel.text = translationViewPresentation.from.language
         self.toLanguageLabel.text = translationViewPresentation.to.language
         self.fromWordLabel.text = translationViewPresentation.from.value

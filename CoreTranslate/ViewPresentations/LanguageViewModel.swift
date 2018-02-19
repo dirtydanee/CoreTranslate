@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct LanguageViewPresentation {
+struct LanguageViewModel {
     let language: Language
-    let languageId: String
+    let name: String
     let flag: Language.Flag
 
     init(language: Language) {
         self.language = language
-        self.languageId = language.humanReadable
+        self.name = language.name
         self.flag = language.flag
     }
 }

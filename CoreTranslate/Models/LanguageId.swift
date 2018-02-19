@@ -1,5 +1,5 @@
 //
-//  LanguageHelper.swift
+//  LanguageId.swift
 //  CoreTranslate
 //
 //  Created by Daniel.Metzing on 19.01.18.
@@ -9,7 +9,7 @@
 import Foundation
 
 enum LanguageId: String {
-    case automatic = "auto"
+    case none = "none"
     case albanian = "sq"
     case amharic = "am"
     case arabic = "ar"
@@ -101,12 +101,12 @@ enum LanguageId: String {
     case zulu = "zu"
 }
 
-struct Language {
-    typealias Flag = String
-    let id: LanguageId
-    let flag: Flag
-    let humanReadable: String
-}
+//struct Language {
+//    typealias Flag = String
+//    let id: LanguageId
+//    let flag: Flag
+//    let humanReadable: String
+//}
 
 struct TranslationLanguageSpecifier {
     let from: Language

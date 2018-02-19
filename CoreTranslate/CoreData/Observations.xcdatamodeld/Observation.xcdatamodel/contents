@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Language" representedClassName=".Language" syncable="YES">
+        <attribute name="flag" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rawId" attributeType="String" syncable="YES"/>
+        <relationship name="observation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="baseLanguage" inverseEntity="Observation" syncable="YES"/>
+    </entity>
+    <entity name="Observation" representedClassName="Observation" syncable="YES">
+        <attribute name="confidance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="baseLanguage" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="observation" inverseEntity="Language" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Language" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Observation" positionX="-54" positionY="18" width="128" height="105"/>
+    </elements>
+</model>

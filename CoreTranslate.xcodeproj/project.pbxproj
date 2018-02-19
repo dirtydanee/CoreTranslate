@@ -14,7 +14,7 @@
 		183EC653200A65060043C82B /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC651200A65060043C82B /* TranslationViewController.swift */; };
 		183EC656200A6C950043C82B /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC655200A6C950043C82B /* TranslationView.swift */; };
 		183EC658200A6CAD0043C82B /* TranslationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183EC657200A6CAD0043C82B /* TranslationView.xib */; };
-		183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC659200A6F520043C82B /* TranslationViewPresentation.swift */; };
+		183EC65A200A6F520043C82B /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC659200A6F520043C82B /* TranslationViewModel.swift */; };
 		183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC65B200A6FA50043C82B /* CaptureSessionService.swift */; };
 		183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC65D200B80CF0043C82B /* String+Formatting.swift */; };
 		183EC663200BFC880043C82B /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC662200BFC880043C82B /* AsyncOperation.swift */; };
@@ -23,13 +23,14 @@
 		1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */; };
 		1841B5042000FEDD0055BD73 /* ObservationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B5032000FEDD0055BD73 /* ObservationResultCell.swift */; };
 		1841B506200105090055BD73 /* UITableView+CellUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B505200105090055BD73 /* UITableView+CellUsage.swift */; };
-		1841B50B200109CB0055BD73 /* ObservationViewPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B50A200109CA0055BD73 /* ObservationViewPresentation.swift */; };
+		1841B50B200109CB0055BD73 /* ObservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B50A200109CA0055BD73 /* ObservationViewModel.swift */; };
 		1841B50D200116220055BD73 /* ObservationResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841B50C200116220055BD73 /* ObservationResultsDataSource.swift */; };
 		1841B50F200119BE0055BD73 /* ObservationResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841B50E200119BE0055BD73 /* ObservationResultCell.xib */; };
 		185B56D21FDEF6D3008E0D56 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185B56D11FDEF6D3008E0D56 /* ScanViewController.xib */; };
 		185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */; };
 		1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A879200405C7008042EE /* TranslationCoordinator.swift */; };
 		1860A87C200406F0008042EE /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A87B200406F0008042EE /* TranslationService.swift */; };
+		186504FE20309FD10053ED51 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186504FD20309FD10053ED51 /* Language.swift */; };
 		1876BA7320139BA0009EDF7C /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA7220139BA0009EDF7C /* UIImage+Rotation.swift */; };
 		1876BA752013AD09009EDF7C /* UICollectionView+CellUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA742013AD09009EDF7C /* UICollectionView+CellUsage.swift */; };
 		1876BA7A2014FB60009EDF7C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */; };
@@ -43,8 +44,10 @@
 		1887A5E91FFC120400BA19A0 /* DispatchQueue+Naming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */; };
 		1887A5EB1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */; };
 		1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */; };
+		188BAD87202B97C300F8C98E /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BAD86202B97C300F8C98E /* CoreDataHandler.swift */; };
+		188D1110203066D500E4BD25 /* Observations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188D110E203066D500E4BD25 /* Observations.xcdatamodeld */; };
 		189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */; };
-		189303CC2012702200E9B494 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* Language.swift */; };
+		189303CC2012702200E9B494 /* LanguageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* LanguageId.swift */; };
 		189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 189303CF2012724600E9B494 /* MobileNet.mlmodel */; };
 		189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D32012725D00E9B494 /* TranslatedObservation.swift */; };
 		189303D62012726C00E9B494 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D52012726C00E9B494 /* Translation.swift */; };
@@ -79,9 +82,10 @@
 		18BF497E201682BB0027CB7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF497D201682BB0027CB7F /* SettingsViewController.swift */; };
 		18BF4983201684B60027CB7F /* SettingsTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF4981201684B60027CB7F /* SettingsTextFieldCell.swift */; };
 		18BF4984201684B60027CB7F /* SettingsTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BF4982201684B60027CB7F /* SettingsTextFieldCell.xib */; };
+		18E7F8F6203B5E4F00BE92E0 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7F8F5203B5E4F00BE92E0 /* Observation.swift */; };
 		18F855DA201910D300C12C37 /* LanguageSelectorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855D9201910D300C12C37 /* LanguageSelectorHeaderView.swift */; };
 		18F855DC2019112C00C12C37 /* LanguageSelectorHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F855DB2019112C00C12C37 /* LanguageSelectorHeaderView.xib */; };
-		18F855DE2019195A00C12C37 /* LanguageViewPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855DD2019195A00C12C37 /* LanguageViewPresentation.swift */; };
+		18F855DE2019195A00C12C37 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855DD2019195A00C12C37 /* LanguageViewModel.swift */; };
 		18F855E02019E5B500C12C37 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855DF2019E5B500C12C37 /* Logger.swift */; };
 		18F855E5201A1E7000C12C37 /* LanguageSelectionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855E4201A1E7000C12C37 /* LanguageSelectionEvent.swift */; };
 		18F855E7201B25B400C12C37 /* ScanOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F855E6201B25B300C12C37 /* ScanOverlayViewController.swift */; };
@@ -108,7 +112,7 @@
 		183EC651200A65060043C82B /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		183EC655200A6C950043C82B /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		183EC657200A6CAD0043C82B /* TranslationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslationView.xib; sourceTree = "<group>"; };
-		183EC659200A6F520043C82B /* TranslationViewPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewPresentation.swift; sourceTree = "<group>"; };
+		183EC659200A6F520043C82B /* TranslationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
 		183EC65B200A6FA50043C82B /* CaptureSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionService.swift; sourceTree = "<group>"; };
 		183EC65D200B80CF0043C82B /* String+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Formatting.swift"; sourceTree = "<group>"; };
 		183EC662200BFC880043C82B /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -117,13 +121,14 @@
 		1841B4FF20000FD40055BD73 /* ObservationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationResultsViewController.swift; sourceTree = "<group>"; };
 		1841B5032000FEDD0055BD73 /* ObservationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationResultCell.swift; sourceTree = "<group>"; };
 		1841B505200105090055BD73 /* UITableView+CellUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+CellUsage.swift"; sourceTree = "<group>"; };
-		1841B50A200109CA0055BD73 /* ObservationViewPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationViewPresentation.swift; sourceTree = "<group>"; };
+		1841B50A200109CA0055BD73 /* ObservationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationViewModel.swift; sourceTree = "<group>"; };
 		1841B50C200116220055BD73 /* ObservationResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationResultsDataSource.swift; sourceTree = "<group>"; };
 		1841B50E200119BE0055BD73 /* ObservationResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObservationResultCell.xib; sourceTree = "<group>"; };
 		185B56D11FDEF6D3008E0D56 /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		185B56E01FE27818008E0D56 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		1860A879200405C7008042EE /* TranslationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
 		1860A87B200406F0008042EE /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		186504FD20309FD10053ED51 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		1876BA7220139BA0009EDF7C /* UIImage+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		1876BA742013AD09009EDF7C /* UICollectionView+CellUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+CellUsage.swift"; sourceTree = "<group>"; };
 		1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -137,8 +142,10 @@
 		1887A5E81FFC120400BA19A0 /* DispatchQueue+Naming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Naming.swift"; sourceTree = "<group>"; };
 		1887A5EA1FFC18A500BA19A0 /* DispatchQueue+NamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+NamingTests.swift"; sourceTree = "<group>"; };
 		1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationTransformer.swift; sourceTree = "<group>"; };
+		188BAD86202B97C300F8C98E /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
+		188D110F203066D500E4BD25 /* Observation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Observation.xcdatamodel; sourceTree = "<group>"; };
 		189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservationTransformer.swift; sourceTree = "<group>"; };
-		189303CB2012702200E9B494 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		189303CB2012702200E9B494 /* LanguageId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageId.swift; sourceTree = "<group>"; };
 		189303CF2012724600E9B494 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		189303D32012725D00E9B494 /* TranslatedObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservation.swift; sourceTree = "<group>"; };
 		189303D52012726C00E9B494 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
@@ -177,9 +184,10 @@
 		18BF497D201682BB0027CB7F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		18BF4981201684B60027CB7F /* SettingsTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldCell.swift; sourceTree = "<group>"; };
 		18BF4982201684B60027CB7F /* SettingsTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTextFieldCell.xib; sourceTree = "<group>"; };
+		18E7F8F5203B5E4F00BE92E0 /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		18F855D9201910D300C12C37 /* LanguageSelectorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectorHeaderView.swift; sourceTree = "<group>"; };
 		18F855DB2019112C00C12C37 /* LanguageSelectorHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageSelectorHeaderView.xib; sourceTree = "<group>"; };
-		18F855DD2019195A00C12C37 /* LanguageViewPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewPresentation.swift; sourceTree = "<group>"; };
+		18F855DD2019195A00C12C37 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		18F855DF2019E5B500C12C37 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		18F855E4201A1E7000C12C37 /* LanguageSelectionEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionEvent.swift; sourceTree = "<group>"; };
 		18F855E6201B25B300C12C37 /* ScanOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayViewController.swift; sourceTree = "<group>"; };
@@ -254,9 +262,9 @@
 		1841B509200109CA0055BD73 /* ViewPresentations */ = {
 			isa = PBXGroup;
 			children = (
-				1841B50A200109CA0055BD73 /* ObservationViewPresentation.swift */,
-				183EC659200A6F520043C82B /* TranslationViewPresentation.swift */,
-				18F855DD2019195A00C12C37 /* LanguageViewPresentation.swift */,
+				1841B50A200109CA0055BD73 /* ObservationViewModel.swift */,
+				183EC659200A6F520043C82B /* TranslationViewModel.swift */,
+				18F855DD2019195A00C12C37 /* LanguageViewModel.swift */,
 			);
 			path = ViewPresentations;
 			sourceTree = "<group>";
@@ -344,12 +352,23 @@
 			path = Transformers;
 			sourceTree = "<group>";
 		};
+		188BAD85202B97C300F8C98E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				188BAD86202B97C300F8C98E /* CoreDataHandler.swift */,
+				188D110E203066D500E4BD25 /* Observations.xcdatamodeld */,
+				186504FD20309FD10053ED51 /* Language.swift */,
+				18E7F8F5203B5E4F00BE92E0 /* Observation.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		189303CD2012723F00E9B494 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				189303D32012725D00E9B494 /* TranslatedObservation.swift */,
 				189303D52012726C00E9B494 /* Translation.swift */,
-				189303CB2012702200E9B494 /* Language.swift */,
+				189303CB2012702200E9B494 /* LanguageId.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -420,6 +439,7 @@
 				18B696F11FDD8F9C00D7C401 /* AppDelegate.swift */,
 				183EC649200943DC0043C82B /* ApplicationConfiguration.swift */,
 				18F855DF2019E5B500C12C37 /* Logger.swift */,
+				188BAD85202B97C300F8C98E /* CoreData */,
 				18F855E3201A1E7000C12C37 /* Events */,
 				18BF495F201674E50027CB7F /* Views */,
 				189303E020128F7100E9B494 /* Styling */,
@@ -774,7 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1841B50B200109CB0055BD73 /* ObservationViewPresentation.swift in Sources */,
+				1841B50B200109CB0055BD73 /* ObservationViewModel.swift in Sources */,
 				1887A5DE1FFAA4B300BA19A0 /* CameraFrameExtractService.swift in Sources */,
 				18B6971B1FDDA68C00D7C401 /* ScanCoordinator.swift in Sources */,
 				1894F0232017C2BD0091A64B /* LanguageSelectorCoordinator.swift in Sources */,
@@ -795,9 +815,12 @@
 				189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */,
 				18BF497A20167FB80027CB7F /* LocalizedString.swift in Sources */,
 				18BF4961201674E50027CB7F /* LoadingView.swift in Sources */,
+				186504FE20309FD10053ED51 /* Language.swift in Sources */,
 				1841B5042000FEDD0055BD73 /* ObservationResultCell.swift in Sources */,
 				185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */,
+				18E7F8F6203B5E4F00BE92E0 /* Observation.swift in Sources */,
 				189303D62012726C00E9B494 /* Translation.swift in Sources */,
+				188D1110203066D500E4BD25 /* Observations.xcdatamodeld in Sources */,
 				183EC648200942BD0043C82B /* RESTService.swift in Sources */,
 				1894F030201880B80091A64B /* LanguagesTransformer.swift in Sources */,
 				189303E220128F7100E9B494 /* Styles.swift in Sources */,
@@ -819,19 +842,20 @@
 				1894F0272017C36C0091A64B /* LanguageSelectorDataSource.swift in Sources */,
 				183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */,
 				1894F0252017C32E0091A64B /* LanguageSelectorViewController.swift in Sources */,
-				189303CC2012702200E9B494 /* Language.swift in Sources */,
-				18F855DE2019195A00C12C37 /* LanguageViewPresentation.swift in Sources */,
+				189303CC2012702200E9B494 /* LanguageId.swift in Sources */,
+				18F855DE2019195A00C12C37 /* LanguageViewModel.swift in Sources */,
 				183EC665200BFC9D0043C82B /* TranslationOperation.swift in Sources */,
 				189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */,
 				189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */,
 				189303DC2012827200E9B494 /* TranslationCard.swift in Sources */,
 				1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */,
+				188BAD87202B97C300F8C98E /* CoreDataHandler.swift in Sources */,
 				18B6971D1FDDA6B700D7C401 /* ScanViewController.swift in Sources */,
 				18F855E5201A1E7000C12C37 /* LanguageSelectionEvent.swift in Sources */,
 				1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */,
 				183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */,
 				1885CEB0201E3AD4007B2943 /* PhotoDisplayViewController.swift in Sources */,
-				183EC65A200A6F520043C82B /* TranslationViewPresentation.swift in Sources */,
+				183EC65A200A6F520043C82B /* TranslationViewModel.swift in Sources */,
 				1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */,
 				183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */,
 				1841B50D200116220055BD73 /* ObservationResultsDataSource.swift in Sources */,
@@ -1090,6 +1114,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		188D110E203066D500E4BD25 /* Observations.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				188D110F203066D500E4BD25 /* Observation.xcdatamodel */,
+			);
+			currentVersion = 188D110F203066D500E4BD25 /* Observation.xcdatamodel */;
+			path = Observations.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 18B696E61FDD8F9C00D7C401 /* Project object */;
 }

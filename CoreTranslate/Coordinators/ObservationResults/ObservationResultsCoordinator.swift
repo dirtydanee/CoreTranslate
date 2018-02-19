@@ -38,7 +38,7 @@ final class ObservationResultsCoordinator: Coordinator {
     }
 
     func start(animated: Bool) {
-        let viewPresentations = self.observationStore.observations.map { ObservationViewPresentation(observation: $0) }
+        let viewPresentations = self.observationStore.observations.map { ObservationViewModel(observation: $0) }
         let viewController = ObservationResultsViewController(viewPresentations: viewPresentations)
         viewController.loadViewIfNeeded()
         viewController.updateLanguage(to: self.fromLanguage, atPosition: .from)

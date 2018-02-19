@@ -17,8 +17,8 @@ final class LanguageCell: UITableViewCell, RegisterableView, TextStyleable {
     @IBOutlet private weak var languageLabel: StyledLabel!
     @IBOutlet private weak var flagLabel: StyledLabel!
 
-    func configure(viewPresentation: LanguageViewPresentation) {
-        self.languageLabel.text = viewPresentation.languageId
+    func configure(viewPresentation: LanguageViewModel) {
+        self.languageLabel.text = viewPresentation.name
         self.flagLabel.text = viewPresentation.flag
     }
 }

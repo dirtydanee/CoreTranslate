@@ -10,9 +10,9 @@ import UIKit
 
 final class ObservationResultsDataSource: NSObject, UITableViewDataSource {
 
-    let observationPresentations: [ObservationViewPresentation]
+    let observationPresentations: [ObservationViewModel]
 
-    init(observationPresentations: [ObservationViewPresentation]) {
+    init(observationPresentations: [ObservationViewModel]) {
         self.observationPresentations = observationPresentations
     }
 

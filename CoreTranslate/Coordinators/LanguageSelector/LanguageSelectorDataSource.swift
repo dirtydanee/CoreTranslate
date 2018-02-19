@@ -19,16 +19,16 @@ protocol LanguageSelectorDataSourceDelegate: class {
 final class LanguageSelectorDataSource: NSObject {
 
     let store: LanguageStore
-    private(set) var languageViewPresentations: [LanguageViewPresentation]
+    private(set) var languageViewPresentations: [LanguageViewModel]
     weak var delegate: LanguageSelectorDataSourceDelegate?
 
     init(store: LanguageStore) {
         self.store = store
-        self.languageViewPresentations = store.allLanguages().map { LanguageViewPresentation(language: $0) }
+        self.languageViewPresentations = store.allLanguages().map { LanguageViewModel(language: $0) }
     }
 
     private func reload() {
-        self.languageViewPresentations = self.store.allLanguages().map { LanguageViewPresentation(language: $0) }
+        self.languageViewPresentations = self.store.allLanguages().map { LanguageViewModel(language: $0) }
     }
 }
 
@@ -73,7 +73,7 @@ extension LanguageSelectorDataSource: UISearchResultsUpdating {
             self.reload()
         } else {
             let languages = self.store.languages(containing: text)
-            self.languageViewPresentations = languages.map { LanguageViewPresentation(language: $0) }
+            self.languageViewPresentations = languages.map { LanguageViewModel(language: $0) }
         }
     }
 }

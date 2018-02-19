@@ -12,6 +12,7 @@ final class AppCoordinator: Coordinator {
 
     let window: UIWindow
     let languageStore: LanguageStore
+    let coreDataHandler: CoreDataHandler
     let parent: Coordinator?
     var tabBarCoordinator: TabBarCoordinator?
     private(set) var childCoordinators: [Coordinator]
@@ -22,9 +23,11 @@ final class AppCoordinator: Coordinator {
     
     init(window: UIWindow) {
         self.window = window
+        self.coreDataHandler = CoreDataHandler(modelName: "Observations")
         self.parent = nil
         self.childCoordinators = []
-        let languageStore = LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguage)
+        let languageStore = LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguage,
+                                          context: self.coreDataHandler.mainContext)
         self.languageStore = languageStore
     }
 

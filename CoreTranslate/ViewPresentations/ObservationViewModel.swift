@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ObservationViewPresentation {
+struct ObservationViewModel {
     
     let observation: Observation
     let resultTitle: String
@@ -35,5 +35,4 @@ struct ConfidanceFormatter {
         formatter.maximumFractionDigits = 1
         return formatter.string(for: value) ?? ""
     }
-
 }

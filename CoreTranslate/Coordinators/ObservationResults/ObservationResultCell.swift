@@ -25,7 +25,7 @@ class ObservationResultCell: UITableViewCell, RegisterableView {
         self.resultImageView.image = nil
     }
 
-    func configure(with viewPresentation: ObservationViewPresentation) {
+    func configure(with viewPresentation: ObservationViewModel) {
         self.resultTitle.text = viewPresentation.resultTitle
         self.resultValue.text = viewPresentation.resultValue
 

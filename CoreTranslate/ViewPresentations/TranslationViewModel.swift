@@ -12,7 +12,7 @@ struct TranslatedObservationViewPresentation {
     let image: UIImage?
     let confidance: String
     let targetLanguageId: LanguageId
-    let translationViewPresentations: [TranslationViewPresentation]
+    let translationViewPresentations: [TranslationViewModel]
     let translatedObservation: TranslatedObservation
 
     init(translatedObservation: TranslatedObservation, toTargetLanguage: Language) {
@@ -21,6 +21,6 @@ struct TranslatedObservationViewPresentation {
         self.confidance = ConfidanceFormatter.format(translatedObservation.observation.confidence)
         self.targetLanguageId = toTargetLanguage.id
         self.translationViewPresentations = translatedObservation.translations
-                                                                 .map { TranslationViewPresentation(translation: $0) }
+                                                                 .map { TranslationViewModel(translation: $0) }
     }
 }
