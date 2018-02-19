@@ -9,8 +9,8 @@
 import UIKit
 
 final class TranslationCardsCollectionViewDataSource: NSObject {
-    let viewPresentations: [TranslatedObservationViewPresentation]
-    init(viewPresentations: [TranslatedObservationViewPresentation]) {
+    let viewPresentations: [TranslatedObservationViewModel]
+    init(viewPresentations: [TranslatedObservationViewModel]) {
         self.viewPresentations = viewPresentations
     }
 }

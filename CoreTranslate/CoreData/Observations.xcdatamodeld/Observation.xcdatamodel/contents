@@ -4,16 +4,17 @@
         <attribute name="flag" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rawId" attributeType="String" syncable="YES"/>
-        <relationship name="observation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Observation" inverseName="baseLanguage" inverseEntity="Observation" syncable="YES"/>
     </entity>
-    <entity name="Observation" representedClassName="Observation" syncable="YES">
-        <attribute name="confidance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="Observation" representedClassName=".Observation" syncable="YES">
+        <attribute name="capturedImageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="confidence" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="baseLanguage" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="observation" inverseEntity="Language" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="baseLanguage" maxCount="1" deletionRule="Nullify" destinationEntity="Language" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Language" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="Observation" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Language" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Observation" positionX="-252" positionY="-369" width="135" height="135"/>
     </elements>
 </model>

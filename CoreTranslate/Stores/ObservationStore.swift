@@ -7,26 +7,32 @@
 //
 
 import UIKit
+import CoreData
 
-struct Observation: Equatable, Hashable {
-
-    var hashValue: Int {
-        return self.identifier.hashValue
-    }
-
-    let uuid: UUID
-    let identifier: String
-    let confidence: Float
-    let capturedImageData: Data
-
-    static func == (lhs: Observation, rhs: Observation) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-}
+//struct Observation: Equatable, Hashable {
+//
+//    var hashValue: Int {
+//        return self.identifier.hashValue
+//    }
+//
+//    let uuid: UUID
+//    let identifier: String
+//    let confidence: Float
+//    let capturedImageData: Data
+//
+//    static func == (lhs: Observation, rhs: Observation) -> Bool {
+//        return lhs.identifier == rhs.identifier
+//    }
+//}
 
 final class ObservationStore {
 
     private(set) var observations: Set<Observation> = []
+    let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
 
     func add(_ observation: Observation) {
         self.observations.insert(observation)

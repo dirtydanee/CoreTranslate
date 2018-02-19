@@ -48,7 +48,7 @@ final class LanguageStore {
             throw Error.Resource.invalidFormat
         }
 
-        let transformer = LanguagesTransformer(context: context)
+        let transformer = LanguageTransformer(context: context, entityName: .language)
         return try transformer.transform(languages)
     }
 

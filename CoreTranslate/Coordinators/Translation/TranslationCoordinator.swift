@@ -62,7 +62,7 @@ final class TranslationCoordinator: Coordinator {
 extension TranslationCoordinator: TranslationServiceDelegate {
     func translationService(_ translationService: TranslationService,
                             didTranslateObservation translation: TranslatedObservation) {
-        let viewPresentation = TranslatedObservationViewPresentation(translatedObservation: translation,
+        let viewPresentation = TranslatedObservationViewModel(translatedObservation: translation,
                                                            toTargetLanguage: self.configuration.toLanguage)
         self.translationViewController?.state = .loaded(viewPresentation)
     }

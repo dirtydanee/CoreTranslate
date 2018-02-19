@@ -34,6 +34,7 @@ final class AppCoordinator: Coordinator {
     func start(animated: Bool) {
         self.setupAppearance()
         let tabBarCoordinator = TabBarCoordinator(languageStore: languageStore,
+                                                  context: self.coreDataHandler.mainContext,
                                                    parent: self)
         self.window.rootViewController = tabBarCoordinator.tabBarController
         self.window.makeKeyAndVisible()

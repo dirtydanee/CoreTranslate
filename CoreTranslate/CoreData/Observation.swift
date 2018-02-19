@@ -10,7 +10,12 @@ import Foundation
 import CoreData
 
 class Observation: NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var rawId: String
-    @NSManaged var flag: Flag
+
+    @NSManaged var createdAt: Date
+    @NSManaged var uuid: String
+    @NSManaged var capturedImageData: Data
+    @NSManaged var identifier: String
+    @NSManaged var confidence: Float
+    @NSManaged var baseLanguage: Language // TODO: Daniel - should this be a proper relationship ????
+
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Vision
+import CoreData
 
 final class ObservationService {
 
@@ -28,11 +29,14 @@ final class ObservationService {
         static let minimumConfidance: Float = 0.3
     }
 
-    init(model: MLModel, eventQueue: DispatchQueue) {
+    init(model: MLModel,
+         eventQueue: DispatchQueue,
+         context: NSManagedObjectContext,
+         languageStore: LanguageStore) {
         self.model = model
         self.visionCoreMLModel = try? VNCoreMLModel(for: model)
         self.eventQueue = eventQueue
-        self.observationTransformer = ObservationTransformer()
+        self.observationTransformer = ObservationTransformer(context: context, entityName: .observation, languageStore: languageStore)
     }
 
     func observeContent(of image: UIImage, completionHandler: @escaping (Result<Observation>) -> Swift.Void) throws {

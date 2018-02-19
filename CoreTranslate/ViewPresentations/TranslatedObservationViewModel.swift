@@ -1,5 +1,5 @@
 //
-//  TranslationViewPresentation.swift
+//  TranslatedObservationViewModel.swift
 //  CoreTranslate
 //
 //  Created by Daniel.Metzing on 13.01.18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct TranslatedObservationViewPresentation {
+struct TranslatedObservationViewModel {
     let image: UIImage?
     let confidance: String
     let targetLanguageId: LanguageId

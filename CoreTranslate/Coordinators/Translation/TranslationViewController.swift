@@ -10,8 +10,8 @@ import UIKit
 
 final class TranslationViewController: UIViewController, DataLoading {
 
-    typealias DataLoading = TranslatedObservationViewPresentation
-    var state: UIViewController.State<TranslatedObservationViewPresentation> {
+    typealias DataLoading = TranslatedObservationViewModel
+    var state: UIViewController.State<TranslatedObservationViewModel> {
         didSet {
             self.udpate()
         }
@@ -22,7 +22,7 @@ final class TranslationViewController: UIViewController, DataLoading {
 
     private var typedView: TranslationView!
 
-    init(state: UIViewController.State<TranslatedObservationViewPresentation>) {
+    init(state: UIViewController.State<TranslatedObservationViewModel>) {
         self.state = state
         self.loadingView = LoadingView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)

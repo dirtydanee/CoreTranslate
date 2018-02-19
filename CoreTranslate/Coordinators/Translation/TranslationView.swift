@@ -20,12 +20,12 @@ final class TranslationView: UIView, NibLoadableView {
     @IBOutlet weak var translationCardsCollectionView: TranslationCardsCollectionView!
     var cardsDataSource: TranslationCardsCollectionViewDataSource?
 
-    func present(_ viewPresentation: TranslatedObservationViewPresentation) {
+    func present(_ viewPresentation: TranslatedObservationViewModel) {
         // TODO: Move dataSource from here
         self.createCardsDataSource(with: [viewPresentation])
     }
 
-    private func createCardsDataSource(with viewPresentations: [TranslatedObservationViewPresentation]) {
+    private func createCardsDataSource(with viewPresentations: [TranslatedObservationViewModel]) {
         let cardsDataSource = TranslationCardsCollectionViewDataSource(viewPresentations: viewPresentations)
         self.translationCardsCollectionView.dataSource = cardsDataSource
         self.cardsDataSource = cardsDataSource

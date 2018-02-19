@@ -1,20 +1,21 @@
 //
-//  LanguagesTransformer.swift
+//  LanguageTransformer.swift
 //  CoreTranslate
 //
 //  Created by Daniel.Metzing on 24.01.18.
 //  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-final class LanguagesTransformer {
+final class LanguageTransformer: CoreDataTransformer {
 
     let context: NSManagedObjectContext
+    let entityName: NSEntityDescription.CoreTranslationEntityName
 
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, entityName:  NSEntityDescription.CoreTranslationEntityName) {
         self.context = context
+        self.entityName = entityName
     }
 
     func transform(_ dictionaries:  [[String: Any]]) throws -> [Language] {
@@ -33,8 +34,7 @@ final class LanguagesTransformer {
                     }
                 }
 
-                let entityDescription = NSEntityDescription.entity(forEntityName: "Language", in: self.context)
-                let language = Language(entity: entityDescription!, insertInto: self.context) // TODO: Fix me
+                let language = Language(entity: self.entityDescription, insertInto: self.context)
                 language.rawId = id
                 language.flag = flag
                 language.name = name

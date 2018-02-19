@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 final class ScanCoordinator: Coordinator {
 
@@ -46,6 +47,7 @@ final class ScanCoordinator: Coordinator {
 
     init(navigationController: UINavigationController,
          languageStore: LanguageStore,
+         context: NSManagedObjectContext,
          parent: Coordinator?) {
         self.navigationController = navigationController
         self.languageStore = languageStore
@@ -56,12 +58,14 @@ final class ScanCoordinator: Coordinator {
         self.cameraFrameExtractService = CameraFrameExtractService(captureSession: captureSession)
         self.captureSessionService = CaptureSessionService(captureSession: captureSession)
         self.captureSession = captureSession
-        self.observationStore = ObservationStore()
+        self.observationStore = ObservationStore(context: context)
 
         let mobileNet = MobileNet()
         let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
         self.observationService = ObservationService(model: mobileNet.model,
-                                                     eventQueue: observationServiceQueue)
+                                                     eventQueue: observationServiceQueue,
+                                                     context: context,
+                                                     languageStore: languageStore)
         self.captureSessionQueue = DispatchQueue.makeQueue(for: ScanCoordinator.self)
     }
 

@@ -39,7 +39,7 @@ final class TranslationCard: UICollectionViewCell, RegisterableView, TextStyleab
 
     }
 
-    func configure(with viewPresentation: TranslatedObservationViewPresentation) {
+    func configure(with viewPresentation: TranslatedObservationViewModel) {
         self.imageView.image = viewPresentation.image
         self.confidanceValueLabel.text = viewPresentation.confidance
         let actualTranslationCardViewPresentation = viewPresentation.translationViewPresentations
