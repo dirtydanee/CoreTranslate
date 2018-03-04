@@ -16,6 +16,6 @@ class Observation: NSManagedObject {
     @NSManaged var capturedImageData: Data
     @NSManaged var identifier: String
     @NSManaged var confidence: Float
-    @NSManaged var baseLanguage: Language // TODO: Daniel - should this be a proper relationship ????
+    @NSManaged var baseLanguageId: String
 
 }

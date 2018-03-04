@@ -31,6 +31,7 @@
 		1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A879200405C7008042EE /* TranslationCoordinator.swift */; };
 		1860A87C200406F0008042EE /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860A87B200406F0008042EE /* TranslationService.swift */; };
 		186504FE20309FD10053ED51 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186504FD20309FD10053ED51 /* Language.swift */; };
+		187436832047325600DC2EBD /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187436822047325600DC2EBD /* CoreDataStore.swift */; };
 		1876BA7320139BA0009EDF7C /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA7220139BA0009EDF7C /* UIImage+Rotation.swift */; };
 		1876BA752013AD09009EDF7C /* UICollectionView+CellUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA742013AD09009EDF7C /* UICollectionView+CellUsage.swift */; };
 		1876BA7A2014FB60009EDF7C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */; };
@@ -131,6 +132,7 @@
 		1860A879200405C7008042EE /* TranslationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
 		1860A87B200406F0008042EE /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		186504FD20309FD10053ED51 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		187436822047325600DC2EBD /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		1876BA7220139BA0009EDF7C /* UIImage+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		1876BA742013AD09009EDF7C /* UICollectionView+CellUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+CellUsage.swift"; sourceTree = "<group>"; };
 		1876BA792014FB60009EDF7C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 		1887A5E51FFC0FBF00BA19A0 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				187436822047325600DC2EBD /* CoreDataStore.swift */,
 				1887A5E61FFC0FBF00BA19A0 /* ObservationStore.swift */,
 				1894F0282017C5D10091A64B /* LanguageStore.swift */,
 			);
@@ -811,6 +814,7 @@
 				1894F01C20176A3A0091A64B /* CirleBorderdButton.swift in Sources */,
 				1841B506200105090055BD73 /* UITableView+CellUsage.swift in Sources */,
 				1876BA7A2014FB60009EDF7C /* TabBarCoordinator.swift in Sources */,
+				187436832047325600DC2EBD /* CoreDataStore.swift in Sources */,
 				18BF497C201682610027CB7F /* SettingsStore.swift in Sources */,
 				1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */,
 				189303EA2013568000E9B494 /* TranslationCardsCollectionViewDataSource.swift in Sources */,

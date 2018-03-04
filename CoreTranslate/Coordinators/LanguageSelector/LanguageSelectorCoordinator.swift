@@ -18,20 +18,19 @@ final class LanguageSelectorCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator]
 
     let languageStore: LanguageStore
-    private var languageViewController: LanguageSelectorViewController
+    private var languageViewController: LanguageSelectorViewController!
 
     init(languageStore: LanguageStore,
          parent: Coordinator?) {
         self.languageStore = languageStore
         self.parent = parent
-        self.languageViewController = LanguageSelectorViewController()
         self.childCoordinators = []
     }
 
     func start(animated: Bool) {
         let dataSource = LanguageSelectorDataSource(store: self.languageStore)
         dataSource.delegate = self
-        self.languageViewController.dataSource = dataSource
+        self.languageViewController = LanguageSelectorViewController(dataSource: dataSource)
         self.languageViewController.delegate = self
     }
 

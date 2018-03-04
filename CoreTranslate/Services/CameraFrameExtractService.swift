@@ -103,7 +103,7 @@ extension CameraFrameExtractService: AVCaptureVideoDataOutputSampleBufferDelegat
         do {
             let image = try self.image(from: sampleBuffer)
             self.imageQueue.append(image)
-        } catch let error {
+        } catch {
             // TODO: Daniel - add error handling
             clog("\(error)")
         }

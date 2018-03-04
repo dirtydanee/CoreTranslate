@@ -12,18 +12,26 @@ import Vision
 
 final class ObservationTransformer: CoreDataTransformer {
 
-    enum Error: Swift.Error {
-        case imageToDataConversionFailed
+    // TODO: Move this to settings
+    private struct Constants {
+        static let minimumConfidance: Float = 0.3
     }
 
+    enum Error: Swift.Error {
+        case imageToDataConversionFailed
+        case unqualifiedImage
+    }
+
+    let observationStore: ObservationStore
     let context: NSManagedObjectContext
     let entityName: NSEntityDescription.CoreTranslationEntityName
     let languageStore: LanguageStore
 
-    init(context: NSManagedObjectContext,
+    init(observationStore: ObservationStore,
          entityName: NSEntityDescription.CoreTranslationEntityName,
          languageStore: LanguageStore) {
-        self.context = context
+        self.observationStore = observationStore
+        self.context = observationStore.context
         self.entityName = entityName
         self.languageStore = languageStore
     }
@@ -31,8 +39,13 @@ final class ObservationTransformer: CoreDataTransformer {
     func transform(_ classificationObservation: VNClassificationObservation,
                    from image: UIImage) throws -> Observation {
 
-        guard let imageData = UIImagePNGRepresentation(image) else {
+        guard let imageData = UIImageJPEGRepresentation(image, 0.5) else {
             throw Error.imageToDataConversionFailed
+        }
+
+        guard classificationObservation.confidence >= Constants.minimumConfidance,
+              !observationStore.exists(identifier: classificationObservation.identifier) else {
+            throw Error.unqualifiedImage
         }
 
         let observation = Observation(entity: self.entityDescription, insertInto: self.context)
@@ -43,7 +56,7 @@ final class ObservationTransformer: CoreDataTransformer {
         let confidence: Float = classificationObservation.confidence
         observation.confidence = confidence
         observation.capturedImageData = imageData
-        observation.baseLanguage = self.languageStore.language(with: ApplicationConfiguration.baseLanguage)
+        observation.baseLanguageId = ApplicationConfiguration.baseLanguageId.rawValue
 
         return observation
     }

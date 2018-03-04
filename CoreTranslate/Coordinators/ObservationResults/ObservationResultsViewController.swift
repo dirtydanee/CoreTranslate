@@ -23,13 +23,13 @@ class ObservationResultsViewController: UIViewController {
 
     private var tableView: UITableView!
     private var languageSelectorView: LanguageSelectorHeaderView!
-    let viewPresentations: [ObservationViewModel]
+    let observationStore: ObservationStore
     let dataSource: ObservationResultsDataSource
     weak var delegate: ObservationResultsViewControllerDelegate?
 
-    init(viewPresentations: [ObservationViewModel]) {
-        self.viewPresentations = viewPresentations
-        self.dataSource = ObservationResultsDataSource(observationPresentations: viewPresentations)
+    init(observationStore: ObservationStore) {
+        self.dataSource = ObservationResultsDataSource(observationStore: observationStore)
+        self.observationStore = observationStore
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -41,6 +41,7 @@ class ObservationResultsViewController: UIViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupHeaderView()
+        self.dataSource.reload()
         self.navigationController?.isNavigationBarHidden = false
     }
 
@@ -94,7 +95,7 @@ extension ObservationResultsViewController: LanguageSelectorHeaderViewDelegate {
 
 extension ObservationResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedObservation = self.viewPresentations[indexPath.row].observation
+        let selectedObservation: Observation = self.observationStore.fetch(atIndexPath: indexPath)
         self.delegate?.observationResultsViewController(self, didSelectObservation: selectedObservation)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 // TODO: Write tests
-final class LanguageStore {
+final class LanguageStore: NSObject, CoreDataStore {
 
     enum Error {
         enum Resource: Swift.Error {
@@ -19,22 +19,35 @@ final class LanguageStore {
         }
     }
 
-    private let languages: [Language]
-    let baseLanguageId: LanguageId
-    let context: NSManagedObjectContext
+    typealias Entity = Language
 
-    init(baseLanguageId: LanguageId, context: NSManagedObjectContext) {
-        do {
-            self.baseLanguageId = baseLanguageId
-            self.context = context
-            self.languages = try type(of: self).readLanguages(fromResource: "Languages", with: context)
-        } catch let error {
-            fatalError("Unable to create language store!. Error: \(error.localizedDescription)")
+    let context: NSManagedObjectContext
+    let entityName: String = "Language"
+    let entity: NSEntityDescription
+    let fetchedResultsController: NSFetchedResultsController<Language>
+    let baseLanguageId: LanguageId
+
+    init(baseLanguageId: LanguageId, context: NSManagedObjectContext) throws {
+        self.baseLanguageId = baseLanguageId
+        self.context = context
+        try type(of: self).setupLanguages(fromResource: "Languages", with: context)
+
+        let fetchRequest: NSFetchRequest<Language> = NSFetchRequest(entityName: self.entityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Language.name), ascending: true)]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                   managedObjectContext: context,
+                                                                   sectionNameKeyPath: nil,
+                                                                   cacheName: nil)
+        guard let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: context) else {
+            throw CoreDataHandler.Error.invalidEntityName(self.entityName)
         }
+        self.entity = entity
+        super.init()
+        self.fetchedResultsController.delegate = self
     }
 
-    private static func readLanguages(fromResource resource: String,
-                                      with context: NSManagedObjectContext) throws -> [Language] {
+    private static func setupLanguages(fromResource resource: String,
+                                       with context: NSManagedObjectContext) throws {
         guard let languagesURL = Bundle.main.url(forResource: resource, withExtension: "plist") else {
             throw Error.Resource.missing
         }
@@ -49,23 +62,45 @@ final class LanguageStore {
         }
 
         let transformer = LanguageTransformer(context: context, entityName: .language)
-        return try transformer.transform(languages)
+        try transformer.transform(languages)
     }
 
     // MARK: - Public interface
 
-    func allLanguages(ordered: Bool = true) -> [Language] {
-        return ordered ? self.languages.sorted { $0.name < $1.name } : self.languages
+    func reloadAllLanguages() throws {
+        self.fetchedResultsController.fetchRequest.predicate = nil
+        try self.fetchedResultsController.performFetch()
     }
 
-    func languages(containing text: String) -> [Language] {
-        return self.languages.filter { $0.name.lowercased().contains(text) }
+    @discardableResult
+    func languages(containing text: String) throws -> [Language] {
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+        return try self.fetchEntities(with: predicate)
     }
 
-    func language(with identifier: LanguageId) -> Language {
-        guard let language = self.languages.first(where: { language in language.id == identifier }) else {
-            fatalError("Language not supported!")
+    func language(with identifier: LanguageId) throws -> Language {
+        let predicate = NSPredicate(format: "rawId == %@", identifier.rawValue)
+        return try self.fetchEntity(with: predicate)
+    }
+}
+
+extension LanguageStore: NSFetchedResultsControllerDelegate {
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+
+        switch type {
+        case .insert:
+            print("insterted")
+        case .delete:
+            print("deleted")
+        case .update:
+            print("updated")
+        case .move:
+            print("moved")
         }
-        return language
     }
 }

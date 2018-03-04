@@ -58,15 +58,21 @@ final class ScanCoordinator: Coordinator {
         self.cameraFrameExtractService = CameraFrameExtractService(captureSession: captureSession)
         self.captureSessionService = CaptureSessionService(captureSession: captureSession)
         self.captureSession = captureSession
-        self.observationStore = ObservationStore(context: context)
 
-        let mobileNet = MobileNet()
-        let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
-        self.observationService = ObservationService(model: mobileNet.model,
-                                                     eventQueue: observationServiceQueue,
-                                                     context: context,
-                                                     languageStore: languageStore)
-        self.captureSessionQueue = DispatchQueue.makeQueue(for: ScanCoordinator.self)
+        do {
+            let observationStore = try ObservationStore(context: context)
+            let mobileNet = MobileNet()
+            let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
+            self.observationService = ObservationService(model: mobileNet.model,
+                                                         eventQueue: observationServiceQueue,
+                                                         observationStore: observationStore,
+                                                         languageStore: languageStore)
+            self.captureSessionQueue = DispatchQueue.makeQueue(for: ScanCoordinator.self)
+            self.observationStore = observationStore
+        } catch {
+            clog(error.localizedDescription)
+            fatalError("Unable to create store")
+        }
     }
 
     func start(animated: Bool) {
@@ -88,15 +94,7 @@ private extension ScanCoordinator {
 
     func runObservation(on image: UIImage) {
         do {
-            try self.observationService.observeContent(of: image, completionHandler: { result in
-                switch result {
-                case .success(let observation):
-                    self.observationStore.add(observation)
-                case .failure(let error):
-                    // TODO: Daniel - check again error handling video
-                    clog("\(error)")
-                }
-            })
+            try self.observationService.observeContent(of: image, completionHandler: nil)
         } catch let error {
             // TODO: Daniel - check again error handling video
             clog("\(error)")
@@ -104,12 +102,16 @@ private extension ScanCoordinator {
     }
 
     func presentObservations() {
-        let observationsCoordinator = ObservationResultsCoordinator(navigationController: self.navigationController,
-                                                                    observationStore: self.observationStore,
-                                                                    languageStore: self.languageStore,
-                                                                    parent: self)
-        observationsCoordinator.start(animated: true)
-        self.childCoordinators.append(observationsCoordinator)
+        do {
+            let observationsCoordinator = try ObservationResultsCoordinator(navigationController: self.navigationController,
+                                                                            observationStore: self.observationStore,
+                                                                            languageStore: self.languageStore,
+                                                                            parent: self)
+            observationsCoordinator.start(animated: true)
+            self.childCoordinators.append(observationsCoordinator)
+        } catch {
+            clog("Unable to present observations. Error: \(error)", priority: .error)
+        }
     }
 }
 
@@ -265,7 +267,7 @@ extension ScanCoordinator: ScanViewControllerDelegate {
 
                 // Stop extracting frames and invalidate all results so far
                 self.cameraFrameExtractService.stopExtractingVideoFrames()
-                self.observationStore.removeAll()
+                // TODO: Clear all observations so far
 
                 switch result {
                 case .failure(let error):

@@ -14,12 +14,14 @@ protocol LanguageSelectorViewControllerDelegate: class {
 
 final class LanguageSelectorViewController: UIViewController {
 
+    let dataSource: LanguageSelectorDataSource
+
     private var tableView: UITableView!
     private var searchController: UISearchController!
-    var dataSource: LanguageSelectorDataSource?
     weak var delegate: LanguageSelectorViewControllerDelegate?
 
-    init() {
+    init(dataSource: LanguageSelectorDataSource) {
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -32,6 +34,7 @@ final class LanguageSelectorViewController: UIViewController {
         self.setupTableView()
         self.setupNavigationItem()
         self.setupSearchContoller()
+        self.dataSource.reload()
     }
 
     override func viewDidLayoutSubviews() {

@@ -13,7 +13,7 @@ protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get }
     var parent: Coordinator? { get }
 
-    func start(animated: Bool)
+    func start(animated: Bool) throws
     func handle(event: Event)
 }
 

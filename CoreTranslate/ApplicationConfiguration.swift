@@ -10,6 +10,6 @@ import Foundation
 
 final class ApplicationConfiguration {
     static let baseTranslationURL: URL = URL(string: "https://server-translationapitextonly.wedeploy.io")!
-    static let baseLanguage: LanguageId = .english
+    static let baseLanguageId: LanguageId = .english
     static let preferredTargetLanguage: LanguageId = .hungarian
 }

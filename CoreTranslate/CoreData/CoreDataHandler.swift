@@ -11,6 +11,11 @@ import CoreData
 
 final class CoreDataHandler {
 
+    enum Error: Swift.Error {
+        case invalidEntityName(String)
+        case unfoundEntity
+    }
+
     let modelName: String
 
     private(set) lazy var mainContext: NSManagedObjectContext = {

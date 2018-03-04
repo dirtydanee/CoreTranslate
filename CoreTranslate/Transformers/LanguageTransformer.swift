@@ -18,13 +18,13 @@ final class LanguageTransformer: CoreDataTransformer {
         self.entityName = entityName
     }
 
-    func transform(_ dictionaries:  [[String: Any]]) throws -> [Language] {
+    func transform(_ dictionaries: [[String: Any]]) throws {
 
-        return dictionaries.flatMap { dictionary in
+        return dictionaries.forEach { dictionary in
                 guard let id = dictionary["id"] as? String,
                     let flagHexValues = dictionary["flagHexValues"] as? [Int],
                     let name = dictionary["name"] as? String else {
-                        return nil
+                        return
                 }
 
                 var flag: String = ""
@@ -38,8 +38,6 @@ final class LanguageTransformer: CoreDataTransformer {
                 language.rawId = id
                 language.flag = flag
                 language.name = name
-
-                return language
         }
     }
 }

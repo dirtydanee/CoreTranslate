@@ -22,13 +22,18 @@ final class AppCoordinator: Coordinator {
     }
     
     init(window: UIWindow) {
-        self.window = window
-        self.coreDataHandler = CoreDataHandler(modelName: "Observations")
-        self.parent = nil
-        self.childCoordinators = []
-        let languageStore = LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguage,
-                                          context: self.coreDataHandler.mainContext)
-        self.languageStore = languageStore
+        do {
+            self.window = window
+            self.coreDataHandler = CoreDataHandler(modelName: "Observations")
+            self.parent = nil
+            self.childCoordinators = []
+            let languageStore = try LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguageId,
+                                                  context: self.coreDataHandler.mainContext)
+            self.languageStore = languageStore
+        } catch {
+            clog("Unable to setup root coordinator. Error: \(error)", priority: .error)
+            fatalError()
+        }
     }
 
     func start(animated: Bool) {

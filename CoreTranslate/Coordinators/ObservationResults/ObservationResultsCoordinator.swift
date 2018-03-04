@@ -27,19 +27,18 @@ final class ObservationResultsCoordinator: Coordinator {
     init(navigationController: UINavigationController,
          observationStore: ObservationStore,
          languageStore: LanguageStore,
-         parent: Coordinator?) {
+         parent: Coordinator?) throws {
         self.navigationController = navigationController
         self.observationStore = observationStore
         self.languageStore = languageStore
         self.parent = parent
-        self.toLanguage = languageStore.language(with: ApplicationConfiguration.preferredTargetLanguage)
-        self.fromLanguage = languageStore.language(with: ApplicationConfiguration.baseLanguage)
+        self.toLanguage = try languageStore.language(with: ApplicationConfiguration.preferredTargetLanguage)
+        self.fromLanguage = try languageStore.language(with: ApplicationConfiguration.baseLanguageId)
         self.childCoordinators = []
     }
 
     func start(animated: Bool) {
-        let viewPresentations = self.observationStore.observations.map { ObservationViewModel(observation: $0) }
-        let viewController = ObservationResultsViewController(viewPresentations: viewPresentations)
+        let viewController = ObservationResultsViewController(observationStore: self.observationStore)
         viewController.loadViewIfNeeded()
         viewController.updateLanguage(to: self.fromLanguage, atPosition: .from)
         viewController.updateLanguage(to: self.toLanguage, atPosition: .to)
@@ -70,7 +69,7 @@ final class ObservationResultsCoordinator: Coordinator {
         self.childCoordinators.append(translationCoordinator)
     }
 
-    private func presentLanguages() {
+    private func presentLanguages() throws {
         // TODO: Check if this guy lives already
         let languageSelectorCoordinator = LanguageSelectorCoordinator(languageStore: self.languageStore,
                                                                       parent: self)
@@ -89,7 +88,12 @@ final class ObservationResultsCoordinator: Coordinator {
 extension ObservationResultsCoordinator: ObservationResultsViewControllerDelegate {
     func observationResultsViewController(_ viewController: ObservationResultsViewController,
                                           didRequestChangingLanguageAtPosition position: LanguageSelectorHeaderView.Position) {
-        self.presentLanguages()
+        do {
+            try self.presentLanguages()
+        } catch {
+            clog("Unable to present languages. Error: \(error)", priority: .error)
+        }
+
     }
 
     func observationResultsViewController(_ viewController: ObservationResultsViewController,

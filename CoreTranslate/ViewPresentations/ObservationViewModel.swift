@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct ObservationViewModel {
+class ObservationViewModel {
     
     let observation: Observation
     let resultTitle: String
     let resultValue: String
     let confidenceTitle: String
     let confidenceValue: String
-    let image: UIImage?
+    var image: UIImage?
     
     init(observation: Observation) {
         self.observation = observation
@@ -23,7 +23,7 @@ struct ObservationViewModel {
         self.resultValue = observation.identifier
         self.confidenceTitle = LocalizedString("General_Confidance")
         self.confidenceValue = ConfidanceFormatter.format(observation.confidence)
-        self.image = UIImage(data: observation.capturedImageData)?.rotate(byDegree: 90)
+        self.image = UIImage(data: self.observation.capturedImageData)?.rotate(byDegree: 90)
     }
 }
 

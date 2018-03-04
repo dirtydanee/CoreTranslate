@@ -9,36 +9,65 @@
 import UIKit
 import CoreData
 
-//struct Observation: Equatable, Hashable {
-//
-//    var hashValue: Int {
-//        return self.identifier.hashValue
-//    }
-//
-//    let uuid: UUID
-//    let identifier: String
-//    let confidence: Float
-//    let capturedImageData: Data
-//
-//    static func == (lhs: Observation, rhs: Observation) -> Bool {
-//        return lhs.identifier == rhs.identifier
-//    }
-//}
+final class ObservationStore: NSObject, CoreDataStore {
+    typealias Entity = Observation
 
-final class ObservationStore {
-
-    private(set) var observations: Set<Observation> = []
     let context: NSManagedObjectContext
+    let entityName: String = "Observation"
+    let entity: NSEntityDescription
+    let fetchedResultsController: NSFetchedResultsController<Observation>
 
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext) throws {
         self.context = context
+
+        let fetchRequest: NSFetchRequest<Observation> = NSFetchRequest(entityName: self.entityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Observation.confidence), ascending: true)]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                   managedObjectContext: context,
+                                                                   sectionNameKeyPath: nil,
+                                                                   cacheName: nil)
+
+        guard let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: context) else {
+            throw CoreDataHandler.Error.invalidEntityName(self.entityName)
+        }
+        self.entity = entity
+        super.init()
+        self.fetchedResultsController.delegate = self
     }
 
-    func add(_ observation: Observation) {
-        self.observations.insert(observation)
+    func exists(identifier: String) -> Bool {
+        do {
+            let predicate = NSPredicate(format: "identifier == %@", identifier)
+            let request = NSFetchRequest<Entity>(entityName: self.entityName)
+            request.predicate = predicate
+            let result = try self.context.fetch(request)
+            print(identifier)
+            print(result)
+            return !result.isEmpty
+        } catch {
+            clog(error.localizedDescription) // TODO
+            return false
+        }
     }
+}
 
-    func removeAll() {
-        self.observations.removeAll()
+extension ObservationStore: NSFetchedResultsControllerDelegate {
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+
+        switch type {
+        case .insert:
+            print("insterted")
+        case .delete:
+            print("deleted")
+        case .update:
+            print("updated")
+        case .move:
+            print("moved")
+        }
     }
 }

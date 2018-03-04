@@ -19,40 +19,50 @@ protocol LanguageSelectorDataSourceDelegate: class {
 final class LanguageSelectorDataSource: NSObject {
 
     let store: LanguageStore
-    private(set) var languageViewPresentations: [LanguageViewModel]
     weak var delegate: LanguageSelectorDataSourceDelegate?
 
     init(store: LanguageStore) {
         self.store = store
-        self.languageViewPresentations = store.allLanguages().map { LanguageViewModel(language: $0) }
     }
 
-    private func reload() {
-        self.languageViewPresentations = self.store.allLanguages().map { LanguageViewModel(language: $0) }
+    func reload(forSearchText text: String? = nil) {
+        do {
+            if let text = text {
+                try self.store.languages(containing: text)
+            } else {
+                try self.store.reloadAllLanguages()
+            }
+        } catch {
+            clog("Unable to reload languages. Error description: \(error)")
+        }
     }
 }
 
 extension LanguageSelectorDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.languageViewPresentations.count
+        return self.store.objectCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LanguageCell = tableView.dequeueReusableCell(for: indexPath)
-        let viewPresentation = self.languageViewPresentations[indexPath.row]
-        cell.configure(viewPresentation: viewPresentation)
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+        let language: Language = self.store.fetch(atIndexPath: indexPath)
+        let viewModel = LanguageViewModel(language: language)
+        cell.configure(viewModel: viewModel)
         return cell
     }
 }
 
 extension LanguageSelectorDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedViewPresentation = self.languageViewPresentations[indexPath.row]
-        self.delegate?.dataSource(self, didSelect: selectedViewPresentation.language)
+        let language = self.store.fetchedResultsController.object(at: indexPath)
+        self.delegate?.dataSource(self, didSelect: language)
     }
 }
 
 extension LanguageSelectorDataSource: UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else {
             clog("Missing text in LanguageSelectorDataSource on UISearchController. Unable to carry out search.",
@@ -64,7 +74,6 @@ extension LanguageSelectorDataSource: UISearchResultsUpdating {
     }
 
     private func search(for text: String) {
-
         defer {
             self.delegate?.dataSourceDidRequestReload(self)
         }
@@ -72,8 +81,7 @@ extension LanguageSelectorDataSource: UISearchResultsUpdating {
         if text.isEmpty {
             self.reload()
         } else {
-            let languages = self.store.languages(containing: text)
-            self.languageViewPresentations = languages.map { LanguageViewModel(language: $0) }
+            self.reload(forSearchText: text)
         }
     }
 }

@@ -15,8 +15,8 @@ final class ObservationService {
     enum Error: Swift.Error {
         case missingCGImage
         case invalidOrientation
+        case invalidStructure
         case missingModel
-        case unqualifiedImage
     }
 
     let model: MLModel
@@ -25,21 +25,19 @@ final class ObservationService {
     private let visionCoreMLModel: VNCoreMLModel?
     private var counter: Int = 0
 
-    private struct Constants {
-        static let minimumConfidance: Float = 0.3
-    }
-
     init(model: MLModel,
          eventQueue: DispatchQueue,
-         context: NSManagedObjectContext,
+         observationStore: ObservationStore,
          languageStore: LanguageStore) {
         self.model = model
         self.visionCoreMLModel = try? VNCoreMLModel(for: model)
         self.eventQueue = eventQueue
-        self.observationTransformer = ObservationTransformer(context: context, entityName: .observation, languageStore: languageStore)
+        self.observationTransformer = ObservationTransformer(observationStore: observationStore,
+                                                             entityName: .observation,
+                                                             languageStore: languageStore)
     }
 
-    func observeContent(of image: UIImage, completionHandler: @escaping (Result<Observation>) -> Swift.Void) throws {
+    func observeContent(of image: UIImage, completionHandler: ((Result<Observation>) -> Swift.Void)?) throws {
 
         guard let cgImage = image.cgImage else {
             throw Error.missingCGImage
@@ -55,25 +53,23 @@ final class ObservationService {
 
         // Create request with the model and the specified completion handler
         // TODO: Daniel - try to zoom in on the recognized object on the picture
-        let request = VNCoreMLRequest(model: visionCoreMLModel) { (request, error) in
+        let request = VNCoreMLRequest(model: visionCoreMLModel) { request, error in
 
             DispatchQueue.main.async {
 
                 guard error == nil else {
-                    completionHandler(.failure(error!))
+                    completionHandler?(.failure(error!))
                     return
                 }
 
-                guard let topObservation = request.results?.first as? VNClassificationObservation,
-                      let observation = try? self.observationTransformer.transform(topObservation, from: image),
-                    observation.confidence >= Constants.minimumConfidance
-                    else {
-                        completionHandler(.failure(Error.unqualifiedImage))
-                        return
+                guard let topObservation = request.results?.first as? VNClassificationObservation else {
+                    completionHandler?(.failure(Error.invalidStructure))
+                    return
                 }
-
-                completionHandler(.success(observation))
-
+                // TODO: Move this to the coordinator
+                if let observation = try? self.observationTransformer.transform(topObservation, from: image) {
+                    completionHandler?(.success(observation))
+                }
             }
         }
 
