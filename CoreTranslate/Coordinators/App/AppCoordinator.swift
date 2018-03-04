@@ -28,7 +28,7 @@ final class AppCoordinator: Coordinator {
             self.parent = nil
             self.childCoordinators = []
             let languageStore = try LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguageId,
-                                                  context: self.coreDataHandler.mainContext)
+                                                  context: self.coreDataHandler.inAppContext)
             self.languageStore = languageStore
         } catch {
             clog("Unable to setup root coordinator. Error: \(error)", priority: .error)
@@ -38,9 +38,9 @@ final class AppCoordinator: Coordinator {
 
     func start(animated: Bool) {
         self.setupAppearance()
-        let tabBarCoordinator = TabBarCoordinator(languageStore: languageStore,
-                                                  context: self.coreDataHandler.mainContext,
-                                                   parent: self)
+        let tabBarCoordinator = TabBarCoordinator(languageStore: self.languageStore,
+                                                  coreDataHandler: self.coreDataHandler,
+                                                  parent: self)
         self.window.rootViewController = tabBarCoordinator.tabBarController
         self.window.makeKeyAndVisible()
         tabBarCoordinator.start(animated: false)

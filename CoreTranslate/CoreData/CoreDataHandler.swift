@@ -18,7 +18,13 @@ final class CoreDataHandler {
 
     let modelName: String
 
-    private(set) lazy var mainContext: NSManagedObjectContext = {
+    private(set) lazy var inAppContext: NSManagedObjectContext = {
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.parent = self.privateContext
+        return context
+    }()
+
+    private(set) lazy var saveContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.parent = self.privateContext
         return context
@@ -70,10 +76,10 @@ final class CoreDataHandler {
     }
 
     func saveChanges() {
-        self.mainContext.perform {
+        self.saveContext.perform {
             do {
-                if self.mainContext.hasChanges {
-                    try self.mainContext.save()
+                if self.saveContext.hasChanges {
+                    try self.saveContext.save()
                 }
             } catch {
                 print("Failed to saving. Error: \(error.localizedDescription)")

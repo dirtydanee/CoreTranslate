@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct TranslationConfiguration {
     let baseURL: URL
@@ -17,19 +18,20 @@ struct TranslationConfiguration {
 final class TranslationCoordinator: Coordinator {
 
     let navigationController: UINavigationController
+    let observation: Observation
+    let configuration: TranslationConfiguration
+    let coreDataHandler: CoreDataHandler
     var childCoordinators: [Coordinator]
     var parent: Coordinator?
-    
+    private let translationService: TranslationService
+    private var translationViewController: TranslationViewController?
+
     var viewController: UIViewController? {
         return self.translationViewController
     }
 
-    let observation: Observation
-    let configuration: TranslationConfiguration
-    private let translationService: TranslationService
-    private var translationViewController: TranslationViewController?
-
     init(navigationController: UINavigationController,
+         coreDataHandler: CoreDataHandler,
          observationToTranslate observation: Observation,
          withConfiguration configuration: TranslationConfiguration) {
         self.navigationController = navigationController
@@ -37,11 +39,13 @@ final class TranslationCoordinator: Coordinator {
         self.observation = observation
         self.configuration = configuration
         self.translationService = TranslationService(baseURL: ApplicationConfiguration.baseTranslationURL)
+        self.coreDataHandler = coreDataHandler
         self.translationService.delegate = self
     }
 
     func start(animated: Bool) {
         let translationViewController = TranslationViewController(state: .loading)
+       // let navigationController = UINavigationController(rootViewController: translationViewController)
         self.navigationController.pushViewController(translationViewController, animated: animated)
         translationViewController.udpate()
         self.translationViewController = translationViewController
@@ -59,6 +63,8 @@ final class TranslationCoordinator: Coordinator {
     }
 }
 
+// MARK: TranslationServiceDelegate
+
 extension TranslationCoordinator: TranslationServiceDelegate {
     func translationService(_ translationService: TranslationService,
                             didTranslateObservation translation: TranslatedObservation) {
@@ -71,5 +77,13 @@ extension TranslationCoordinator: TranslationServiceDelegate {
                             didFailCreatingTranslationFor observation: Observation,
                             with error: Error) {
         self.translationViewController?.state = .failed(error)
+    }
+}
+
+// MARK: TranslationViewControllerDelegate
+
+extension TranslationCoordinator: TranslationViewControllerDelegate {
+    func translationViewControllerDidRequestSavingTranslation(_ viewController: TranslationViewController) {
+        
     }
 }

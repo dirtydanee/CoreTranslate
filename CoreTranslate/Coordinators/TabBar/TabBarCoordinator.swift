@@ -26,7 +26,7 @@ final class TabBarCoordinator: Coordinator {
     }
 
     let parent: Coordinator?
-    let context: NSManagedObjectContext
+    let coreDataHandler: CoreDataHandler
     private(set) var childCoordinators: [Coordinator]
     let tabBarController: TabBarController
     let languageStore: LanguageStore
@@ -40,10 +40,10 @@ final class TabBarCoordinator: Coordinator {
     private var settingsCoordinator: SettingsCoordinator?
 
     init(languageStore: LanguageStore,
-         context: NSManagedObjectContext,
+         coreDataHandler: CoreDataHandler,
          parent: Coordinator) {
         self.languageStore = languageStore
-        self.context = context
+        self.coreDataHandler = coreDataHandler
         self.parent = parent
         self.tabBarController = TabBarController()
         self.childCoordinators = []
@@ -69,7 +69,7 @@ final class TabBarCoordinator: Coordinator {
         let takePhotoNavigationController = UINavigationController()
         let takePhotoCoordinator = ScanCoordinator(navigationController: takePhotoNavigationController,
                                                    languageStore: self.languageStore,
-                                                   context: self.context,
+                                                   coreDataHandler: self.coreDataHandler,
                                                    parent: self)
         takePhotoCoordinator.start(animated: false)
         takePhotoCoordinator.viewController?.view.frame = self.tabBarController.view.frame

@@ -19,16 +19,19 @@ final class ObservationResultsCoordinator: Coordinator {
     let observationStore: ObservationStore
     let navigationController: UINavigationController
     let languageStore: LanguageStore
+    let coreDataHandler: CoreDataHandler
 
     private var observationResultsViewController: ObservationResultsViewController?
     private var toLanguage: Language
     private var fromLanguage: Language
 
     init(navigationController: UINavigationController,
+         coreDataHandler: CoreDataHandler,
          observationStore: ObservationStore,
          languageStore: LanguageStore,
          parent: Coordinator?) throws {
         self.navigationController = navigationController
+        self.coreDataHandler = coreDataHandler
         self.observationStore = observationStore
         self.languageStore = languageStore
         self.parent = parent
@@ -63,8 +66,10 @@ final class ObservationResultsCoordinator: Coordinator {
                                                                 toLanguage: toLanguage)
 
         let translationCoordinator = TranslationCoordinator(navigationController: self.navigationController,
+                                                            coreDataHandler: self.coreDataHandler,
                                                             observationToTranslate: observation,
                                                             withConfiguration: translationConfiguration)
+        translationCoordinator.parent = self
         translationCoordinator.start(animated: true)
         self.childCoordinators.append(translationCoordinator)
     }

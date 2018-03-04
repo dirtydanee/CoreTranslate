@@ -42,6 +42,10 @@ class ObservationResultsViewController: UIViewController {
         self.setupTableView()
         self.setupHeaderView()
         self.dataSource.reload()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
 

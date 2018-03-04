@@ -31,6 +31,7 @@ final class ScanCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator]
 
     let languageStore: LanguageStore
+    let coreDataHandler: CoreDataHandler
     let navigationController: UINavigationController
 
     private let captureSession: AVCaptureSession
@@ -47,10 +48,11 @@ final class ScanCoordinator: Coordinator {
 
     init(navigationController: UINavigationController,
          languageStore: LanguageStore,
-         context: NSManagedObjectContext,
+         coreDataHandler: CoreDataHandler,
          parent: Coordinator?) {
         self.navigationController = navigationController
         self.languageStore = languageStore
+        self.coreDataHandler = coreDataHandler
         self.parent = parent
         self.childCoordinators = []
 
@@ -60,7 +62,7 @@ final class ScanCoordinator: Coordinator {
         self.captureSession = captureSession
 
         do {
-            let observationStore = try ObservationStore(context: context)
+            let observationStore = try ObservationStore(context: coreDataHandler.inAppContext)
             let mobileNet = MobileNet()
             let observationServiceQueue = DispatchQueue.makeQueue(for: ObservationService.self)
             self.observationService = ObservationService(model: mobileNet.model,
@@ -104,6 +106,7 @@ private extension ScanCoordinator {
     func presentObservations() {
         do {
             let observationsCoordinator = try ObservationResultsCoordinator(navigationController: self.navigationController,
+                                                                            coreDataHandler: self.coreDataHandler,
                                                                             observationStore: self.observationStore,
                                                                             languageStore: self.languageStore,
                                                                             parent: self)

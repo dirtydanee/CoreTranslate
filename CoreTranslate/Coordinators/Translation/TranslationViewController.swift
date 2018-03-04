@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TranslationViewControllerDelegate: class {
+    func translationViewControllerDidRequestSavingTranslation(_ viewController: TranslationViewController)
+}
+
 final class TranslationViewController: UIViewController, DataLoading {
 
     typealias DataLoading = TranslatedObservationViewModel
@@ -21,6 +25,7 @@ final class TranslationViewController: UIViewController, DataLoading {
     let errorView: UIView = UIView()
 
     private var typedView: TranslationView!
+    weak var delegate: TranslationViewControllerDelegate?
 
     init(state: UIViewController.State<TranslatedObservationViewModel>) {
         self.state = state
@@ -44,6 +49,7 @@ final class TranslationViewController: UIViewController, DataLoading {
         case .loaded(let viewPresentation):
             self.typedView.present(viewPresentation)
             self.typedView.translationCardsCollectionView.reloadData()
+            self.enableSaveButton()
             self.removeLoadingView(animated: true)
         }
     }
@@ -54,17 +60,43 @@ final class TranslationViewController: UIViewController, DataLoading {
         self.view = self.typedView
     }
 
-    private func removeLoadingView(animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupSaveButton()
+    }
+}
+
+extension TranslationViewController {
+    @objc
+    func didPressSaveButton(_ button: UIBarButtonItem) {
+        self.delegate?.translationViewControllerDidRequestSavingTranslation(self)
+    }
+}
+
+// MARK: Private API
+
+private extension TranslationViewController {
+
+    func setupSaveButton() {
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save,
+                                         target: self,
+                                         action: #selector(self.didPressSaveButton(_:)))
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.navigationItem.rightBarButtonItem?.customView?.alpha = 0.5
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+
+    func enableSaveButton() {
+        self.navigationItem.rightBarButtonItem?.customView?.alpha = 1
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+
+    func removeLoadingView(animated: Bool) {
         let duration: TimeInterval = animated ? 0.33 : 0
         UIView.animate(withDuration: duration, animations: {
             self.loadingView.alpha = 0
         }) { _ in
             self.loadingView.removeFromSuperview()
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
     }
 }
