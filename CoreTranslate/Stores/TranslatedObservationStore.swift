@@ -1,26 +1,25 @@
 //
-//  ObservationStore.swift
+//  TranslatedObservationStore.swift
 //  CoreTranslate
 //
-//  Created by Daniel.Metzing on 02.01.18.
+//  Created by Daniel.Metzing on 04.03.18.
 //  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
-final class ObservationStore: NSObject, CoreDataStore {
-    typealias Entity = Observation
+class TranslatedObservationStore: NSObject, CoreDataStore {
+    typealias Entity = TranslatedObservation
 
     let context: NSManagedObjectContext
-    let entityName: String = "Observation"
+    let entityName: String = "TranslatedObservation"
     let entity: NSEntityDescription
-    let fetchedResultsController: NSFetchedResultsController<Observation>
+    let fetchedResultsController: NSFetchedResultsController<TranslatedObservation>
 
     init(context: NSManagedObjectContext) throws {
         self.context = context
 
-        let fetchRequest: NSFetchRequest<Observation> = NSFetchRequest(entityName: self.entityName)
+        let fetchRequest: NSFetchRequest<TranslatedObservation> = NSFetchRequest(entityName: self.entityName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Observation.confidence), ascending: true)]
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                    managedObjectContext: context,
@@ -34,22 +33,9 @@ final class ObservationStore: NSObject, CoreDataStore {
         super.init()
         self.fetchedResultsController.delegate = self
     }
-
-    func exists(identifier: String) -> Bool {
-        do {
-            let predicate = NSPredicate(format: "identifier == %@", identifier)
-            let request = NSFetchRequest<Entity>(entityName: self.entityName)
-            request.predicate = predicate
-            let result = try self.context.fetch(request)
-            return !result.isEmpty
-        } catch {
-            clog(error.localizedDescription) // TODO
-            return false
-        }
-    }
 }
 
-extension ObservationStore: NSFetchedResultsControllerDelegate {
+extension TranslatedObservationStore: NSFetchedResultsControllerDelegate {
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,

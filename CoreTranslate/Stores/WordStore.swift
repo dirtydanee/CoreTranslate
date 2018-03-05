@@ -1,26 +1,25 @@
 //
-//  ObservationStore.swift
+//  WordStore.swift
 //  CoreTranslate
 //
-//  Created by Daniel.Metzing on 02.01.18.
+//  Created by Daniel.Metzing on 04.03.18.
 //  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
-final class ObservationStore: NSObject, CoreDataStore {
-    typealias Entity = Observation
+class WordStore: NSObject, CoreDataStore {
+    typealias Entity = Word
 
     let context: NSManagedObjectContext
-    let entityName: String = "Observation"
+    let entityName: String = "Word"
     let entity: NSEntityDescription
-    let fetchedResultsController: NSFetchedResultsController<Observation>
+    let fetchedResultsController: NSFetchedResultsController<Word>
 
     init(context: NSManagedObjectContext) throws {
         self.context = context
 
-        let fetchRequest: NSFetchRequest<Observation> = NSFetchRequest(entityName: self.entityName)
+        let fetchRequest: NSFetchRequest<Word> = NSFetchRequest(entityName: self.entityName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Observation.confidence), ascending: true)]
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                    managedObjectContext: context,
@@ -35,21 +34,13 @@ final class ObservationStore: NSObject, CoreDataStore {
         self.fetchedResultsController.delegate = self
     }
 
-    func exists(identifier: String) -> Bool {
-        do {
-            let predicate = NSPredicate(format: "identifier == %@", identifier)
-            let request = NSFetchRequest<Entity>(entityName: self.entityName)
-            request.predicate = predicate
-            let result = try self.context.fetch(request)
-            return !result.isEmpty
-        } catch {
-            clog(error.localizedDescription) // TODO
-            return false
-        }
+    func fetch(byId identifier: UUID) throws -> Word {
+        let predicate = NSPredicate(format: "identifier == %@", identifier as CVarArg)
+        return try self.fetchEntity(with: predicate)
     }
 }
 
-extension ObservationStore: NSFetchedResultsControllerDelegate {
+extension WordStore: NSFetchedResultsControllerDelegate {
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,

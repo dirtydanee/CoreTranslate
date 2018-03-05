@@ -101,13 +101,6 @@ enum LanguageId: String {
     case zulu = "zu"
 }
 
-//struct Language {
-//    typealias Flag = String
-//    let id: LanguageId
-//    let flag: Flag
-//    let humanReadable: String
-//}
-
 struct TranslationLanguageSpecifier {
     let from: Language
     let to: Language

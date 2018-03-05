@@ -75,6 +75,24 @@ final class CoreDataHandler {
         self.modelName = modelName
     }
 
+    func temporarySaveContext() -> NSManagedObjectContext {
+        let temporarySaveContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        temporarySaveContext.parent = self.saveContext
+        return temporarySaveContext
+    }
+
+    func save(_ context: NSManagedObjectContext) {
+        context.perform {
+            do {
+                if context.hasChanges {
+                    try context.save()
+                }
+            } catch {
+                clog("Unable to save context: \(context)")
+            }
+        }
+    }
+
     func saveChanges() {
         self.saveContext.perform {
             do {

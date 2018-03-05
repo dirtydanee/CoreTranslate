@@ -39,11 +39,9 @@ final class TranslationCard: UICollectionViewCell, RegisterableView, TextStyleab
 
     }
 
-    func configure(with viewPresentation: TranslatedObservationViewModel) {
-        self.imageView.image = viewPresentation.image
-        self.confidanceValueLabel.text = viewPresentation.confidance
-        let actualTranslationCardViewPresentation = viewPresentation.translationViewPresentations
-            .filter { $0.to.languageId == viewPresentation.targetLanguageId }[0]
-        self.translationTextCard?.present(translationViewPresentation: actualTranslationCardViewPresentation)
+    func configure(with viewModel: TranslatedObservationViewModel) {
+        self.imageView.image = viewModel.image
+        self.confidanceValueLabel.text = viewModel.confidance
+        self.translationTextCard?.present(translationViewPresentation: viewModel.translationViewModel)
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1818D700204C82A700F52A43 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D6FF204C82A700F52A43 /* Translation.swift */; };
+		1818D702204C861100F52A43 /* WordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D701204C861100F52A43 /* WordStore.swift */; };
+		1818D704204D6CE200F52A43 /* TranslationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D703204D6CE200F52A43 /* TranslationStore.swift */; };
 		183EC648200942BD0043C82B /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC647200942BD0043C82B /* RESTService.swift */; };
 		183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC649200943DC0043C82B /* ApplicationConfiguration.swift */; };
 		183EC64C20094BE00043C82B /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC64B20094BE00043C82B /* TranslationResponse.swift */; };
@@ -50,8 +53,7 @@
 		189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */; };
 		189303CC2012702200E9B494 /* LanguageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303CB2012702200E9B494 /* LanguageId.swift */; };
 		189303D12012724600E9B494 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 189303CF2012724600E9B494 /* MobileNet.mlmodel */; };
-		189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D32012725D00E9B494 /* TranslatedObservation.swift */; };
-		189303D62012726C00E9B494 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D52012726C00E9B494 /* Translation.swift */; };
+		189303D62012726C00E9B494 /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303D52012726C00E9B494 /* TranslationViewModel.swift */; };
 		189303D920127A9700E9B494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189303D820127A9600E9B494 /* Default-568h@2x.png */; };
 		189303DC2012827200E9B494 /* TranslationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189303DA2012827200E9B494 /* TranslationCard.swift */; };
 		189303DD2012827200E9B494 /* TranslationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189303DB2012827200E9B494 /* TranslationCard.xib */; };
@@ -83,6 +85,11 @@
 		18BF497E201682BB0027CB7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF497D201682BB0027CB7F /* SettingsViewController.swift */; };
 		18BF4983201684B60027CB7F /* SettingsTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF4981201684B60027CB7F /* SettingsTextFieldCell.swift */; };
 		18BF4984201684B60027CB7F /* SettingsTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BF4982201684B60027CB7F /* SettingsTextFieldCell.xib */; };
+		18E15DEE204C7D2C00E79F94 /* TranslatedObservationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E15DED204C7D2C00E79F94 /* TranslatedObservationStore.swift */; };
+		18E15DF1204C7E5900E79F94 /* TranslatedObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E15DF0204C7E5900E79F94 /* TranslatedObservation.swift */; };
+		18E15DF5204C7EB600E79F94 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E15DF4204C7EB600E79F94 /* Word.swift */; };
+		18E15DF7204C807A00E79F94 /* WordTransfromer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E15DF6204C807A00E79F94 /* WordTransfromer.swift */; };
+		18E15DF9204C808900E79F94 /* TranslationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E15DF8204C808900E79F94 /* TranslationTransformer.swift */; };
 		18E7F8F6203B5E4F00BE92E0 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7F8F5203B5E4F00BE92E0 /* Observation.swift */; };
 		18E7F8F8203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7F8F7203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift */; };
 		18E7F8FA203B67FF00BE92E0 /* CoreDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7F8F9203B67FF00BE92E0 /* CoreDataTransformer.swift */; };
@@ -108,6 +115,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1818D6FF204C82A700F52A43 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		1818D701204C861100F52A43 /* WordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStore.swift; sourceTree = "<group>"; };
+		1818D703204D6CE200F52A43 /* TranslationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStore.swift; sourceTree = "<group>"; };
 		183EC647200942BD0043C82B /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		183EC649200943DC0043C82B /* ApplicationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfiguration.swift; sourceTree = "<group>"; };
 		183EC64B20094BE00043C82B /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
@@ -151,8 +161,7 @@
 		189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservationTransformer.swift; sourceTree = "<group>"; };
 		189303CB2012702200E9B494 /* LanguageId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageId.swift; sourceTree = "<group>"; };
 		189303CF2012724600E9B494 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
-		189303D32012725D00E9B494 /* TranslatedObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservation.swift; sourceTree = "<group>"; };
-		189303D52012726C00E9B494 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		189303D52012726C00E9B494 /* TranslationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
 		189303D820127A9600E9B494 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		189303DA2012827200E9B494 /* TranslationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCard.swift; sourceTree = "<group>"; };
 		189303DB2012827200E9B494 /* TranslationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslationCard.xib; sourceTree = "<group>"; };
@@ -188,6 +197,11 @@
 		18BF497D201682BB0027CB7F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		18BF4981201684B60027CB7F /* SettingsTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldCell.swift; sourceTree = "<group>"; };
 		18BF4982201684B60027CB7F /* SettingsTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTextFieldCell.xib; sourceTree = "<group>"; };
+		18E15DED204C7D2C00E79F94 /* TranslatedObservationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservationStore.swift; sourceTree = "<group>"; };
+		18E15DF0204C7E5900E79F94 /* TranslatedObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedObservation.swift; sourceTree = "<group>"; };
+		18E15DF4204C7EB600E79F94 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		18E15DF6204C807A00E79F94 /* WordTransfromer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTransfromer.swift; sourceTree = "<group>"; };
+		18E15DF8204C808900E79F94 /* TranslationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTransformer.swift; sourceTree = "<group>"; };
 		18E7F8F5203B5E4F00BE92E0 /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		18E7F8F7203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+CoreTranslate.swift"; sourceTree = "<group>"; };
 		18E7F8F9203B67FF00BE92E0 /* CoreDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTransformer.swift; sourceTree = "<group>"; };
@@ -265,14 +279,15 @@
 			path = ObservationResults;
 			sourceTree = "<group>";
 		};
-		1841B509200109CA0055BD73 /* ViewPresentations */ = {
+		1841B509200109CA0055BD73 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				1841B50A200109CA0055BD73 /* ObservationViewModel.swift */,
 				183EC659200A6F520043C82B /* TranslatedObservationViewModel.swift */,
 				18F855DD2019195A00C12C37 /* LanguageViewModel.swift */,
+				189303D52012726C00E9B494 /* TranslationViewModel.swift */,
 			);
-			path = ViewPresentations;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		185B56DF1FE27818008E0D56 /* Extensions */ = {
@@ -345,6 +360,9 @@
 				187436822047325600DC2EBD /* CoreDataStore.swift */,
 				1887A5E61FFC0FBF00BA19A0 /* ObservationStore.swift */,
 				1894F0282017C5D10091A64B /* LanguageStore.swift */,
+				18E15DED204C7D2C00E79F94 /* TranslatedObservationStore.swift */,
+				1818D701204C861100F52A43 /* WordStore.swift */,
+				1818D703204D6CE200F52A43 /* TranslationStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -356,6 +374,8 @@
 				1887A5EF1FFC20E200BA19A0 /* ObservationTransformer.swift */,
 				189303C520112D1400E9B494 /* TranslatedObservationTransformer.swift */,
 				1894F02F201880B80091A64B /* LanguageTransformer.swift */,
+				18E15DF6204C807A00E79F94 /* WordTransfromer.swift */,
+				18E15DF8204C808900E79F94 /* TranslationTransformer.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -365,9 +385,8 @@
 			children = (
 				188BAD86202B97C300F8C98E /* CoreDataHandler.swift */,
 				188D110E203066D500E4BD25 /* Observations.xcdatamodeld */,
-				186504FD20309FD10053ED51 /* Language.swift */,
-				18E7F8F5203B5E4F00BE92E0 /* Observation.swift */,
 				18E7F8F7203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift */,
+				18E15DEF204C7E4700E79F94 /* Models */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -375,8 +394,6 @@
 		189303CD2012723F00E9B494 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				189303D32012725D00E9B494 /* TranslatedObservation.swift */,
-				189303D52012726C00E9B494 /* Translation.swift */,
 				189303CB2012702200E9B494 /* LanguageId.swift */,
 			);
 			path = Models;
@@ -456,7 +473,7 @@
 				189303CE2012724600E9B494 /* MLModels */,
 				183EC661200BFC880043C82B /* Operations */,
 				183EC646200942BD0043C82B /* Networking */,
-				1841B509200109CA0055BD73 /* ViewPresentations */,
+				1841B509200109CA0055BD73 /* ViewModels */,
 				1887A5EE1FFC20E200BA19A0 /* Transformers */,
 				1887A5E51FFC0FBF00BA19A0 /* Stores */,
 				1887A5DA1FFAA4B300BA19A0 /* Services */,
@@ -531,6 +548,18 @@
 			);
 			name = Localizable;
 			path = CoreTranslate/Localizable;
+			sourceTree = "<group>";
+		};
+		18E15DEF204C7E4700E79F94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				186504FD20309FD10053ED51 /* Language.swift */,
+				18E7F8F5203B5E4F00BE92E0 /* Observation.swift */,
+				18E15DF0204C7E5900E79F94 /* TranslatedObservation.swift */,
+				1818D6FF204C82A700F52A43 /* Translation.swift */,
+				18E15DF4204C7EB600E79F94 /* Word.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		18F855E3201A1E7000C12C37 /* Events */ = {
@@ -808,6 +837,7 @@
 				18B6971B1FDDA68C00D7C401 /* ScanCoordinator.swift in Sources */,
 				1894F0232017C2BD0091A64B /* LanguageSelectorCoordinator.swift in Sources */,
 				1876BA7C2014FC26009EDF7C /* TabBarController.swift in Sources */,
+				1818D700204C82A700F52A43 /* Translation.swift in Sources */,
 				183EC663200BFC880043C82B /* AsyncOperation.swift in Sources */,
 				18B696F21FDD8F9C00D7C401 /* AppDelegate.swift in Sources */,
 				1894F01E20177A900091A64B /* BlurOverlayView.swift in Sources */,
@@ -816,6 +846,7 @@
 				1876BA7A2014FB60009EDF7C /* TabBarCoordinator.swift in Sources */,
 				187436832047325600DC2EBD /* CoreDataStore.swift in Sources */,
 				18BF497C201682610027CB7F /* SettingsStore.swift in Sources */,
+				18E15DF9204C808900E79F94 /* TranslationTransformer.swift in Sources */,
 				1860A87A200405C7008042EE /* TranslationCoordinator.swift in Sources */,
 				189303EA2013568000E9B494 /* TranslationCardsCollectionViewDataSource.swift in Sources */,
 				18BF4983201684B60027CB7F /* SettingsTextFieldCell.swift in Sources */,
@@ -827,10 +858,14 @@
 				18BF4961201674E50027CB7F /* LoadingView.swift in Sources */,
 				186504FE20309FD10053ED51 /* Language.swift in Sources */,
 				1841B5042000FEDD0055BD73 /* ObservationResultCell.swift in Sources */,
+				18E15DEE204C7D2C00E79F94 /* TranslatedObservationStore.swift in Sources */,
 				185B56E11FE27818008E0D56 /* UIViewController+Alerts.swift in Sources */,
 				18E7F8F6203B5E4F00BE92E0 /* Observation.swift in Sources */,
-				189303D62012726C00E9B494 /* Translation.swift in Sources */,
+				1818D704204D6CE200F52A43 /* TranslationStore.swift in Sources */,
+				1818D702204C861100F52A43 /* WordStore.swift in Sources */,
+				189303D62012726C00E9B494 /* TranslationViewModel.swift in Sources */,
 				188D1110203066D500E4BD25 /* Observations.xcdatamodeld in Sources */,
+				18E15DF1204C7E5900E79F94 /* TranslatedObservation.swift in Sources */,
 				183EC648200942BD0043C82B /* RESTService.swift in Sources */,
 				1894F030201880B80091A64B /* LanguageTransformer.swift in Sources */,
 				189303E220128F7100E9B494 /* Styles.swift in Sources */,
@@ -851,6 +886,7 @@
 				18BF497E201682BB0027CB7F /* SettingsViewController.swift in Sources */,
 				1894F0272017C36C0091A64B /* LanguageSelectorDataSource.swift in Sources */,
 				183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */,
+				18E15DF5204C7EB600E79F94 /* Word.swift in Sources */,
 				1894F0252017C32E0091A64B /* LanguageSelectorViewController.swift in Sources */,
 				189303CC2012702200E9B494 /* LanguageId.swift in Sources */,
 				18E7F8F8203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift in Sources */,
@@ -858,7 +894,6 @@
 				18F855DE2019195A00C12C37 /* LanguageViewModel.swift in Sources */,
 				183EC665200BFC9D0043C82B /* TranslationOperation.swift in Sources */,
 				189303C620112D1400E9B494 /* TranslatedObservationTransformer.swift in Sources */,
-				189303D42012725D00E9B494 /* TranslatedObservation.swift in Sources */,
 				189303DC2012827200E9B494 /* TranslationCard.swift in Sources */,
 				1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */,
 				188BAD87202B97C300F8C98E /* CoreDataHandler.swift in Sources */,
@@ -871,6 +906,7 @@
 				1841B50120000FD40055BD73 /* ObservationResultsViewController.swift in Sources */,
 				183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */,
 				1841B50D200116220055BD73 /* ObservationResultsDataSource.swift in Sources */,
+				18E15DF7204C807A00E79F94 /* WordTransfromer.swift in Sources */,
 				18B6971A1FDDA68C00D7C401 /* Coordinator.swift in Sources */,
 				18F855E9201B41B700C12C37 /* UIButton+Layout.swift in Sources */,
 				18F855DA201910D300C12C37 /* LanguageSelectorHeaderView.swift in Sources */,

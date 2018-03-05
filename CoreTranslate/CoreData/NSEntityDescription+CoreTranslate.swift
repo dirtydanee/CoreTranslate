@@ -12,5 +12,8 @@ extension NSEntityDescription {
     enum CoreTranslationEntityName: String {
         case language = "Language"
         case observation = "Observation"
+        case translatedObservation = "TranslatedObservation"
+        case word = "Word"
+        case translation = "Translation"
     }
 }

@@ -21,6 +21,8 @@ final class TranslationCoordinator: Coordinator {
     let observation: Observation
     let configuration: TranslationConfiguration
     let coreDataHandler: CoreDataHandler
+    let temporarySaveContext: NSManagedObjectContext
+    let translationStore: TranslationStore
     var childCoordinators: [Coordinator]
     var parent: Coordinator?
     private let translationService: TranslationService
@@ -34,18 +36,26 @@ final class TranslationCoordinator: Coordinator {
          coreDataHandler: CoreDataHandler,
          observationToTranslate observation: Observation,
          withConfiguration configuration: TranslationConfiguration) {
-        self.navigationController = navigationController
-        self.childCoordinators = []
-        self.observation = observation
-        self.configuration = configuration
-        self.translationService = TranslationService(baseURL: ApplicationConfiguration.baseTranslationURL)
-        self.coreDataHandler = coreDataHandler
-        self.translationService.delegate = self
+        do {
+            self.navigationController = navigationController
+            self.childCoordinators = []
+            self.observation = observation
+            self.configuration = configuration
+            self.coreDataHandler = coreDataHandler
+            let temporarySaveContext = coreDataHandler.temporarySaveContext()
+            self.translationService = TranslationService(baseURL: ApplicationConfiguration.baseTranslationURL,
+                                                         context: temporarySaveContext)
+            self.translationStore = try TranslationStore(context: temporarySaveContext)
+            self.temporarySaveContext = temporarySaveContext
+            self.translationService.delegate = self
+        } catch {
+            clog("Error while creating TranslationCoordinator. Error: \(error.localizedDescription)")
+            fatalError()
+        }
     }
 
     func start(animated: Bool) {
         let translationViewController = TranslationViewController(state: .loading)
-       // let navigationController = UINavigationController(rootViewController: translationViewController)
         self.navigationController.pushViewController(translationViewController, animated: animated)
         translationViewController.udpate()
         self.translationViewController = translationViewController
@@ -69,7 +79,9 @@ extension TranslationCoordinator: TranslationServiceDelegate {
     func translationService(_ translationService: TranslationService,
                             didTranslateObservation translation: TranslatedObservation) {
         let viewPresentation = TranslatedObservationViewModel(translatedObservation: translation,
-                                                           toTargetLanguage: self.configuration.toLanguage)
+                                                              translationStore: self.translationStore,
+                                                              fromLanguage: self.configuration.fromLanguage,
+                                                              toLanguage: self.configuration.toLanguage)
         self.translationViewController?.state = .loaded(viewPresentation)
     }
 
@@ -84,6 +96,6 @@ extension TranslationCoordinator: TranslationServiceDelegate {
 
 extension TranslationCoordinator: TranslationViewControllerDelegate {
     func translationViewControllerDidRequestSavingTranslation(_ viewController: TranslationViewController) {
-        
+        self.coreDataHandler.save(temporarySaveContext)
     }
 }

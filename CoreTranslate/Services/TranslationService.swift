@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol TranslationServiceDelegate: class {
     func translationService(_ translationService: TranslationService,
@@ -20,16 +21,19 @@ protocol TranslationServiceDelegate: class {
 final class TranslationService {
 
     let baseURL: URL
+    let context: NSManagedObjectContext
     weak var delegate: TranslationServiceDelegate?
     private let restService: RESTService
     private let translationsOpertionQueue: OperationQueue
     private let translatedObservationTransformer: TranslatedObservationTransformer
 
-    init(baseURL: URL) {
+    init(baseURL: URL, context: NSManagedObjectContext) {
         self.baseURL = baseURL
+        self.context = context
         self.restService = RESTService(baseURL: baseURL)
         self.translationsOpertionQueue = OperationQueue()
-        self.translatedObservationTransformer = TranslatedObservationTransformer()
+        self.translatedObservationTransformer = TranslatedObservationTransformer(context: context,
+                                                                        entityName: .translatedObservation)
     }
 
     func translate(observation: Observation,

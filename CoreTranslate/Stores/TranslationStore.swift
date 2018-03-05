@@ -1,27 +1,27 @@
 //
-//  ObservationStore.swift
+//  TranslationStore.swift
 //  CoreTranslate
 //
-//  Created by Daniel.Metzing on 02.01.18.
+//  Created by Daniel.Metzing on 05.03.18.
 //  Copyright © 2018 Dirtylabs. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
-final class ObservationStore: NSObject, CoreDataStore {
-    typealias Entity = Observation
+class TranslationStore: NSObject, CoreDataStore {
+    typealias Entity = Translation
 
     let context: NSManagedObjectContext
-    let entityName: String = "Observation"
+    let entityName: String = "Translation"
     let entity: NSEntityDescription
-    let fetchedResultsController: NSFetchedResultsController<Observation>
+    let fetchedResultsController: NSFetchedResultsController<Translation>
 
     init(context: NSManagedObjectContext) throws {
         self.context = context
 
-        let fetchRequest: NSFetchRequest<Observation> = NSFetchRequest(entityName: self.entityName)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Observation.confidence), ascending: true)]
+        let fetchRequest: NSFetchRequest<Translation> = NSFetchRequest(entityName: self.entityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Translation.fromWord.languageId),
+                                                         ascending: true)]
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                    managedObjectContext: context,
                                                                    sectionNameKeyPath: nil,
@@ -35,21 +35,15 @@ final class ObservationStore: NSObject, CoreDataStore {
         self.fetchedResultsController.delegate = self
     }
 
-    func exists(identifier: String) -> Bool {
-        do {
-            let predicate = NSPredicate(format: "identifier == %@", identifier)
-            let request = NSFetchRequest<Entity>(entityName: self.entityName)
-            request.predicate = predicate
-            let result = try self.context.fetch(request)
-            return !result.isEmpty
-        } catch {
-            clog(error.localizedDescription) // TODO
-            return false
-        }
+    func fetch(withFromLanguageId fromId: LanguageId, andToLanguageId toId: LanguageId) throws -> Translation {
+        let predicate = NSPredicate(format: "fromWord.languageId == '%@' AND toWord.languageId == '%@'",
+                                    fromId.rawValue,
+                                    toId.rawValue)
+        return try self.fetchEntity(with: nil)
     }
 }
 
-extension ObservationStore: NSFetchedResultsControllerDelegate {
+extension TranslationStore: NSFetchedResultsControllerDelegate {
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,
