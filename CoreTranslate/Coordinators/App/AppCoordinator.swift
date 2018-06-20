@@ -11,7 +11,7 @@ import UIKit
 final class AppCoordinator: Coordinator {
 
     let window: UIWindow
-    let languageStore: LanguageStore
+    let storeProvider: StoreProvider
     let coreDataHandler: CoreDataHandler
     let parent: Coordinator?
     var tabBarCoordinator: TabBarCoordinator?
@@ -22,23 +22,17 @@ final class AppCoordinator: Coordinator {
     }
     
     init(window: UIWindow) {
-        do {
             self.window = window
-            self.coreDataHandler = CoreDataHandler(modelName: "Observations")
             self.parent = nil
             self.childCoordinators = []
-            let languageStore = try LanguageStore(baseLanguageId: ApplicationConfiguration.baseLanguageId,
-                                                  context: self.coreDataHandler.inAppContext)
-            self.languageStore = languageStore
-        } catch {
-            clog("Unable to setup root coordinator. Error: \(error)", priority: .error)
-            fatalError()
-        }
+            let coreDataHandler = CoreDataHandler(modelName: "Observations")
+            self.storeProvider = StoreProvider(coreDataHandler: coreDataHandler)
+            self.coreDataHandler = coreDataHandler
     }
 
     func start(animated: Bool) {
         self.setupAppearance()
-        let tabBarCoordinator = TabBarCoordinator(languageStore: self.languageStore,
+        let tabBarCoordinator = TabBarCoordinator(storeProvider: self.storeProvider,
                                                   coreDataHandler: self.coreDataHandler,
                                                   parent: self)
         self.window.rootViewController = tabBarCoordinator.tabBarController

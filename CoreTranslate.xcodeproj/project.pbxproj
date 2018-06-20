@@ -10,6 +10,9 @@
 		1818D700204C82A700F52A43 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D6FF204C82A700F52A43 /* Translation.swift */; };
 		1818D702204C861100F52A43 /* WordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D701204C861100F52A43 /* WordStore.swift */; };
 		1818D704204D6CE200F52A43 /* TranslationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D703204D6CE200F52A43 /* TranslationStore.swift */; };
+		1818D709204DAF8F00F52A43 /* SavedTranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D708204DAF8E00F52A43 /* SavedTranslationCoordinator.swift */; };
+		1818D70B204DB12D00F52A43 /* StoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D70A204DB12D00F52A43 /* StoreProvider.swift */; };
+		1818D70D204DB3ED00F52A43 /* SavedTranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D70C204DB3ED00F52A43 /* SavedTranslationViewController.swift */; };
 		183EC648200942BD0043C82B /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC647200942BD0043C82B /* RESTService.swift */; };
 		183EC64A200943DC0043C82B /* ApplicationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC649200943DC0043C82B /* ApplicationConfiguration.swift */; };
 		183EC64C20094BE00043C82B /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EC64B20094BE00043C82B /* TranslationResponse.swift */; };
@@ -118,6 +121,9 @@
 		1818D6FF204C82A700F52A43 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		1818D701204C861100F52A43 /* WordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStore.swift; sourceTree = "<group>"; };
 		1818D703204D6CE200F52A43 /* TranslationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStore.swift; sourceTree = "<group>"; };
+		1818D708204DAF8E00F52A43 /* SavedTranslationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedTranslationCoordinator.swift; sourceTree = "<group>"; };
+		1818D70A204DB12D00F52A43 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
+		1818D70C204DB3ED00F52A43 /* SavedTranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationViewController.swift; sourceTree = "<group>"; };
 		183EC647200942BD0043C82B /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		183EC649200943DC0043C82B /* ApplicationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfiguration.swift; sourceTree = "<group>"; };
 		183EC64B20094BE00043C82B /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
@@ -240,6 +246,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1818D707204DAF8E00F52A43 /* SavedTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				1818D708204DAF8E00F52A43 /* SavedTranslationCoordinator.swift */,
+				1818D70C204DB3ED00F52A43 /* SavedTranslationViewController.swift */,
+			);
+			path = SavedTranslation;
+			sourceTree = "<group>";
+		};
 		183EC646200942BD0043C82B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				187436822047325600DC2EBD /* CoreDataStore.swift */,
+				1818D70A204DB12D00F52A43 /* StoreProvider.swift */,
 				1887A5E61FFC0FBF00BA19A0 /* ObservationStore.swift */,
 				1894F0282017C5D10091A64B /* LanguageStore.swift */,
 				18E15DED204C7D2C00E79F94 /* TranslatedObservationStore.swift */,
@@ -503,6 +519,7 @@
 				1894F0212017C2BD0091A64B /* LanguageSelector */,
 				1841B4FC20000F2A0055BD73 /* ObservationResults */,
 				1860A878200405C7008042EE /* Translation */,
+				1818D707204DAF8E00F52A43 /* SavedTranslation */,
 				1876BA7F2015069E009EDF7C /* Settings */,
 			);
 			path = Coordinators;
@@ -748,6 +765,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CardsLayout/CardsLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/ErrorHandler/ErrorHandler.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/StyledText/StyledText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -755,6 +773,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardsLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ErrorHandler.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StyledText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -887,8 +906,10 @@
 				1894F0272017C36C0091A64B /* LanguageSelectorDataSource.swift in Sources */,
 				183EC65E200B80CF0043C82B /* String+Formatting.swift in Sources */,
 				18E15DF5204C7EB600E79F94 /* Word.swift in Sources */,
+				1818D709204DAF8F00F52A43 /* SavedTranslationCoordinator.swift in Sources */,
 				1894F0252017C32E0091A64B /* LanguageSelectorViewController.swift in Sources */,
 				189303CC2012702200E9B494 /* LanguageId.swift in Sources */,
+				1818D70B204DB12D00F52A43 /* StoreProvider.swift in Sources */,
 				18E7F8F8203B63C100BE92E0 /* NSEntityDescription+CoreTranslate.swift in Sources */,
 				18E7F8FA203B67FF00BE92E0 /* CoreDataTransformer.swift in Sources */,
 				18F855DE2019195A00C12C37 /* LanguageViewModel.swift in Sources */,
@@ -898,6 +919,7 @@
 				1887A5F01FFC20E200BA19A0 /* ObservationTransformer.swift in Sources */,
 				188BAD87202B97C300F8C98E /* CoreDataHandler.swift in Sources */,
 				18B6971D1FDDA6B700D7C401 /* ScanViewController.swift in Sources */,
+				1818D70D204DB3ED00F52A43 /* SavedTranslationViewController.swift in Sources */,
 				18F855E5201A1E7000C12C37 /* LanguageSelectionEvent.swift in Sources */,
 				1887A5DF1FFAA4B300BA19A0 /* ObservationService.swift in Sources */,
 				183EC65C200A6FA50043C82B /* CaptureSessionService.swift in Sources */,

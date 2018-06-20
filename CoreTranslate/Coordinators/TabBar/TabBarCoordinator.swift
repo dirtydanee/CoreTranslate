@@ -29,20 +29,20 @@ final class TabBarCoordinator: Coordinator {
     let coreDataHandler: CoreDataHandler
     private(set) var childCoordinators: [Coordinator]
     let tabBarController: TabBarController
-    let languageStore: LanguageStore
+    let storeProvider: StoreProvider
 
     var viewController: UIViewController? {
         return self.tabBarController
     }
 
     private var takePhotoCoordinator: ScanCoordinator?
-    private var savedTranslatedObservationCoordinator: TranslationCoordinator? // TODO: Change it to saved
+    private var savedTranslationCoordinator: SavedTranslationCoordinator?
     private var settingsCoordinator: SettingsCoordinator?
 
-    init(languageStore: LanguageStore,
+    init(storeProvider: StoreProvider,
          coreDataHandler: CoreDataHandler,
          parent: Coordinator) {
-        self.languageStore = languageStore
+        self.storeProvider = storeProvider
         self.coreDataHandler = coreDataHandler
         self.parent = parent
         self.tabBarController = TabBarController()
@@ -55,7 +55,7 @@ final class TabBarCoordinator: Coordinator {
         self.setupSettingsCoordinator()
 
         let viewControllers = [self.takePhotoCoordinator?.viewController,
-                               self.savedTranslatedObservationCoordinator?.viewController,
+                               self.savedTranslationCoordinator?.viewController,
                                self.settingsCoordinator?.viewController]
                               .flatMap { $0 }
         self.tabBarController.setViewControllers(viewControllers, animated: false)
@@ -68,7 +68,7 @@ final class TabBarCoordinator: Coordinator {
     private func setupTakePhotoCoordinator() {
         let takePhotoNavigationController = UINavigationController()
         let takePhotoCoordinator = ScanCoordinator(navigationController: takePhotoNavigationController,
-                                                   languageStore: self.languageStore,
+                                                   languageStore: self.storeProvider.languageStore,
                                                    coreDataHandler: self.coreDataHandler,
                                                    parent: self)
         takePhotoCoordinator.start(animated: false)
@@ -79,24 +79,12 @@ final class TabBarCoordinator: Coordinator {
     }
 
     private func setupSavedTranslatedObservationCoordinator() {
-        // TODO: Daniel - Create ObservationStore and read saved observations from there
-
-//        let fromL = self.languageStore.language(with: ApplicationConfiguration.baseLanguage)
-//        let toL = self.languageStore.language(with: .hungarian)
-//
-//        let savedNavigationController = UINavigationController()
-//        let observation = Observation(uuid: UUID(), identifier: "potato", confidence: 0.2, capturedImageData: Data())
-//        let translationConfiguration = TranslationConfiguration(baseURL: ApplicationConfiguration.baseTranslationURL,
-//                                                                fromLanguage: fromL,
-//                                                                toLanguage: toL)
-//        let translationCoordinator = TranslationCoordinator(navigationController: savedNavigationController,
-//                                                            observationToTranslate: observation,
-//                                                            withConfiguration: translationConfiguration)
-//        translationCoordinator.start(animated: true)
-//        translationCoordinator.viewController?.tabBarItem = Constants.TabBarItems.savedItem
-//        translationCoordinator.parent = self
-//        self.savedTranslatedObservationCoordinator = translationCoordinator
-//        self.childCoordinators.append(translationCoordinator)
+        let savedTranslationCoordinator = SavedTranslationCoordinator(translatedObservationStore: self.storeProvider.translatedObservationStore)
+        savedTranslationCoordinator.start(animated: true)
+        savedTranslationCoordinator.viewController?.tabBarItem = Constants.TabBarItems.savedItem
+        savedTranslationCoordinator.parent = self
+        self.savedTranslationCoordinator = savedTranslationCoordinator
+        self.childCoordinators.append(savedTranslationCoordinator)
     }
 
     private func setupSettingsCoordinator() {

@@ -18,7 +18,6 @@ final class TranslationCardsCollectionViewDataSource: NSObject {
 extension TranslationCardsCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-
         return self.viewPresentations.count
     }
 

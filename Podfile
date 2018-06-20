@@ -13,6 +13,7 @@ target 'CoreTranslate' do
   pod 'ErrorHandler'
   pod 'ErrorHandler/Alamofire'
   pod 'StyledText'
+  pod 'PromiseKit'
 
 # Pods for CoreTranslateTests  
 
